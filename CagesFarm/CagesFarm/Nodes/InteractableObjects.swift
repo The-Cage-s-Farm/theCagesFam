@@ -22,7 +22,7 @@ extension SKSpriteNode {
 
 public enum ObjectType :Int {
     case quadro,
-    enemy1,
+    interruptor,
     enemy2
 }
 
@@ -70,7 +70,7 @@ public class InteractableObjects: SKSpriteNode {
             frontTexture = SKTexture(imageNamed: "Quadro")
             answers = ["Baú de travesseiro... que estranho","Será que a pintura é sobre este quarto... e o travesseiro esteja escondendo algo?..."]
             self.objectName = "Tony"
-        case .enemy1:
+        case .interruptor:
             frontTexture = SKTexture(image: #imageLiteral(resourceName: "TemplateCard1.png"))
             self.objectName = "Tony"
             answers = []

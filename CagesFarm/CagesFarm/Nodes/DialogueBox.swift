@@ -13,7 +13,7 @@ class DialogueBox: SKSpriteNode {
     
     var dialogTexture: SKTexture?
     var dialog: SKLabelNode?
-    var nextOption: SKSpriteNode?
+    var nextOption =  SKSpriteNode(texture: SKTexture(imageNamed: "Seta"), color: .clear, size: SKTexture(imageNamed: "Seta").size())
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding not supported")
@@ -27,12 +27,16 @@ class DialogueBox: SKSpriteNode {
         let fadeIn = SKAction.fadeIn(withDuration: 1)
         let fade = SKAction.fadeOut(withDuration: 0)
         super.init(texture: dialogTexture, color: .clear, size: (dialogTexture?.size())!)
-        self.position = CGPoint(x: 0, y: -220)
-        self.size = CGSize(width: 700, height: 300)
+        self.position = CGPoint(x: 0, y: -160)
+        self.size = CGSize(width: 700, height: 160)
         self.run(fade)
         self.run(fadeIn)
         self.addChild(dialog!)
+        self.addChild(nextOption)
+        nextOption.size = CGSize(width: 50, height: 50)
+        nextOption.position = CGPoint(x: self.frame.maxX - nextOption.size.width, y: self.frame.maxY + nextOption.size.height)
         dialog?.zPosition = +1
+        nextOption.zPosition = +1
         
     }
     
@@ -44,7 +48,7 @@ class DialogueBox: SKSpriteNode {
     
     func nextText(answer: String){
         var runCount = 0
-        Timer.scheduledTimer(withTimeInterval: 0.025, repeats: true) { timer in
+        Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { timer in
             runCount += 1
             self.dialog?.attributedText = NSAttributedString(string: answer.substring(with: 0..<runCount), attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)])
             if runCount == answer.count {
