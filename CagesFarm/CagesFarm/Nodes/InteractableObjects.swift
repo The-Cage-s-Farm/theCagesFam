@@ -33,6 +33,8 @@ public class InteractableObjects: SKSpriteNode {
     let objectName: String?
     var isCloseInteract = false
     var answers: [String]
+    var actualAnswer = 0
+    var isIteracting = false
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -40,7 +42,7 @@ public class InteractableObjects: SKSpriteNode {
     }
     
     func microInteraction(player: Characters){
-        if player.frame.maxX <= self.frame.maxX && player.frame.minX >= self.frame.minX {
+        if player.frame.minX <= self.frame.maxX && player.frame.maxX >= self.frame.minX {
             self.isCloseInteract = true
 //            self.removeAllChildren()
 //            drawBorder(color: .black, width: 30)
@@ -53,9 +55,11 @@ public class InteractableObjects: SKSpriteNode {
     }
     
     func nextDialogue() {
+        if !(actualAnswer == answers.count - 1){
+            
+            actualAnswer += 1
         
-        
-        
+        }
     }
     
     init(objectType: ObjectType) {

@@ -21,7 +21,7 @@ class GameScene: SKScene {
     
     private var tony = Characters(characterType: .tony)
     private var quadro = InteractableObjects(objectType: .quadro)
-    
+    private var dialogBox = DialogueBox()
     
     override func sceneDidLoad() {
         
@@ -53,7 +53,18 @@ class GameScene: SKScene {
 
         guard let objectInTouch = atPoint(pos) as? InteractableObjects else {return}
         if objectInTouch.isCloseInteract {
-
+            
+            //MUDAR PRA TORNAR MAIS AUTOMATICO PRA TODOS OBJETOS
+            if dialogBox.parent == nil {
+                let actualAnswerID = objectInTouch.actualAnswer
+                self.addChild(dialogBox)
+                self.dialogBox.nextText(answer: objectInTouch.answers[actualAnswerID])
+                objectInTouch.nextDialogue()
+            }else {
+                
+                self.dialogBox.removeFromParent()
+            }
+        
             
         }else{
 
