@@ -16,11 +16,18 @@ class MenuView: UIView {
         return bg
     }()
     
+    let coverView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(red: 19/255, green: 21/255, blue: 37/255, alpha: 0.8)
+        return view
+    }()
+    
     let gameTitle: UILabel = {
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.text = "The Cage's Farm"
-        title.font = UIFont.monospacedSystemFont(ofSize: 50, weight: .bold)
+        title.font = .pixel(50)
         title.numberOfLines = 1
         title.textColor = .white
         return title
@@ -29,10 +36,27 @@ class MenuView: UIView {
     let playButton: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.setTitle("PLAY", for: .normal)
-        btn.titleLabel?.font = UIFont.monospacedSystemFont(ofSize: 30, weight: .bold)
-        btn.backgroundColor = .darkGray
         btn.layer.cornerRadius = 10
+        let image = UIImage(named: "play-button")
+        btn.setImage(image, for: .normal)
+        return btn
+    }()
+    
+    let configButton: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.layer.cornerRadius = 10
+        let image = UIImage(named: "config-button")
+        btn.setImage(image, for: .normal)
+        return btn
+    }()
+    
+    let exitButton: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.layer.cornerRadius = 10
+        let image = UIImage(named: "exit-button")
+        btn.setImage(image, for: .normal)
         return btn
     }()
     
@@ -53,8 +77,11 @@ class MenuView: UIView {
     
     private func buildViewHierarchy() {
         addSubview(backgroundImage)
+        addSubview(coverView)
         addSubview(gameTitle)
         addSubview(playButton)
+        addSubview(configButton)
+        addSubview(exitButton)
     }
     
     private func setupConstraints() {
@@ -65,14 +92,28 @@ class MenuView: UIView {
             backgroundImage.rightAnchor.constraint(equalTo: rightAnchor),
             backgroundImage.bottomAnchor.constraint(equalTo: bottomAnchor),
             
+            // COVER VIEW
+            coverView.topAnchor.constraint(equalTo: topAnchor),
+            coverView.leftAnchor.constraint(equalTo: leftAnchor),
+            coverView.rightAnchor.constraint(equalTo: rightAnchor),
+            coverView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
             // TITLE
             gameTitle.bottomAnchor.constraint(equalTo: centerYAnchor, constant: -24),
             gameTitle.centerXAnchor.constraint(equalTo: centerXAnchor),
             
+            // CONFIG BUTTON
+            configButton.topAnchor.constraint(equalTo: centerYAnchor, constant: 24),
+            configButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
             // PLAY BUTTON
-            playButton.topAnchor.constraint(equalTo: centerYAnchor, constant: 24),
-            playButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            playButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.2)
+            playButton.topAnchor.constraint(equalTo: configButton.topAnchor),
+            playButton.trailingAnchor.constraint(equalTo: configButton.leadingAnchor, constant: -16),
+            
+            // EXIT BUTTON
+            exitButton.topAnchor.constraint(equalTo: configButton.topAnchor),
+            exitButton.leadingAnchor.constraint(equalTo: configButton.trailingAnchor, constant: 16),
+            
         ])
     }
 }
