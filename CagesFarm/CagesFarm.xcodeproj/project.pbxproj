@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F9E73612600DD690003181B /* HallwayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9E73602600DD690003181B /* HallwayScene.swift */; };
 		0F9EA8B525F660DF00EC66D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA8B425F660DF00EC66D6 /* AppDelegate.swift */; };
 		0F9EA8B725F660DF00EC66D6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0F9EA8B625F660DF00EC66D6 /* GameScene.sks */; };
 		0F9EA8B925F660DF00EC66D6 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0F9EA8B825F660DF00EC66D6 /* Actions.sks */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F9E73602600DD690003181B /* HallwayScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HallwayScene.swift; sourceTree = "<group>"; };
 		0F9EA8B125F660DF00EC66D6 /* CagesFarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CagesFarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F9EA8B425F660DF00EC66D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F9EA8B625F660DF00EC66D6 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				0F9EA8B825F660DF00EC66D6 /* Actions.sks */,
 				0F9EA8BA25F660DF00EC66D6 /* GameScene.swift */,
 				0F9EA8B625F660DF00EC66D6 /* GameScene.sks */,
+				0F9E73602600DD690003181B /* HallwayScene.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				0F9EA92B25FBADD100EC66D6 /* DialogueBox.swift in Sources */,
 				0F9EA92325FA835F00EC66D6 /* InteractableObjects.swift in Sources */,
 				0F9EA90825F7BB1C00EC66D6 /* changeTheModel.swift in Sources */,
+				0F9E73612600DD690003181B /* HallwayScene.swift in Sources */,
 				0F9EA8FA25F7BAEC00EC66D6 /* Characters.swift in Sources */,
 				0F9EA8BD25F660DF00EC66D6 /* GameViewController.swift in Sources */,
 				0F9EA91225F7BB4800EC66D6 /* changeTheComponent.swift in Sources */,

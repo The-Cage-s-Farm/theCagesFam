@@ -33,6 +33,7 @@ public class InteractableObjects: SKSpriteNode {
     let objectName: String?
     var isCloseInteract = false
     var answers: [String]
+  //  var options: [String]
     var actualAnswer = 0
     var isIteracting = false
     

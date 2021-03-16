@@ -1,14 +1,15 @@
 //
-//  GameScene.swift
+//  HallwayScene.swift
 //  CagesFarm
 //
-//  Created by Gilberto Magno on 3/8/21.
+//  Created by Gilberto Magno on 3/16/21.
 //
 
+import Foundation
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class HallwayScene: SKScene {
     
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
@@ -20,15 +21,13 @@ class GameScene: SKScene {
     
     
     private var tony = Characters(characterType: .tony)
-    private var quadro = InteractableObjects(objectType: .quadro)
     private var dialogBox = DialogueBox()
-    private var backGround = SKSpriteNode(imageNamed: "QuartoBackground")
+    private var backGround = SKSpriteNode(imageNamed: "TapeteQuadrado")
     
     override func sceneDidLoad() {
         
         
         self.addChild(tony)
-        self.addChild(quadro)
         self.addChild(backGround)
         backGround.zPosition = -1
         
@@ -42,20 +41,9 @@ class GameScene: SKScene {
     }
      override func didChangeSize(_ oldSize: CGSize) {
         tony.size = CGSize(width: 100, height: 100)
-        quadro.size = CGSize(width: 200, height: 200)
     }
     
     func touchDown(atPoint pos : CGPoint) {
-        
-        //TRANSICAO DE CENA, FALTA COLOCAR A PORTA PARA ISSO OCORRER COM ELA
-        let transition:SKTransition = SKTransition.fade(withDuration: 1)
-        let scene:SKScene = HallwayScene(size: UIScreen.main.bounds.size)
-        scene.anchorPoint = .init(x: 0.5, y: 0.5)
-        self.view?.presentScene(scene, transition: transition)
-        //
-        
-        
-
         
         if !tony.isWalking {
             let isBackground = atPoint(pos)
@@ -125,7 +113,6 @@ class GameScene: SKScene {
         
         // Calculate time since last update
         let dt = currentTime - self.lastUpdateTime
-        quadro.microInteraction(player: tony)
         // Update entities
         for entity in self.entities {
             entity.update(deltaTime: dt)

@@ -33,7 +33,7 @@ public class Characters: SKSpriteNode {
             self.isWalking = true
         }
         let distance = abs(posx - self.position.x)
-        let andar = SKAction.move(by: CGVector(dx: posx - self.position.x, dy: self.position.y), duration: TimeInterval(distance/250))
+        let andar = SKAction.move(by: CGVector(dx: posx - self.position.x, dy: self.position.y), duration: TimeInterval(distance/120))
         let endWalk = SKAction.run {
             self.isWalking = false
         }
