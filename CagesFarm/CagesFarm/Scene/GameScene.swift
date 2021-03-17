@@ -26,12 +26,13 @@ class GameScene: SKScene {
     private var comoda = InteractableObjects(objectType: .comoda)
     private var interruptor = InteractableObjects(objectType: .interruptor)
     private var tapete = InteractableObjects(objectType: .tapete)
+    private var quadroPerspectiva = InteractableObjects(objectType: .quadroPerspectiva)
     private var dialogBox = DialogueBox()
     private var backGround = SKSpriteNode(imageNamed: "QuartoBackground")
     
     override func sceneDidLoad() {
         
-        
+        self.scaleMode = .aspectFit
         self.addChild(tony)
         self.addChild(quadro)
         self.addChild(backGround)
@@ -40,6 +41,7 @@ class GameScene: SKScene {
         self.addChild(interruptor)
         self.addChild(tapete)
         self.addChild(cama)
+        self.addChild(quadroPerspectiva)
         backGround.zPosition = -1
         tony.zPosition = +1
         self.lastUpdateTime = 0
@@ -51,14 +53,33 @@ class GameScene: SKScene {
         
     }
      override func didChangeSize(_ oldSize: CGSize) {
-        tony.size = CGSize(width: 100, height: 100)
-        quadro.size = CGSize(width: 200, height: 200)
-        
-        
+        quadro.size = CGSize(width: 80, height: 95)
+        quadroPerspectiva.size = CGSize(width: 80, height: 80)
+        comoda.setScale(0.52)
         
         //Positions
+
+        tony.position = CGPoint(x: 250, y: -40)
         cama.position = CGPoint(x: -230, y: -100)
         cama.xScale = -1
+
+        quadro.position = CGPoint(x: 120, y: 80)
+
+
+        tapete.position = CGPoint(x: -25, y: -90)
+        tapete.size = CGSize(width: 175, height: 155)
+
+
+        comoda.position = CGPoint(x: 120, y: -30)
+
+
+        bau.position = CGPoint(x: -230, y: -100)
+
+        quadroPerspectiva.position = CGPoint(x: -250, y: 45)
+       // quadroPerspectiva.xScale = -1
+        interruptor.position = CGPoint(x: 240, y: 10)
+       // interruptor.size = CGSize(width: 200, height: 200)
+
         
     }
     
@@ -70,7 +91,13 @@ class GameScene: SKScene {
 //        scene.anchorPoint = .init(x: 0.5, y: 0.5)
 //        self.view?.presentScene(scene, transition: transition)
         //
-        
+
+        //INVERTER POSICAO DEPENDENDO DE ONDE ANDA AS
+        if !tony.isWalking && pos.x < tony.frame.minX {
+            tony.xScale = -1
+        }else if !tony.isWalking && pos.x >= tony.frame.minX {
+            tony.xScale = +1
+        }
         
 
         
@@ -83,6 +110,7 @@ class GameScene: SKScene {
         
 
         guard let objectInTouch = atPoint(pos) as? InteractableObjects else {return}
+        
         if objectInTouch.isCloseInteract {
             
             //MUDAR PRA TORNAR MAIS AUTOMATICO PRA TODOS OBJETOS
@@ -143,6 +171,12 @@ class GameScene: SKScene {
         // Calculate time since last update
         let dt = currentTime - self.lastUpdateTime
         quadro.microInteraction(player: tony)
+        interruptor.microInteraction(player: tony)
+        quadroPerspectiva.microInteraction(player: tony)
+        tapete.microInteraction(player: tony)
+        cama.microInteraction(player: tony)
+        comoda.microInteraction(player: tony)
+        bau.microInteraction(player: tony)
         // Update entities
         for entity in self.entities {
             entity.update(deltaTime: dt)

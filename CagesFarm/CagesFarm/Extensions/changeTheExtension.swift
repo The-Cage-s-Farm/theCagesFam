@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 extension String {
     func index(from: Int) -> Index {
         return self.index(startIndex, offsetBy: from)
@@ -26,4 +27,12 @@ extension String {
         let endIndex = index(from: r.upperBound)
         return String(self[startIndex..<endIndex])
     }
+}
+
+
+extension UIScreen {
+
+    private var aspectRatioX: CGFloat { self.bounds.height/926 }
+    private var aspectRatioY: CGFloat { self.bounds.width/428 }
+
 }

@@ -11,13 +11,35 @@ import Foundation
 import SpriteKit
 
 extension SKSpriteNode {
+
     func drawBorder(color: UIColor, width: CGFloat) {
-        let shapeNode = SKShapeNode(rect: frame)
+
+        for layer in self.children {
+
+            if layer.name == "border" {
+
+                layer.removeFromParent()
+
+            }
+
+        }
+
+        let imageSize = self.texture?.size()
+
+        let lineWidth = (imageSize!.width / self.size.width) * width
+
+        let shapeNode = SKShapeNode(rect: CGRect(x: -imageSize!.width/2, y: -imageSize!.height/2, width: imageSize!.width, height: imageSize!.height))
         shapeNode.fillColor = .clear
         shapeNode.strokeColor = color
-        shapeNode.lineWidth = width
-        addChild(shapeNode)
+        shapeNode.lineWidth = lineWidth
+        shapeNode.name = "border"
+        shapeNode.zPosition = 999
+        self.addChild(shapeNode)
+
+        self.zPosition = 1000
+
     }
+
 }
 
 public enum ObjectType :Int {
@@ -26,7 +48,8 @@ public enum ObjectType :Int {
     cama,
     comoda,
     tapete,
-    bau
+    bau,
+    quadroPerspectiva
 
 }
 
@@ -40,6 +63,7 @@ public class InteractableObjects: SKSpriteNode {
   //  var options: [String]
     var actualAnswer = 0
     var isIteracting = false
+    var isMicroInteractionON = false
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -49,13 +73,18 @@ public class InteractableObjects: SKSpriteNode {
     func microInteraction(player: Characters){
         if player.frame.minX <= self.frame.maxX && player.frame.maxX >= self.frame.minX {
             self.isCloseInteract = true
-//            self.removeAllChildren()
-//            drawBorder(color: .black, width: 30)
-            
+            if !isMicroInteractionON {
+                isMicroInteractionON = !isMicroInteractionON
+                let shapeNode = SKShapeNode(circleOfRadius: 6)
+                shapeNode.fillColor = .green
+                self.addChild(shapeNode)
+                shapeNode.zPosition = +1
+                shapeNode.position = CGPoint(x: 0, y: 40)
+            }
         }else {
             self.isCloseInteract = false
-//            self.removeAllChildren()
-//            drawBorder(color: .clear, width: 0)
+            self.removeAllChildren()
+            isMicroInteractionON = false
         }
     }
     
@@ -80,14 +109,15 @@ public class InteractableObjects: SKSpriteNode {
             frontTexture = SKTexture(imageNamed: "InterruptorOff")
             answers = ["Hmm, pergunto-me se este interruptor ligará a luz"]
             func lightOn(){
-                
+
+
             }
         case .comoda:
             self.objectName = "Comoda"
             frontTexture = SKTexture(imageNamed: self.objectName!)
             answers = []
         case .tapete:
-            self.objectName = "Tapete"
+            self.objectName = "TapeteQuadrado"
             frontTexture = SKTexture(imageNamed: self.objectName!)
             answers = ["Interessante, esta é a mesma imagem do Baú"]
         case .cama:
@@ -98,6 +128,11 @@ public class InteractableObjects: SKSpriteNode {
             self.objectName = "Baú"
             frontTexture = SKTexture(imageNamed: self.objectName!)
             answers = []
+        case .quadroPerspectiva:
+            self.objectName = "QuadroPerspectiva"
+            frontTexture = SKTexture(imageNamed: self.objectName!)
+            answers = []
+
         }
         
         super.init(texture: frontTexture, color: .clear, size: frontTexture.size())

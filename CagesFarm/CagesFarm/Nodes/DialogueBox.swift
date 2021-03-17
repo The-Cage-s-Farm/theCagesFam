@@ -19,14 +19,20 @@ class DialogueBox: SKSpriteNode {
         fatalError("NSCoding not supported")
     }
     
-     init() {
+    init() {
+
         dialogTexture = SKTexture(imageNamed: "DialogBox")
         let attributedText = NSAttributedString(string: "a", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 28)])
         dialog = SKLabelNode(attributedText: attributedText)
+        super.init(texture: dialogTexture, color: .clear, size: (dialogTexture?.size())!)
+        organizeDialog()
 
+    }
+    
+    func organizeDialog() {
+        
         let fadeIn = SKAction.fadeIn(withDuration: 1)
         let fade = SKAction.fadeOut(withDuration: 0)
-        super.init(texture: dialogTexture, color: .clear, size: (dialogTexture?.size())!)
         self.position = CGPoint(x: 0, y: -160)
         self.size = CGSize(width: 700, height: 160)
         self.run(fade)
@@ -37,12 +43,8 @@ class DialogueBox: SKSpriteNode {
         nextOption.position = CGPoint(x: self.frame.maxX - nextOption.size.width, y: self.frame.maxY + nextOption.size.height)
         dialog?.zPosition = +1
         nextOption.zPosition = +1
-        
-    }
-    
-    func organizeDialog() {
-        
-     
+
+
         
     }
     

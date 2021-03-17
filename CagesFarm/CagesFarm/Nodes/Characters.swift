@@ -12,15 +12,15 @@ import SpriteKit
 
 public enum CharacterType :Int {
     case tony,
-    MrCage,
-    MrsCage
+         mrCage,
+         mrsCage
 }
 
 
 public class Characters: SKSpriteNode {
     let characterType :CharacterType
     var textures :[SKTexture] = []
-    let Charactername: String?
+    let characterName: String?
     var isWalking = false
     var actualImageID = 0
     
@@ -43,7 +43,7 @@ public class Characters: SKSpriteNode {
             }
         }
         let distance = abs(posx - self.position.x)
-        let andar = SKAction.move(by: CGVector(dx: posx - self.position.x, dy: self.position.y), duration: TimeInterval(distance/120))
+        let andar = SKAction.move(by: CGVector(dx: posx - self.position.x, dy: 0), duration: TimeInterval(distance/120))
         let endWalk = SKAction.run {
             self.isWalking = false
         }
@@ -63,18 +63,18 @@ public class Characters: SKSpriteNode {
             for number in Range(0...5){
                 self.textures.append(SKTexture(imageNamed: "sprite_\(number)"))
             }
-            self.Charactername = "Tony"
-        case .MrCage:
+            self.characterName = "Tony"
+        case .mrCage:
             for number in Range(0...5){
                 self.textures.append(SKTexture(imageNamed: "sprite_\(number)"))
             }
-            self.Charactername = "Tony"
-        case .MrsCage:
+            self.characterName = "Tony"
+        case .mrsCage:
             for number in Range(0...5){
                 self.textures.append(SKTexture(imageNamed: "sprite_\(number)"))
             }
 
-            self.Charactername = "Tony"
+            self.characterName = "Tony"
         }
         
         super.init(texture: textures[0], color: .clear, size: textures[0].size())
