@@ -21,6 +21,11 @@ class GameScene: SKScene {
     
     private var tony = Characters(characterType: .tony)
     private var quadro = InteractableObjects(objectType: .quadro)
+    private var bau = InteractableObjects(objectType: .bau)
+    private var cama = InteractableObjects(objectType: .cama)
+    private var comoda = InteractableObjects(objectType: .comoda)
+    private var interruptor = InteractableObjects(objectType: .interruptor)
+    private var tapete = InteractableObjects(objectType: .tapete)
     private var dialogBox = DialogueBox()
     private var backGround = SKSpriteNode(imageNamed: "QuartoBackground")
     
@@ -30,8 +35,13 @@ class GameScene: SKScene {
         self.addChild(tony)
         self.addChild(quadro)
         self.addChild(backGround)
+        self.addChild(bau)
+        self.addChild(comoda)
+        self.addChild(interruptor)
+        self.addChild(tapete)
+        self.addChild(cama)
         backGround.zPosition = -1
-        
+        tony.zPosition = +1
         self.lastUpdateTime = 0
         
         // Get label node from scene and store it for use later
@@ -48,10 +58,10 @@ class GameScene: SKScene {
     func touchDown(atPoint pos : CGPoint) {
         
         //TRANSICAO DE CENA, FALTA COLOCAR A PORTA PARA ISSO OCORRER COM ELA
-        let transition:SKTransition = SKTransition.fade(withDuration: 1)
-        let scene:SKScene = HallwayScene(size: UIScreen.main.bounds.size)
-        scene.anchorPoint = .init(x: 0.5, y: 0.5)
-        self.view?.presentScene(scene, transition: transition)
+//        let transition:SKTransition = SKTransition.fade(withDuration: 1)
+//        let scene:SKScene = HallwayScene(size: UIScreen.main.bounds.size)
+//        scene.anchorPoint = .init(x: 0.5, y: 0.5)
+//        self.view?.presentScene(scene, transition: transition)
         //
         
         

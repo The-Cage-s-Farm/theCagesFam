@@ -19,9 +19,10 @@ public enum CharacterType :Int {
 
 public class Characters: SKSpriteNode {
     let characterType :CharacterType
-    let frontTexture :SKTexture
+    var textures :[SKTexture] = []
     let Charactername: String?
     var isWalking = false
+    var actualImageID = 0
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding not supported")
@@ -29,8 +30,17 @@ public class Characters: SKSpriteNode {
     
     
     func walk(posx: CGFloat){
+        
         let beginWalk = SKAction.run {
             self.isWalking = true
+            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+                self.actualImageID += 1
+                self.actualImageID = self.actualImageID%6
+                self.texture = self.textures[self.actualImageID]
+                if !self.isWalking {
+                    timer.invalidate()
+                }
+            }
         }
         let distance = abs(posx - self.position.x)
         let andar = SKAction.move(by: CGVector(dx: posx - self.position.x, dy: self.position.y), duration: TimeInterval(distance/120))
@@ -43,22 +53,31 @@ public class Characters: SKSpriteNode {
     }
     
     
+    
+    
     init(characterType: CharacterType) {
         self.characterType = characterType
         
         switch characterType {
         case .tony:
-            frontTexture = SKTexture(imageNamed: "Image")
+            for number in Range(0...5){
+                self.textures.append(SKTexture(imageNamed: "sprite_\(number)"))
+            }
             self.Charactername = "Tony"
         case .MrCage:
-            frontTexture = SKTexture(image: #imageLiteral(resourceName: "TemplateCard1.png"))
+            for number in Range(0...5){
+                self.textures.append(SKTexture(imageNamed: "sprite_\(number)"))
+            }
             self.Charactername = "Tony"
         case .MrsCage:
-            frontTexture = SKTexture(image: #imageLiteral(resourceName: "TemplateCard1.png"))
+            for number in Range(0...5){
+                self.textures.append(SKTexture(imageNamed: "sprite_\(number)"))
+            }
+
             self.Charactername = "Tony"
         }
         
-        super.init(texture: frontTexture, color: .clear, size: frontTexture.size())
+        super.init(texture: textures[0], color: .clear, size: textures[0].size())
         
         
         

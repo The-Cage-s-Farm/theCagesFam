@@ -23,7 +23,11 @@ extension SKSpriteNode {
 public enum ObjectType :Int {
     case quadro,
     interruptor,
-    enemy2
+    cama,
+    comoda,
+    tapete,
+    bau
+
 }
 
 
@@ -70,14 +74,29 @@ public class InteractableObjects: SKSpriteNode {
         case .quadro:
             frontTexture = SKTexture(imageNamed: "Quadro")
             answers = ["Baú de travesseiro... que estranho","Será que a pintura é sobre este quarto... e o travesseiro esteja escondendo algo?..."]
-            self.objectName = "Tony"
+            self.objectName = "Quadro"
         case .interruptor:
-            frontTexture = SKTexture(image: #imageLiteral(resourceName: "TemplateCard1.png"))
-            self.objectName = "Tony"
+            self.objectName = "Interruptor"
+            frontTexture = SKTexture(imageNamed: "InterruptorOff")
+            answers = ["Hmm, pergunto-me se este interruptor ligará a luz"]
+            func lightOn(){
+                
+            }
+        case .comoda:
+            self.objectName = "Comoda"
+            frontTexture = SKTexture(imageNamed: self.objectName!)
             answers = []
-        case .enemy2:
-            frontTexture = SKTexture(image: #imageLiteral(resourceName: "TemplateCard1.png"))
-            self.objectName = "Tony"
+        case .tapete:
+            self.objectName = "Tapete"
+            frontTexture = SKTexture(imageNamed: self.objectName!)
+            answers = ["Interessante, esta é a mesma imagem do Baú"]
+        case .cama:
+            self.objectName = "Cama"
+            frontTexture = SKTexture(imageNamed: self.objectName!)
+            answers = []
+        case .bau:
+            self.objectName = "Baú"
+            frontTexture = SKTexture(imageNamed: self.objectName!)
             answers = []
         }
         
