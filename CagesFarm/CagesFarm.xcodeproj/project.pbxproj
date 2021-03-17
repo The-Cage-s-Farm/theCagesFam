@@ -20,6 +20,7 @@
 		0F9EA90D25F7BB3B00EC66D6 /* changeTheExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA90C25F7BB3B00EC66D6 /* changeTheExtension.swift */; };
 		0F9EA91225F7BB4800EC66D6 /* changeTheComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA91125F7BB4800EC66D6 /* changeTheComponent.swift */; };
 		0F9EA91725F7BB5300EC66D6 /* changeTheEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA91625F7BB5300EC66D6 /* changeTheEntity.swift */; };
+		E9D29FAD25FF9E79002FCDC7 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E9D29FAC25FF9E79002FCDC7 /* .swiftlint.yml */; };
 		E904C5D725FF8E6000654E6B /* UIFontsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904C5D625FF8E6000654E6B /* UIFontsExtension.swift */; };
 		E904C5DF25FF904D00654E6B /* Pixeland.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E904C5DC25FF904100654E6B /* Pixeland.ttf */; };
 		E904C5E025FF904D00654E6B /* pixelplay.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E904C5DD25FF904100654E6B /* pixelplay.ttf */; };
@@ -70,6 +71,7 @@
 		0F9EA90C25F7BB3B00EC66D6 /* changeTheExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changeTheExtension.swift; sourceTree = "<group>"; };
 		0F9EA91125F7BB4800EC66D6 /* changeTheComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changeTheComponent.swift; sourceTree = "<group>"; };
 		0F9EA91625F7BB5300EC66D6 /* changeTheEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changeTheEntity.swift; sourceTree = "<group>"; };
+		E9D29FAC25FF9E79002FCDC7 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		E904C5D625FF8E6000654E6B /* UIFontsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontsExtension.swift; sourceTree = "<group>"; };
 		E904C5DC25FF904100654E6B /* Pixeland.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pixeland.ttf; sourceTree = "<group>"; };
 		E904C5DD25FF904100654E6B /* pixelplay.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pixelplay.ttf; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 		0F9EA8A825F660DF00EC66D6 = {
 			isa = PBXGroup;
 			children = (
+				E9D29FAC25FF9E79002FCDC7 /* .swiftlint.yml */,
 				0F9EA8B325F660DF00EC66D6 /* CagesFarm */,
 				0F9EA8CB25F660E100EC66D6 /* CagesFarmTests */,
 				0F9EA8D625F660E100EC66D6 /* CagesFarmUITests */,
@@ -258,6 +261,7 @@
 				0F9EA8AD25F660DF00EC66D6 /* Sources */,
 				0F9EA8AE25F660DF00EC66D6 /* Frameworks */,
 				0F9EA8AF25F660DF00EC66D6 /* Resources */,
+				E904C5F325FF97FF00654E6B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -351,6 +355,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9D29FAD25FF9E79002FCDC7 /* .swiftlint.yml in Resources */,
+				0F9EA8C025F660DF00EC66D6 /* Main.storyboard in Resources */,
 				E904C5E125FF904D00654E6B /* pixel.ttf in Resources */,
 				E904C5E925FF907400654E6B /* dogicapixelbold.ttf in Resources */,
 				0F9EA8B725F660DF00EC66D6 /* GameScene.sks in Resources */,
@@ -380,6 +386,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E904C5F325FF97FF00654E6B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0F9EA8AD25F660DF00EC66D6 /* Sources */ = {
