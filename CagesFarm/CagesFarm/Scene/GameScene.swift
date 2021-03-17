@@ -53,6 +53,13 @@ class GameScene: SKScene {
      override func didChangeSize(_ oldSize: CGSize) {
         tony.size = CGSize(width: 100, height: 100)
         quadro.size = CGSize(width: 200, height: 200)
+        
+        
+        
+        //Positions
+        cama.position = CGPoint(x: -230, y: -100)
+        cama.xScale = -1
+        
     }
     
     func touchDown(atPoint pos : CGPoint) {
