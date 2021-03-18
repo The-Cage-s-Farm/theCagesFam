@@ -33,11 +33,13 @@ class DialogueBox: SKSpriteNode {
         
         let fadeIn = SKAction.fadeIn(withDuration: 1)
         let fade = SKAction.fadeOut(withDuration: 0)
-        self.position = CGPoint(x: 0, y: -160)
-        self.size = CGSize(width: 700, height: 160)
+        self.position = CGPoint(x: 0, y: -100)
+        self.setScale(1)
         self.run(fade)
         self.run(fadeIn)
         self.addChild(dialog!)
+        dialog?.constraints = [SKConstraint.positionX(SKRange(lowerLimit: 30, upperLimit: 300)),SKConstraint.positionY(SKRange(lowerLimit: 0, upperLimit: 200))]
+       // dialog?.position = CGPoint(x: 50, y: 0)
         self.addChild(nextOption)
         nextOption.size = CGSize(width: 50, height: 50)
         nextOption.position = CGPoint(x: self.frame.maxX - nextOption.size.width, y: self.frame.maxY + nextOption.size.height)
@@ -47,12 +49,15 @@ class DialogueBox: SKSpriteNode {
 
         
     }
+
+
+
     
     func nextText(answer: String){
         var runCount = 0
         Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { timer in
             runCount += 1
-            self.dialog?.attributedText = NSAttributedString(string: answer.substring(with: 0..<runCount), attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20)])
+            self.dialog?.attributedText = NSAttributedString(string: answer.substring(with: 0..<runCount), attributes: [NSAttributedString.Key.font: UIFont.pixelPlay(17)])
             if runCount == answer.count {
                 timer.invalidate()
             }

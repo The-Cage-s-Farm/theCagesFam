@@ -29,9 +29,12 @@ class GameScene: SKScene {
     private var quadroPerspectiva = InteractableObjects(objectType: .quadroPerspectiva)
     private var dialogBox = DialogueBox()
     private var backGround = SKSpriteNode(imageNamed: "QuartoBackground")
+    private var xRatio = UIScreen.aspectRatioX
+    private var yRatio = UIScreen.aspectRatioY
     
     override func sceneDidLoad() {
-        
+        print(xRatio)
+        print(yRatio)
         self.scaleMode = .aspectFit
         self.addChild(tony)
         self.addChild(quadro)
@@ -44,6 +47,7 @@ class GameScene: SKScene {
         self.addChild(quadroPerspectiva)
         backGround.zPosition = -1
         tony.zPosition = +1
+        dialogBox.zPosition = +1
         self.lastUpdateTime = 0
         
         // Get label node from scene and store it for use later
@@ -53,27 +57,27 @@ class GameScene: SKScene {
         
     }
      override func didChangeSize(_ oldSize: CGSize) {
-        quadro.size = CGSize(width: 80, height: 95)
-        quadroPerspectiva.size = CGSize(width: 80, height: 80)
-        comoda.setScale(0.52)
+        quadro.setScale(1*yRatio)
+        quadroPerspectiva.setScale(1*yRatio)
+        comoda.setScale(0.45*yRatio)
         
         //Positions
-
-        tony.position = CGPoint(x: 250, y: -40)
-        cama.position = CGPoint(x: -230, y: -100)
+8
+        tony.position = CGPoint(x:  xRatio*250, y: yRatio*(-60))
+        cama.position = CGPoint(x: -230*xRatio, y: -100*yRatio)
         cama.xScale = -1
 
-        quadro.position = CGPoint(x: 120, y: 80)
+        quadro.position = CGPoint(x: 120*xRatio, y: 80*yRatio)
 
 
-        tapete.position = CGPoint(x: -25, y: -90)
-        tapete.size = CGSize(width: 175, height: 155)
+        tapete.position = CGPoint(x: -25*xRatio, y: -90*yRatio)
+        tapete.size = CGSize(width: 175*xRatio, height: 155*yRatio)
 
 
-        comoda.position = CGPoint(x: 120, y: -30)
+        comoda.position = CGPoint(x: 120*xRatio, y: -20*yRatio)
 
 
-        bau.position = CGPoint(x: -230, y: -100)
+        bau.position = CGPoint(x: -230*xRatio, y: -100*yRatio)
 
         quadroPerspectiva.position = CGPoint(x: -250, y: 45)
        // quadroPerspectiva.xScale = -1
@@ -118,9 +122,10 @@ class GameScene: SKScene {
                 let actualAnswerID = objectInTouch.actualAnswer
                 self.addChild(dialogBox)
                 self.dialogBox.nextText(answer: objectInTouch.answers[actualAnswerID])
+                tony.isWalking = true
                 objectInTouch.nextDialogue()
             }else {
-                
+                tony.isWalking = false
                 self.dialogBox.removeFromParent()
             }
         

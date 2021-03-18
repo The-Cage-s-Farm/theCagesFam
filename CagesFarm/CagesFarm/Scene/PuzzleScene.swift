@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
-class HallwayScene: SKScene {
+class PuzzleScene: SKScene {
     
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
@@ -20,17 +20,10 @@ class HallwayScene: SKScene {
     
     
     
-    private var tony = Characters(characterType: .tony)
-    private var dialogBox = DialogueBox()
-    private var backGround = SKSpriteNode(imageNamed: "TapeteQuadrado")
-    
+
     override func sceneDidLoad() {
         
-        
-        self.addChild(tony)
-        self.addChild(backGround)
-        backGround.zPosition = -1
-        
+
         self.lastUpdateTime = 0
         
         // Get label node from scene and store it for use later
@@ -39,41 +32,23 @@ class HallwayScene: SKScene {
         
         
     }
+
+
+
+//MUDAR TAMANHO E POSICAO DOS NODES
      override func didChangeSize(_ oldSize: CGSize) {
-        tony.size = CGSize(width: 100, height: 100)
+
+
+
     }
-    
+
+
+
     func touchDown(atPoint pos : CGPoint) {
         
-        if !tony.isWalking {
-            let isBackground = atPoint(pos)
-            if !(isBackground is InteractableObjects) {
-                    tony.walk(posx: pos.x)
-                }
-            }
-        
 
-        guard let objectInTouch = atPoint(pos) as? InteractableObjects else {return}
-        if objectInTouch.isCloseInteract {
-            
-            //MUDAR PRA TORNAR MAIS AUTOMATICO PRA TODOS OBJETOS
-            if dialogBox.parent == nil {
-                let actualAnswerID = objectInTouch.actualAnswer
-                self.addChild(dialogBox)
-                self.dialogBox.nextText(answer: objectInTouch.answers[actualAnswerID])
-                objectInTouch.nextDialogue()
-            }else {
-                
-                self.dialogBox.removeFromParent()
-            }
-        
-            
-        }else{
 
-            
-            
-        }
-        
+
        
     }
     

@@ -102,12 +102,12 @@ public class InteractableObjects: SKSpriteNode {
         switch objectType {
         case .quadro:
             frontTexture = SKTexture(imageNamed: "Quadro")
-            answers = ["Baú de travesseiro... que estranho","Será que a pintura é sobre este quarto... e o travesseiro esteja escondendo algo?..."]
+            answers = ["-- Baú de travesseiro... que estranho","-- Será que a pintura é sobre este quarto... e o travesseiro esteja escondendo algo?..."]
             self.objectName = "Quadro"
         case .interruptor:
             self.objectName = "Interruptor"
             frontTexture = SKTexture(imageNamed: "InterruptorOff")
-            answers = ["Hmm, pergunto-me se este interruptor ligará a luz"]
+            answers = ["-- Hmm, pergunto-me se este interruptor ligará a luz"]
             func lightOn(){
 
 
@@ -119,7 +119,7 @@ public class InteractableObjects: SKSpriteNode {
         case .tapete:
             self.objectName = "TapeteQuadrado"
             frontTexture = SKTexture(imageNamed: self.objectName!)
-            answers = ["Interessante, esta é a mesma imagem do Baú"]
+            answers = ["-- Interessante, esta é a mesma imagem do Baú"]
         case .cama:
             self.objectName = "Cama"
             frontTexture = SKTexture(imageNamed: self.objectName!)

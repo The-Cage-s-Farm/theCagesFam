@@ -32,7 +32,7 @@ extension String {
 
 extension UIScreen {
 
-    private var aspectRatioX: CGFloat { self.bounds.height/926 }
-    private var aspectRatioY: CGFloat { self.bounds.width/428 }
+    static var aspectRatioY: CGFloat  =  UIScreen.main.bounds.height/428
+    static var aspectRatioX: CGFloat  =  UIScreen.main.bounds.width/926
 
 }
