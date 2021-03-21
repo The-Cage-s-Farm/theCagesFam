@@ -49,12 +49,6 @@ class GameScene: SKScene {
         tony.zPosition = +1
         dialogBox.zPosition = +1
         self.lastUpdateTime = 0
-        
-        // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-        // Create shape node to use during mouse interaction
-        
-        
     }
      override func didChangeSize(_ oldSize: CGSize) {
         quadro.setScale(1*yRatio)
@@ -62,7 +56,6 @@ class GameScene: SKScene {
         comoda.setScale(0.45*yRatio)
         
         //Positions
-8
         tony.position = CGPoint(x:  xRatio*250, y: yRatio*(-60))
         cama.position = CGPoint(x: -230*xRatio, y: -100*yRatio)
         cama.xScale = -1
@@ -91,7 +84,7 @@ class GameScene: SKScene {
         
         //TRANSICAO DE CENA, FALTA COLOCAR A PORTA PARA ISSO OCORRER COM ELA
 //        let transition:SKTransition = SKTransition.fade(withDuration: 1)
-//        let scene:SKScene = HallwayScene(size: UIScreen.main.bounds.size)
+//        let scene:SKScene = PuzzleScene(size: UIScreen.main.bounds.size)
 //        scene.anchorPoint = .init(x: 0.5, y: 0.5)
 //        self.view?.presentScene(scene, transition: transition)
         //

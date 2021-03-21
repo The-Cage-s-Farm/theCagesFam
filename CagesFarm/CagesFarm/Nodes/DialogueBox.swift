@@ -20,8 +20,7 @@ class DialogueBox: SKSpriteNode {
     }
     
     init() {
-
-        dialogTexture = SKTexture(imageNamed: "DialogBox")
+        dialogTexture = SKTexture(imageNamed: "dialogBox")
         let attributedText = NSAttributedString(string: "a", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 28)])
         dialog = SKLabelNode(attributedText: attributedText)
         super.init(texture: dialogTexture, color: .clear, size: (dialogTexture?.size())!)
