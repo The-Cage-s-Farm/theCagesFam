@@ -32,7 +32,7 @@ class GameScene: SKScene {
         self.addChild(tony)
         self.addChild(quadro)
         self.addChild(backGround)
-        // self.addChild(bau)
+        self.addChild(bau)
         self.addChild(comoda)
         self.addChild(interruptor)
         self.addChild(tapete)
@@ -42,12 +42,6 @@ class GameScene: SKScene {
         tony.zPosition = +1
         dialogBox.zPosition = +1
         self.lastUpdateTime = 0
-        
-        // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-        // Create shape node to use during mouse interaction
-        
-        
     }
     override func didChangeSize(_ oldSize: CGSize) {
         quadro.setScale(1)
@@ -57,8 +51,8 @@ class GameScene: SKScene {
         //Positions
 
         tony.position = CGPoint(x: 250, y: -60)
-        cama.position = CGPoint(x: -230, y: -100)
-        cama.xScale = -1
+        cama.position = CGPoint(x: -240, y: -100)
+        cama.xScale = -0.9
 
         quadro.position = CGPoint(x: 120, y: 80)
         
@@ -75,6 +69,7 @@ class GameScene: SKScene {
         quadroPerspectiva.position = CGPoint(x: -250, y: 45)
         // quadroPerspectiva.xScale = -1
         interruptor.position = CGPoint(x: 240, y: 10)
+        bau.position = CGPoint(x: -150, y: -43)
         // interruptor.size = CGSize(width: 200, height: 200)
 
         
@@ -90,6 +85,14 @@ class GameScene: SKScene {
             return
 
         }
+        if objectInTouch.objectName == "Baú" {
+                    let transition:SKTransition = SKTransition.fade(withDuration: 1)
+                    let scene:SKScene = PuzzleScene(size: UIScreen.main.bounds.size)
+                    scene.anchorPoint = .init(x: 0.5, y: 0.5)
+                    self.view?.presentScene(scene, transition: transition)
+
+        }
+
         if objectInTouch.isCloseInteract {
             //MUDAR PRA TORNAR MAIS AUTOMATICO PRA TODOS OBJETOS
             if dialogBox.parent == nil {
@@ -129,6 +132,7 @@ class GameScene: SKScene {
         //        let scene:SKScene = HallwayScene(size: UIScreen.main.bounds.size)
         //        scene.anchorPoint = .init(x: 0.5, y: 0.5)
         //        self.view?.presentScene(scene, transition: transition)
+
 
         makeMCWalk(pos: pos)
         interactionObject(pos: pos)
