@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F9E73612600DD690003181B /* PuzzleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9E73602600DD690003181B /* PuzzleScene.swift */; };
 		0F9EA8B525F660DF00EC66D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA8B425F660DF00EC66D6 /* AppDelegate.swift */; };
 		0F9EA8B725F660DF00EC66D6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0F9EA8B625F660DF00EC66D6 /* GameScene.sks */; };
 		0F9EA8B925F660DF00EC66D6 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0F9EA8B825F660DF00EC66D6 /* Actions.sks */; };
@@ -15,12 +16,13 @@
 		0F9EA8C225F660E000EC66D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F9EA8C125F660E000EC66D6 /* Assets.xcassets */; };
 		0F9EA8CD25F660E100EC66D6 /* CagesFarmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA8CC25F660E100EC66D6 /* CagesFarmTests.swift */; };
 		0F9EA8D825F660E100EC66D6 /* CagesFarmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA8D725F660E100EC66D6 /* CagesFarmUITests.swift */; };
-		0F9EA8FA25F7BAEC00EC66D6 /* changeTheNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA8F925F7BAEC00EC66D6 /* changeTheNode.swift */; };
+		0F9EA8FA25F7BAEC00EC66D6 /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA8F925F7BAEC00EC66D6 /* Characters.swift */; };
 		0F9EA90825F7BB1C00EC66D6 /* changeTheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA90725F7BB1C00EC66D6 /* changeTheModel.swift */; };
 		0F9EA90D25F7BB3B00EC66D6 /* changeTheExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA90C25F7BB3B00EC66D6 /* changeTheExtension.swift */; };
 		0F9EA91225F7BB4800EC66D6 /* changeTheComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA91125F7BB4800EC66D6 /* changeTheComponent.swift */; };
 		0F9EA91725F7BB5300EC66D6 /* changeTheEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA91625F7BB5300EC66D6 /* changeTheEntity.swift */; };
-		E9D29FAD25FF9E79002FCDC7 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E9D29FAC25FF9E79002FCDC7 /* .swiftlint.yml */; };
+		0F9EA92325FA835F00EC66D6 /* InteractableObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA92225FA835F00EC66D6 /* InteractableObjects.swift */; };
+		0F9EA92B25FBADD100EC66D6 /* DialogueBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA92A25FBADD100EC66D6 /* DialogueBox.swift */; };
 		E904C5D725FF8E6000654E6B /* UIFontsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904C5D625FF8E6000654E6B /* UIFontsExtension.swift */; };
 		E904C5DF25FF904D00654E6B /* Pixeland.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E904C5DC25FF904100654E6B /* Pixeland.ttf */; };
 		E904C5E025FF904D00654E6B /* pixelplay.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E904C5DD25FF904100654E6B /* pixelplay.ttf */; };
@@ -32,6 +34,7 @@
 		E956FB7E25FA487300481E9F /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E956FB7D25FA487300481E9F /* MenuView.swift */; };
 		E9B103BC25FA50FD0097C80D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9B103BB25FA50FD0097C80D /* LaunchScreen.storyboard */; };
 		E9C9F38425FA46EC00DBFEA6 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C9F38325FA46EC00DBFEA6 /* MenuViewController.swift */; };
+		E9D29FAD25FF9E79002FCDC7 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E9D29FAC25FF9E79002FCDC7 /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F9E73602600DD690003181B /* PuzzleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleScene.swift; sourceTree = "<group>"; };
 		0F9EA8B125F660DF00EC66D6 /* CagesFarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CagesFarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F9EA8B425F660DF00EC66D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F9EA8B625F660DF00EC66D6 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -66,12 +70,13 @@
 		0F9EA8D325F660E100EC66D6 /* CagesFarmUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CagesFarmUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F9EA8D725F660E100EC66D6 /* CagesFarmUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CagesFarmUITests.swift; sourceTree = "<group>"; };
 		0F9EA8D925F660E100EC66D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0F9EA8F925F7BAEC00EC66D6 /* changeTheNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changeTheNode.swift; sourceTree = "<group>"; };
+		0F9EA8F925F7BAEC00EC66D6 /* Characters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
 		0F9EA90725F7BB1C00EC66D6 /* changeTheModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changeTheModel.swift; sourceTree = "<group>"; };
 		0F9EA90C25F7BB3B00EC66D6 /* changeTheExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changeTheExtension.swift; sourceTree = "<group>"; };
 		0F9EA91125F7BB4800EC66D6 /* changeTheComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changeTheComponent.swift; sourceTree = "<group>"; };
 		0F9EA91625F7BB5300EC66D6 /* changeTheEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changeTheEntity.swift; sourceTree = "<group>"; };
-		E9D29FAC25FF9E79002FCDC7 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		0F9EA92225FA835F00EC66D6 /* InteractableObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractableObjects.swift; sourceTree = "<group>"; };
+		0F9EA92A25FBADD100EC66D6 /* DialogueBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueBox.swift; sourceTree = "<group>"; };
 		E904C5D625FF8E6000654E6B /* UIFontsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontsExtension.swift; sourceTree = "<group>"; };
 		E904C5DC25FF904100654E6B /* Pixeland.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pixeland.ttf; sourceTree = "<group>"; };
 		E904C5DD25FF904100654E6B /* pixelplay.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pixelplay.ttf; sourceTree = "<group>"; };
@@ -83,6 +88,7 @@
 		E956FB7D25FA487300481E9F /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		E9B103BB25FA50FD0097C80D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9C9F38325FA46EC00DBFEA6 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		E9D29FAC25FF9E79002FCDC7 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,7 +208,9 @@
 		0F9EA8EF25F7B6D100EC66D6 /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
-				0F9EA8F925F7BAEC00EC66D6 /* changeTheNode.swift */,
+				0F9EA8F925F7BAEC00EC66D6 /* Characters.swift */,
+				0F9EA92225FA835F00EC66D6 /* InteractableObjects.swift */,
+				0F9EA92A25FBADD100EC66D6 /* DialogueBox.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -214,6 +222,7 @@
 				0F9EA8B825F660DF00EC66D6 /* Actions.sks */,
 				0F9EA8BA25F660DF00EC66D6 /* GameScene.swift */,
 				0F9EA8B625F660DF00EC66D6 /* GameScene.sks */,
+				0F9E73602600DD690003181B /* PuzzleScene.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -356,7 +365,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9D29FAD25FF9E79002FCDC7 /* .swiftlint.yml in Resources */,
-				0F9EA8C025F660DF00EC66D6 /* Main.storyboard in Resources */,
 				E904C5E125FF904D00654E6B /* pixel.ttf in Resources */,
 				E904C5E925FF907400654E6B /* dogicapixelbold.ttf in Resources */,
 				0F9EA8B725F660DF00EC66D6 /* GameScene.sks in Resources */,
@@ -415,11 +423,15 @@
 				0F9EA8BB25F660DF00EC66D6 /* GameScene.swift in Sources */,
 				0F9EA90D25F7BB3B00EC66D6 /* changeTheExtension.swift in Sources */,
 				0F9EA91725F7BB5300EC66D6 /* changeTheEntity.swift in Sources */,
+				0F9EA92B25FBADD100EC66D6 /* DialogueBox.swift in Sources */,
+				0F9EA92325FA835F00EC66D6 /* InteractableObjects.swift in Sources */,
 				0F9EA90825F7BB1C00EC66D6 /* changeTheModel.swift in Sources */,
+				0F9E73612600DD690003181B /* PuzzleScene.swift in Sources */,
+				0F9EA8FA25F7BAEC00EC66D6 /* Characters.swift in Sources */,
 				E904C5D725FF8E6000654E6B /* UIFontsExtension.swift in Sources */,
 				E9C9F38425FA46EC00DBFEA6 /* MenuViewController.swift in Sources */,
 				E956FB7E25FA487300481E9F /* MenuView.swift in Sources */,
-				0F9EA8FA25F7BAEC00EC66D6 /* changeTheNode.swift in Sources */,
+				0F9EA8FA25F7BAEC00EC66D6 /* Characters.swift in Sources */,
 				0F9EA8BD25F660DF00EC66D6 /* GameViewController.swift in Sources */,
 				0F9EA91225F7BB4800EC66D6 /* changeTheComponent.swift in Sources */,
 				0F9EA8B525F660DF00EC66D6 /* AppDelegate.swift in Sources */,
