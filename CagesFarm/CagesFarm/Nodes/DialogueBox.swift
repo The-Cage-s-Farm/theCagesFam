@@ -42,33 +42,25 @@ class DialogueBox: SKSpriteNode {
         self.addChild(nextOption)
         nextOption.size = CGSize(width: self.size.width/16, height: self.size.height/3)
         print(15*self.size.width/16)
-        nextOption.constraints = [SKConstraint.positionX(SKRange(lowerLimit: 15*self.size.width/32)),SKConstraint.positionY(SKRange(upperLimit: -self.size.height/3))]
+        nextOption.constraints = [  SKConstraint.positionX(
+                                    SKRange(lowerLimit: 15*self.size.width/32)),
+                                    SKConstraint.positionY(SKRange(upperLimit: -self.size.height/3))]
         dialog?.zPosition = +1
         nextOption.zPosition = +1
 
-
-        
     }
 
-
-
-    
     func nextText(answer: String) {
         var runCount = 0
         Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { timer in
             runCount += 1
-            self.dialog?.attributedText = NSAttributedString(string: answer.substring(with: 0..<runCount), attributes: [NSAttributedString.Key.font: UIFont.pixelPlay(17)])
+            self.dialog?.attributedText = NSAttributedString(string: answer.substring(with: 0..<runCount),
+                                                             attributes: [NSAttributedString.Key.font: UIFont.pixelPlay(17)])
             if runCount == answer.count {
                 timer.invalidate()
             }
-            
-            
+
         }
         
     }
-    
-    
-    
-    
-    
 }

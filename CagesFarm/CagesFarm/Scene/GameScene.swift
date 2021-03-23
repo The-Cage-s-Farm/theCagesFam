@@ -9,7 +9,7 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
-    
+
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
     
@@ -50,14 +50,13 @@ class GameScene: SKScene {
         quadroPerspectiva.setScale(1)
         comoda.setScale(0.45)
         
-        //Positions
+        // Positions
 
         tony.position = CGPoint(x: 250, y: -60)
         cama.position = CGPoint(x: -240, y: -100)
         cama.xScale = -0.9
 
         quadro.position = CGPoint(x: 120, y: 80)
-        
 
         tapete.position = CGPoint(x: -25, y: -90)
         tapete.size = CGSize(width: 175, height: 155)
@@ -74,13 +73,13 @@ class GameScene: SKScene {
         bau.position = CGPoint(x: -150, y: -43)
         // interruptor.size = CGSize(width: 200, height: 200)
 
-        
+
     }
 
     func interactionObject(pos: CGPoint) {
 
         guard let objectInTouch = atPoint(pos) as? InteractableObjects else {
-            if let objects = atPoint(pos) as? DialogueBox {
+            if let _ = atPoint(pos) as? DialogueBox {
             tony.isWalking = false
             self.dialogBox.removeFromParent()
             }
