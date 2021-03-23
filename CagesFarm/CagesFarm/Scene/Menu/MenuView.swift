@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class MenuView: UIView {
     let backgroundImage: UIImageView = {
         let bg = UIImageView()

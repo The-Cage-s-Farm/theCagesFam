@@ -5,7 +5,6 @@
 //  Created by Gilberto Magno on 3/11/21.
 //
 
-
 import Foundation
 
 import SpriteKit
@@ -14,13 +13,9 @@ extension SKSpriteNode {
 
     func drawBorder(color: UIColor, width: CGFloat) {
 
-        for layer in self.children {
-
-            if layer.name == "border" {
+        for layer in self.children where layer.name == "border" {
 
                 layer.removeFromParent()
-
-            }
 
         }
 
@@ -53,7 +48,6 @@ public enum ObjectType :Int {
 
 }
 
-
 public class InteractableObjects: SKSpriteNode {
     let objectType :ObjectType
     let frontTexture :SKTexture
@@ -64,13 +58,12 @@ public class InteractableObjects: SKSpriteNode {
     var actualAnswer = 0
     var isIteracting = false
     var isMicroInteractionON = false
-    
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding not supported")
     }
     
-    func microInteraction(player: Characters){
+    func microInteraction(player: Characters) {
         if player.frame.minX <= self.frame.maxX && player.frame.maxX >= self.frame.minX {
             self.isCloseInteract = true
             if !isMicroInteractionON {
@@ -81,7 +74,7 @@ public class InteractableObjects: SKSpriteNode {
                 shapeNode.zPosition = +1
                 shapeNode.position = CGPoint(x: 0, y: 40)
             }
-        }else {
+        } else {
             self.isCloseInteract = false
             self.removeAllChildren()
             isMicroInteractionON = false
@@ -89,14 +82,14 @@ public class InteractableObjects: SKSpriteNode {
     }
     
     func nextDialogue() {
-        if !(actualAnswer == answers.count - 1){
+        if !(actualAnswer == answers.count - 1) {
             
             actualAnswer += 1
         
         }
     }
 
-    func makeRatio(x:CGFloat, y: CGFloat){
+    func makeRatio(x:CGFloat, y: CGFloat) {
 
         self.xScale = x
         self.yScale = y
@@ -115,8 +108,7 @@ public class InteractableObjects: SKSpriteNode {
             self.objectName = "Interruptor"
             frontTexture = SKTexture(imageNamed: "InterruptorOff")
             answers = ["-- Hmm, pergunto-me se este interruptor ligará a luz"]
-            func lightOn(){
-
+            func lightOn() {
 
             }
         case .comoda:
@@ -143,10 +135,6 @@ public class InteractableObjects: SKSpriteNode {
         }
         
         super.init(texture: frontTexture, color: .clear, size: frontTexture.size())
-        
-        
-        
-        
     }
     
 }

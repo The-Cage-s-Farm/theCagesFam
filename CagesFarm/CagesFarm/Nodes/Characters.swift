@@ -72,10 +72,6 @@ public class Characters: SKSpriteNode {
         }
         
         super.init(texture: textures[0], color: .clear, size: textures[0].size())
-        
-        
-        
-        
     }
     
 }
