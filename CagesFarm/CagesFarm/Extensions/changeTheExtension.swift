@@ -17,18 +17,17 @@ extension String {
         return String(self[fromIndex...])
     }
 
-    func substring(to: Int) -> String {
-        let toIndex = index(from: to)
+    func substring(to string: Int) -> String {
+        let toIndex = index(from: string)
         return String(self[..<toIndex])
     }
 
-    func substring(with r: Range<Int>) -> String {
-        let startIndex = index(from: r.lowerBound)
-        let endIndex = index(from: r.upperBound)
+    func substring(with string: Range<Int>) -> String {
+        let startIndex = index(from: string.lowerBound)
+        let endIndex = index(from: string.upperBound)
         return String(self[startIndex..<endIndex])
     }
 }
-
 
 extension UIScreen {
 
