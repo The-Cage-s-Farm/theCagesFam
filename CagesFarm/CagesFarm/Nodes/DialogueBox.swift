@@ -51,12 +51,15 @@ class DialogueBox: SKSpriteNode {
     }
 
     func nextText(answer: String) {
+
         var runCount = 0
         Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { timer in
+
             runCount += 1
             self.dialog?.attributedText = NSAttributedString(string: answer.substring(with: 0..<runCount),
                                                              attributes: [NSAttributedString.Key.font: UIFont.pixelPlay(17)])
             if runCount == answer.count {
+                
                 timer.invalidate()
             }
 
