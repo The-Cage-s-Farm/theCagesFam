@@ -8,8 +8,9 @@
 import SpriteKit
 import GameplayKit
 
+// swiftlint:disable identifier_name unused_optional_binding
 class GameScene: SKScene {
-    
+
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
     
@@ -27,7 +28,7 @@ class GameScene: SKScene {
     private var dialogBox = DialogueBox()
     private var backGround = SKSpriteNode(imageNamed: "QuartoBackground")
     private var inventory = Inventory(items: [])
-
+    
     override func sceneDidLoad() {
         self.scaleMode = .aspectFit
         self.addChild(tony)
@@ -39,7 +40,7 @@ class GameScene: SKScene {
         self.addChild(tapete)
         self.addChild(cama)
         self.addChild(quadroPerspectiva)
-     //   self.addChild(inventory)
+        //   self.addChild(inventory)
         backGround.zPosition = -1
         tony.zPosition = +1
         dialogBox.zPosition = +1
@@ -60,26 +61,26 @@ class GameScene: SKScene {
         interruptor.position = CGPoint(x: 240, y: 10)
         bau.position = CGPoint(x: -150, y: -43)
     }
-
+    
     func interactionObject(pos: CGPoint) {
         guard let objectInTouch = atPoint(pos) as? InteractableObjects else {
-            if let objects = atPoint(pos) as? DialogueBox {
+            if let _ = atPoint(pos) as? DialogueBox {
             tony.isWalking = false
             self.dialogBox.removeFromParent()
             }
+            
             return
-
         }
+        
         if objectInTouch.objectName == "Baú" {
-                    let transition:SKTransition = SKTransition.fade(withDuration: 1)
-                    let scene:SKScene = PuzzleScene(size: UIScreen.main.bounds.size)
-                    scene.anchorPoint = .init(x: 0.5, y: 0.5)
-                    self.view?.presentScene(scene, transition: transition)
-
+            let transition:SKTransition = SKTransition.fade(withDuration: 1)
+            let scene:SKScene = PuzzleScene(size: UIScreen.main.bounds.size)
+            scene.anchorPoint = .init(x: 0.5, y: 0.5)
+            self.view?.presentScene(scene, transition: transition)
         }
-
+        
         if objectInTouch.isCloseInteract {
-            //MUDAR PRA TORNAR MAIS AUTOMATICO PRA TODOS OBJETOS
+            // MUDAR PRA TORNAR MAIS AUTOMATICO PRA TODOS OBJETOS
             if dialogBox.parent == nil {
                 let actualAnswerID = objectInTouch.actualAnswer
                 self.addChild(dialogBox)
@@ -87,18 +88,14 @@ class GameScene: SKScene {
                 tony.isWalking = true
                 objectInTouch.nextDialogue()
             }
-
-
         }
-
     }
-
-    func makeMCWalk(pos: CGPoint){
-
-        //INVERTER POSICAO DEPENDENDO DE ONDE ANDA AS
+    
+    func makeMCWalk(pos: CGPoint) {
+        // INVERTER POSICAO DEPENDENDO DE ONDE ANDA AS
         if !tony.isWalking && pos.x < tony.frame.minX {
             tony.xScale = -1
-        }else if !tony.isWalking && pos.x >= tony.frame.minX {
+        } else if !tony.isWalking && pos.x >= tony.frame.minX {
             tony.xScale = +1
         }
         if !tony.isWalking {
@@ -107,22 +104,20 @@ class GameScene: SKScene {
                 tony.walk(posx: pos.x)
             }
         }
-
     }
     
     func touchDown(atPoint pos : CGPoint) {
         
-        //TRANSICAO DE CENA, FALTA COLOCAR A PORTA PARA ISSO OCORRER COM ELA
+        // TRANSICAO DE CENA, FALTA COLOCAR A PORTA PARA ISSO OCORRER COM ELA
         //        let transition:SKTransition = SKTransition.fade(withDuration: 1)
         //        let scene:SKScene = HallwayScene(size: UIScreen.main.bounds.size)
         //        scene.anchorPoint = .init(x: 0.5, y: 0.5)
         //        self.view?.presentScene(scene, transition: transition)
-
-
+        
         makeMCWalk(pos: pos)
         interactionObject(pos: pos)
     }
-
+    
     func touchMoved(toPoint pos : CGPoint) {
         
     }
@@ -146,7 +141,6 @@ class GameScene: SKScene {
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
-    
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered

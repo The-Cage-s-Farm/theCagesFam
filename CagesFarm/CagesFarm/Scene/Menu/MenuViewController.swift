@@ -17,7 +17,6 @@ class MenuViewController: UIViewController {
 
     }
 
-
     override func present(_ viewControllerToPresent: UIViewController,
                           animated flag: Bool,
                           completion: (() -> Void)? = nil) {
@@ -36,4 +35,3 @@ class MenuViewController: UIViewController {
     }
 
 }
-

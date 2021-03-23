@@ -9,13 +9,11 @@ import Foundation
 
 import SpriteKit
 
-
 public enum CharacterType :Int {
     case tony,
          mrCage,
          mrsCage
 }
-
 
 public class Characters: SKSpriteNode {
     let characterType :CharacterType
@@ -28,8 +26,7 @@ public class Characters: SKSpriteNode {
         fatalError("NSCoding not supported")
     }
     
-    
-    func walk(posx: CGFloat){
+    func walk(posx: CGFloat) {
         
         let beginWalk = SKAction.run {
             self.isWalking = true
@@ -52,36 +49,28 @@ public class Characters: SKSpriteNode {
         
     }
     
-    
-    
-    
     init(characterType: CharacterType) {
         self.characterType = characterType
         
         switch characterType {
         case .tony:
-            for number in Range(0...5){
+            for number in Range(0...5) {
                 self.textures.append(SKTexture(imageNamed: "sprite_\(number)"))
             }
             self.characterName = "Tony"
         case .mrCage:
-            for number in Range(0...5){
+            for number in Range(0...5) {
                 self.textures.append(SKTexture(imageNamed: "sprite_\(number)"))
             }
             self.characterName = "Tony"
         case .mrsCage:
-            for number in Range(0...5){
+            for number in Range(0...5) {
                 self.textures.append(SKTexture(imageNamed: "sprite_\(number)"))
             }
-
+            
             self.characterName = "Tony"
         }
         
         super.init(texture: textures[0], color: .clear, size: textures[0].size())
-        
-        
-        
-        
     }
-    
 }
