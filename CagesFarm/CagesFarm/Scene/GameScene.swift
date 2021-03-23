@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-//swiftlint:disable identifier_name
+//swiftlint:disable identifier_name unused_optional_binding
 class GameScene: SKScene {
 
     var entities = [GKEntity]()

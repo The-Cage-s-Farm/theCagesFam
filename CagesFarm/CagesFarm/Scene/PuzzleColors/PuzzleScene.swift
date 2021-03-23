@@ -46,7 +46,6 @@ class PuzzleScene: SKScene {
         semicircleThree.lineWidth = 120
         addChild(semicircleThree)
 
-
         semicircleFour.path = UIBezierPath(arcCenter: CGPoint(x: 0, y: 40), radius: 60, startAngle: 4.71239, endAngle: 0, clockwise: true).cgPath
         
         semicircleFour.strokeColor = UIColor.white
