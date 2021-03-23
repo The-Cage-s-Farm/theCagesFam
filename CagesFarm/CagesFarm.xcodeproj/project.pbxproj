@@ -465,7 +465,6 @@
 				E904C5D725FF8E6000654E6B /* UIFontsExtension.swift in Sources */,
 				E9C9F38425FA46EC00DBFEA6 /* MenuViewController.swift in Sources */,
 				E956FB7E25FA487300481E9F /* MenuView.swift in Sources */,
-				0F9EA8FA25F7BAEC00EC66D6 /* Characters.swift in Sources */,
 				7C9E819F2606B83D00D61B19 /* SemicirclePuzzle.swift in Sources */,
 				0F9EA8BD25F660DF00EC66D6 /* GameViewController.swift in Sources */,
 				0F9EA91225F7BB4800EC66D6 /* changeTheComponent.swift in Sources */,

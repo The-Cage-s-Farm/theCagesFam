@@ -8,8 +8,9 @@
 import SpriteKit
 import GameplayKit
 
+// swiftlint:disable identifier_name unused_optional_binding
 class GameScene: SKScene {
-    
+
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
     
@@ -27,7 +28,7 @@ class GameScene: SKScene {
     private var dialogBox = DialogueBox()
     private var backGround = SKSpriteNode(imageNamed: "QuartoBackground")
     private var inventory = Inventory(items: [])
-
+    
     override func sceneDidLoad() {
         SceneCoordinator.coordinator.gameScene = self
         self.scaleMode = .aspectFit
@@ -40,64 +41,47 @@ class GameScene: SKScene {
         self.addChild(tapete)
         self.addChild(cama)
         self.addChild(quadroPerspectiva)
-     //   self.addChild(inventory)
+        //   self.addChild(inventory)
         backGround.zPosition = -1
         tony.zPosition = +1
         dialogBox.zPosition = +1
-        self.lastUpdateTime = 0
     }
     override func didChangeSize(_ oldSize: CGSize) {
         quadro.setScale(1)
         quadroPerspectiva.setScale(1)
         comoda.setScale(0.45)
-        
         //Positions
-
         tony.position = CGPoint(x: 250, y: -60)
         cama.position = CGPoint(x: -240, y: -100)
         cama.xScale = -0.9
-
         quadro.position = CGPoint(x: 120, y: 80)
-        
-
         tapete.position = CGPoint(x: -25, y: -90)
         tapete.size = CGSize(width: 175, height: 155)
-
-
         comoda.position = CGPoint(x: 120, y: -20)
-
-
-        //  bau.position = CGPoint(x: -230, y: -100)
-
         quadroPerspectiva.position = CGPoint(x: -250, y: 45)
-        // quadroPerspectiva.xScale = -1
         interruptor.position = CGPoint(x: 240, y: 10)
         bau.position = CGPoint(x: -150, y: -43)
-        // interruptor.size = CGSize(width: 200, height: 200)
-
-        
     }
-
+    
     func interactionObject(pos: CGPoint) {
-
         guard let objectInTouch = atPoint(pos) as? InteractableObjects else {
-            if let objects = atPoint(pos) as? DialogueBox {
+            if let _ = atPoint(pos) as? DialogueBox {
             tony.isWalking = false
             self.dialogBox.removeFromParent()
             }
+            
             return
-
         }
-        if objectInTouch.objectName == "Baú" {
-                    let transition:SKTransition = SKTransition.fade(withDuration: 1)
-                    let scene:SKScene = PuzzleScene(size: UIScreen.main.bounds.size)
-                    scene.anchorPoint = .init(x: 0.5, y: 0.5)
-                    self.view?.presentScene(scene, transition: transition)
-
+        
+        if objectInTouch.objectName == "Bau" {
+            let transition:SKTransition = SKTransition.fade(withDuration: 1)
+            let scene:SKScene = PuzzleScene(size: UIScreen.main.bounds.size)
+            scene.anchorPoint = .init(x: 0.5, y: 0.5)
+            self.view?.presentScene(scene, transition: transition)
         }
-
+        
         if objectInTouch.isCloseInteract {
-            //MUDAR PRA TORNAR MAIS AUTOMATICO PRA TODOS OBJETOS
+            // MUDAR PRA TORNAR MAIS AUTOMATICO PRA TODOS OBJETOS
             if dialogBox.parent == nil {
                 let actualAnswerID = objectInTouch.actualAnswer
                 self.addChild(dialogBox)
@@ -105,18 +89,14 @@ class GameScene: SKScene {
                 tony.isWalking = true
                 objectInTouch.nextDialogue()
             }
-
-
         }
-
     }
-
-    func makeMCWalk(pos: CGPoint){
-
-        //INVERTER POSICAO DEPENDENDO DE ONDE ANDA AS
+    
+    func makeMCWalk(pos: CGPoint) {
+        // INVERTER POSICAO DEPENDENDO DE ONDE ANDA AS
         if !tony.isWalking && pos.x < tony.frame.minX {
             tony.xScale = -1
-        }else if !tony.isWalking && pos.x >= tony.frame.minX {
+        } else if !tony.isWalking && pos.x >= tony.frame.minX {
             tony.xScale = +1
         }
         if !tony.isWalking {
@@ -125,22 +105,20 @@ class GameScene: SKScene {
                 tony.walk(posx: pos.x)
             }
         }
-
     }
     
     func touchDown(atPoint pos : CGPoint) {
         
-        //TRANSICAO DE CENA, FALTA COLOCAR A PORTA PARA ISSO OCORRER COM ELA
+        // TRANSICAO DE CENA, FALTA COLOCAR A PORTA PARA ISSO OCORRER COM ELA
         //        let transition:SKTransition = SKTransition.fade(withDuration: 1)
         //        let scene:SKScene = HallwayScene(size: UIScreen.main.bounds.size)
         //        scene.anchorPoint = .init(x: 0.5, y: 0.5)
         //        self.view?.presentScene(scene, transition: transition)
-
-
+        
         makeMCWalk(pos: pos)
         interactionObject(pos: pos)
     }
-
+    
     func touchMoved(toPoint pos : CGPoint) {
         
     }
@@ -164,7 +142,6 @@ class GameScene: SKScene {
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
-    
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered

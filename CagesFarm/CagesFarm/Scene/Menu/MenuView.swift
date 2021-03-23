@@ -7,7 +7,7 @@
 
 import UIKit
 
-
+// swiftlint:disable identifier_name
 class MenuView: UIView {
     let backgroundImage: UIImageView = {
         let bg = UIImageView()
@@ -33,7 +33,7 @@ class MenuView: UIView {
         title.textColor = .white
         return title
     }()
-
+    
     let playButton: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
@@ -113,12 +113,7 @@ class MenuView: UIView {
             
             // EXIT BUTTON
             exitButton.topAnchor.constraint(equalTo: configButton.topAnchor),
-            exitButton.leadingAnchor.constraint(equalTo: configButton.trailingAnchor, constant: 16),
-            
+            exitButton.leadingAnchor.constraint(equalTo: configButton.trailingAnchor, constant: 16)
         ])
     }
-
-    
-
-
 }

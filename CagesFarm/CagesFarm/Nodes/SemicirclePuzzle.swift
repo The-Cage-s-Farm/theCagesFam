@@ -11,7 +11,7 @@ class SemicirclePuzzle: SKShapeNode {
 
     let colors = [UIColor.red, UIColor.blue, UIColor.yellow, UIColor.black, UIColor.green, UIColor.white]
     var colorIndex = 0
-    
+
     override init() {
         super.init()
         self.isUserInteractionEnabled = true

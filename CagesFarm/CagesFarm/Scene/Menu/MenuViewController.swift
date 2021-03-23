@@ -17,9 +17,20 @@ class MenuViewController: UIViewController {
 
     }
 
-    @objc func play() {
+    override func present(_ viewControllerToPresent: UIViewController,
+                          animated flag: Bool,
+                          completion: (() -> Void)? = nil) {
+      viewControllerToPresent.modalPresentationStyle = .fullScreen
+      super.present(viewControllerToPresent, animated: flag, completion: completion)
+    }
 
+    @objc func play() {
+       // self.show(GameViewController(), sender: self)
+        // let navigation = UINavigationController(rootViewController: GameViewController())
+       // self.navigationController?.pushViewController(navigation, animated: true)
+        let gameViewController = GameViewController()
         self.present(GameViewController(), animated: true, completion: nil)
+        gameViewController.modalPresentationStyle = .fullScreen
         
     }
 
