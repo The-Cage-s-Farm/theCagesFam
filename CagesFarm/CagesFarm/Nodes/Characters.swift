@@ -25,7 +25,7 @@ public class Characters: SKSpriteNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding not supported")
     }
-
+    
     func walk(posx: CGFloat) {
         
         let beginWalk = SKAction.run {
@@ -48,7 +48,7 @@ public class Characters: SKSpriteNode {
         self.run(sequence)
         
     }
-
+    
     init(characterType: CharacterType) {
         self.characterType = characterType
         
@@ -67,11 +67,10 @@ public class Characters: SKSpriteNode {
             for number in Range(0...5) {
                 self.textures.append(SKTexture(imageNamed: "sprite_\(number)"))
             }
-
+            
             self.characterName = "Tony"
         }
         
         super.init(texture: textures[0], color: .clear, size: textures[0].size())
     }
-    
 }
