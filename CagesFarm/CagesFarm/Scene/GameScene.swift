@@ -49,7 +49,7 @@ class GameScene: SKScene {
         quadro.setScale(1)
         quadroPerspectiva.setScale(1)
         comoda.setScale(0.45)
-        //Positions
+        // Positions
         tony.position = CGPoint(x: 250, y: -60)
         cama.position = CGPoint(x: -240, y: -100)
         cama.xScale = -0.9
@@ -72,7 +72,7 @@ class GameScene: SKScene {
             return
         }
         
-        if objectInTouch.objectName == "Baú" {
+        if objectInTouch.objectName == "Bau" {
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
             let scene:SKScene = PuzzleScene(size: UIScreen.main.bounds.size)
             scene.anchorPoint = .init(x: 0.5, y: 0.5)
