@@ -95,6 +95,13 @@ public class InteractableObjects: SKSpriteNode {
         
         }
     }
+
+    func makeRatio(x:CGFloat, y: CGFloat){
+
+        self.xScale = x
+        self.yScale = y
+
+    }
     
     init(objectType: ObjectType) {
         self.objectType = objectType
@@ -115,7 +122,7 @@ public class InteractableObjects: SKSpriteNode {
         case .comoda:
             self.objectName = "Comoda"
             frontTexture = SKTexture(imageNamed: self.objectName!)
-            answers = []
+            answers = ["Hmm, consigo abrir a primeira gaveta sem problemas... Porem nao tem nada","Consigo abrir a segunda gaveta, há um canivete","A Terceira gaveta possui um senha para abrir, qual será?","Outra gaveta sem nada"]
         case .tapete:
             self.objectName = "TapeteQuadrado"
             frontTexture = SKTexture(imageNamed: self.objectName!)
@@ -123,15 +130,15 @@ public class InteractableObjects: SKSpriteNode {
         case .cama:
             self.objectName = "Cama"
             frontTexture = SKTexture(imageNamed: self.objectName!)
-            answers = []
+            answers = ["Parece que há algo escondido no travesseiro...Oque será, preciso de um canivete pra cortar","Havia um pequeno baü"]
         case .bau:
             self.objectName = "Baú"
             frontTexture = SKTexture(imageNamed: self.objectName!)
-            answers = []
+            answers = ["Um Pequeno puzzle? oque faço?"]
         case .quadroPerspectiva:
             self.objectName = "QuadroPerspectiva"
             frontTexture = SKTexture(imageNamed: self.objectName!)
-            answers = []
+            answers = ["Bonito"]
 
         }
         

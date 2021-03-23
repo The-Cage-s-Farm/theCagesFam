@@ -16,9 +16,6 @@ class GameScene: SKScene {
     private var lastUpdateTime : TimeInterval = 0
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
-    
-    
-    
     private var tony = Characters(characterType: .tony)
     private var quadro = InteractableObjects(objectType: .quadro)
     private var bau = InteractableObjects(objectType: .bau)
@@ -29,12 +26,9 @@ class GameScene: SKScene {
     private var quadroPerspectiva = InteractableObjects(objectType: .quadroPerspectiva)
     private var dialogBox = DialogueBox()
     private var backGround = SKSpriteNode(imageNamed: "QuartoBackground")
-    private var xRatio = UIScreen.aspectRatioX
-    private var yRatio = UIScreen.aspectRatioY
-    
+    private var inventory = Inventory(items: [])
+
     override func sceneDidLoad() {
-        print(xRatio)
-        print(yRatio)
         self.scaleMode = .aspectFit
         self.addChild(tony)
         self.addChild(quadro)
@@ -45,78 +39,63 @@ class GameScene: SKScene {
         self.addChild(tapete)
         self.addChild(cama)
         self.addChild(quadroPerspectiva)
+     //   self.addChild(inventory)
         backGround.zPosition = -1
         tony.zPosition = +1
         dialogBox.zPosition = +1
         self.lastUpdateTime = 0
-        
-        // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-        // Create shape node to use during mouse interaction
-        
-        
     }
-     override func didChangeSize(_ oldSize: CGSize) {
-        quadro.setScale(1*yRatio)
-        quadroPerspectiva.setScale(1*yRatio)
-        comoda.setScale(0.45*yRatio)
+    override func didChangeSize(_ oldSize: CGSize) {
+        quadro.setScale(1)
+        quadroPerspectiva.setScale(1)
+        comoda.setScale(0.45)
         
         //Positions
-8
-        tony.position = CGPoint(x:  xRatio*250, y: yRatio*(-60))
-        cama.position = CGPoint(x: -230*xRatio, y: -100*yRatio)
-        cama.xScale = -1
 
-        quadro.position = CGPoint(x: 120*xRatio, y: 80*yRatio)
+        tony.position = CGPoint(x: 250, y: -60)
+        cama.position = CGPoint(x: -240, y: -100)
+        cama.xScale = -0.9
 
+        quadro.position = CGPoint(x: 120, y: 80)
+        
 
-        tapete.position = CGPoint(x: -25*xRatio, y: -90*yRatio)
-        tapete.size = CGSize(width: 175*xRatio, height: 155*yRatio)
-
-
-        comoda.position = CGPoint(x: 120*xRatio, y: -20*yRatio)
+        tapete.position = CGPoint(x: -25, y: -90)
+        tapete.size = CGSize(width: 175, height: 155)
 
 
-        bau.position = CGPoint(x: -230*xRatio, y: -100*yRatio)
+        comoda.position = CGPoint(x: 120, y: -20)
+
+
+        //  bau.position = CGPoint(x: -230, y: -100)
 
         quadroPerspectiva.position = CGPoint(x: -250, y: 45)
-       // quadroPerspectiva.xScale = -1
+        // quadroPerspectiva.xScale = -1
         interruptor.position = CGPoint(x: 240, y: 10)
-       // interruptor.size = CGSize(width: 200, height: 200)
+        bau.position = CGPoint(x: -150, y: -43)
+        // interruptor.size = CGSize(width: 200, height: 200)
 
         
     }
-    
-    func touchDown(atPoint pos : CGPoint) {
-        
-        //TRANSICAO DE CENA, FALTA COLOCAR A PORTA PARA ISSO OCORRER COM ELA
-//        let transition:SKTransition = SKTransition.fade(withDuration: 1)
-//        let scene:SKScene = HallwayScene(size: UIScreen.main.bounds.size)
-//        scene.anchorPoint = .init(x: 0.5, y: 0.5)
-//        self.view?.presentScene(scene, transition: transition)
-        //
 
-        //INVERTER POSICAO DEPENDENDO DE ONDE ANDA AS
-        if !tony.isWalking && pos.x < tony.frame.minX {
-            tony.xScale = -1
-        }else if !tony.isWalking && pos.x >= tony.frame.minX {
-            tony.xScale = +1
-        }
-        
+    func interactionObject(pos: CGPoint) {
 
-        
-        if !tony.isWalking {
-            let isBackground = atPoint(pos)
-            if !(isBackground is InteractableObjects) {
-                    tony.walk(posx: pos.x)
-                }
+        guard let objectInTouch = atPoint(pos) as? InteractableObjects else {
+            if let objects = atPoint(pos) as? DialogueBox {
+            tony.isWalking = false
+            self.dialogBox.removeFromParent()
             }
-        
+            return
 
-        guard let objectInTouch = atPoint(pos) as? InteractableObjects else {return}
-        
+        }
+        if objectInTouch.objectName == "Baú" {
+                    let transition:SKTransition = SKTransition.fade(withDuration: 1)
+                    let scene:SKScene = PuzzleScene(size: UIScreen.main.bounds.size)
+                    scene.anchorPoint = .init(x: 0.5, y: 0.5)
+                    self.view?.presentScene(scene, transition: transition)
+
+        }
+
         if objectInTouch.isCloseInteract {
-            
             //MUDAR PRA TORNAR MAIS AUTOMATICO PRA TODOS OBJETOS
             if dialogBox.parent == nil {
                 let actualAnswerID = objectInTouch.actualAnswer
@@ -124,21 +103,43 @@ class GameScene: SKScene {
                 self.dialogBox.nextText(answer: objectInTouch.answers[actualAnswerID])
                 tony.isWalking = true
                 objectInTouch.nextDialogue()
-            }else {
-                tony.isWalking = false
-                self.dialogBox.removeFromParent()
             }
-        
-            
-        }else{
 
-            
-            
+
         }
-        
-       
+
+    }
+
+    func makeMCWalk(pos: CGPoint){
+
+        //INVERTER POSICAO DEPENDENDO DE ONDE ANDA AS
+        if !tony.isWalking && pos.x < tony.frame.minX {
+            tony.xScale = -1
+        }else if !tony.isWalking && pos.x >= tony.frame.minX {
+            tony.xScale = +1
+        }
+        if !tony.isWalking {
+            let isBackground = atPoint(pos)
+            if !(isBackground is InteractableObjects) {
+                tony.walk(posx: pos.x)
+            }
+        }
+
     }
     
+    func touchDown(atPoint pos : CGPoint) {
+        
+        //TRANSICAO DE CENA, FALTA COLOCAR A PORTA PARA ISSO OCORRER COM ELA
+        //        let transition:SKTransition = SKTransition.fade(withDuration: 1)
+        //        let scene:SKScene = HallwayScene(size: UIScreen.main.bounds.size)
+        //        scene.anchorPoint = .init(x: 0.5, y: 0.5)
+        //        self.view?.presentScene(scene, transition: transition)
+
+
+        makeMCWalk(pos: pos)
+        interactionObject(pos: pos)
+    }
+
     func touchMoved(toPoint pos : CGPoint) {
         
     }

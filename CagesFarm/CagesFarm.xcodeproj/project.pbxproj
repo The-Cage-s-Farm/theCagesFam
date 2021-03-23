@@ -23,6 +23,11 @@
 		0F9EA91725F7BB5300EC66D6 /* changeTheEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA91625F7BB5300EC66D6 /* changeTheEntity.swift */; };
 		0F9EA92325FA835F00EC66D6 /* InteractableObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA92225FA835F00EC66D6 /* InteractableObjects.swift */; };
 		0F9EA92B25FBADD100EC66D6 /* DialogueBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA92A25FBADD100EC66D6 /* DialogueBox.swift */; };
+		0FA7D57D2608B0620000DD65 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA7D57C2608B0620000DD65 /* Inventory.swift */; };
+
+		7C9E819F2606B83D00D61B19 /* SemicirclePuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E819E2606B83D00D61B19 /* SemicirclePuzzle.swift */; };
+		7CF504B726039025002EBFF3 /* PuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF504B626039025002EBFF3 /* PuzzleViewController.swift */; };
+		7CF504C226039236002EBFF3 /* PuzzleScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7CF504C126039236002EBFF3 /* PuzzleScene.sks */; };
 		E904C5D725FF8E6000654E6B /* UIFontsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904C5D625FF8E6000654E6B /* UIFontsExtension.swift */; };
 		E904C5DF25FF904D00654E6B /* Pixeland.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E904C5DC25FF904100654E6B /* Pixeland.ttf */; };
 		E904C5E025FF904D00654E6B /* pixelplay.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E904C5DD25FF904100654E6B /* pixelplay.ttf */; };
@@ -77,6 +82,10 @@
 		0F9EA91625F7BB5300EC66D6 /* changeTheEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changeTheEntity.swift; sourceTree = "<group>"; };
 		0F9EA92225FA835F00EC66D6 /* InteractableObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractableObjects.swift; sourceTree = "<group>"; };
 		0F9EA92A25FBADD100EC66D6 /* DialogueBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueBox.swift; sourceTree = "<group>"; };
+		0FA7D57C2608B0620000DD65 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
+		7C9E819E2606B83D00D61B19 /* SemicirclePuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemicirclePuzzle.swift; sourceTree = "<group>"; };
+		7CF504B626039025002EBFF3 /* PuzzleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleViewController.swift; sourceTree = "<group>"; };
+		7CF504C126039236002EBFF3 /* PuzzleScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PuzzleScene.sks; sourceTree = "<group>"; };
 		E904C5D625FF8E6000654E6B /* UIFontsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontsExtension.swift; sourceTree = "<group>"; };
 		E904C5DC25FF904100654E6B /* Pixeland.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pixeland.ttf; sourceTree = "<group>"; };
 		E904C5DD25FF904100654E6B /* pixelplay.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = pixelplay.ttf; sourceTree = "<group>"; };
@@ -211,6 +220,8 @@
 				0F9EA8F925F7BAEC00EC66D6 /* Characters.swift */,
 				0F9EA92225FA835F00EC66D6 /* InteractableObjects.swift */,
 				0F9EA92A25FBADD100EC66D6 /* DialogueBox.swift */,
+				0FA7D57C2608B0620000DD65 /* Inventory.swift */,
+				7C9E819E2606B83D00D61B19 /* SemicirclePuzzle.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -218,11 +229,11 @@
 		0F9EA8F025F7B6D800EC66D6 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				7CF504B526038F75002EBFF3 /* PuzzleColors */,
 				E956FB7C25FA485200481E9F /* Menu */,
 				0F9EA8B825F660DF00EC66D6 /* Actions.sks */,
 				0F9EA8BA25F660DF00EC66D6 /* GameScene.swift */,
 				0F9EA8B625F660DF00EC66D6 /* GameScene.sks */,
-				0F9E73602600DD690003181B /* PuzzleScene.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -235,6 +246,16 @@
 				E9B103BB25FA50FD0097C80D /* LaunchScreen.storyboard */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		7CF504B526038F75002EBFF3 /* PuzzleColors */ = {
+			isa = PBXGroup;
+			children = (
+				7CF504B626039025002EBFF3 /* PuzzleViewController.swift */,
+				0F9E73602600DD690003181B /* PuzzleScene.swift */,
+				7CF504C126039236002EBFF3 /* PuzzleScene.sks */,
+			);
+			path = PuzzleColors;
 			sourceTree = "<group>";
 		};
 		E904C5DB25FF902100654E6B /* Fonts */ = {
@@ -364,6 +385,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CF504C226039236002EBFF3 /* PuzzleScene.sks in Resources */,
 				E9D29FAD25FF9E79002FCDC7 /* .swiftlint.yml in Resources */,
 				E904C5E125FF904D00654E6B /* pixel.ttf in Resources */,
 				E904C5E925FF907400654E6B /* dogicapixelbold.ttf in Resources */,
@@ -428,12 +450,15 @@
 				0F9EA90825F7BB1C00EC66D6 /* changeTheModel.swift in Sources */,
 				0F9E73612600DD690003181B /* PuzzleScene.swift in Sources */,
 				0F9EA8FA25F7BAEC00EC66D6 /* Characters.swift in Sources */,
+				0FA7D57D2608B0620000DD65 /* Inventory.swift in Sources */,
 				E904C5D725FF8E6000654E6B /* UIFontsExtension.swift in Sources */,
 				E9C9F38425FA46EC00DBFEA6 /* MenuViewController.swift in Sources */,
 				E956FB7E25FA487300481E9F /* MenuView.swift in Sources */,
 				0F9EA8FA25F7BAEC00EC66D6 /* Characters.swift in Sources */,
+				7C9E819F2606B83D00D61B19 /* SemicirclePuzzle.swift in Sources */,
 				0F9EA8BD25F660DF00EC66D6 /* GameViewController.swift in Sources */,
 				0F9EA91225F7BB4800EC66D6 /* changeTheComponent.swift in Sources */,
+				7CF504B726039025002EBFF3 /* PuzzleViewController.swift in Sources */,
 				0F9EA8B525F660DF00EC66D6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -594,6 +619,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B5BH4949Y8;
 				INFOPLIST_FILE = CagesFarm/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -613,6 +639,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B5BH4949Y8;
 				INFOPLIST_FILE = CagesFarm/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
