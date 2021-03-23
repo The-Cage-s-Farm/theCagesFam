@@ -24,7 +24,7 @@
 		0F9EA92325FA835F00EC66D6 /* InteractableObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA92225FA835F00EC66D6 /* InteractableObjects.swift */; };
 		0F9EA92B25FBADD100EC66D6 /* DialogueBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA92A25FBADD100EC66D6 /* DialogueBox.swift */; };
 		0FA7D57D2608B0620000DD65 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA7D57C2608B0620000DD65 /* Inventory.swift */; };
-
+		7C5B37D5260A27830071DFE6 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5B37D4260A27830071DFE6 /* SceneCoordinator.swift */; };
 		7C9E819F2606B83D00D61B19 /* SemicirclePuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E819E2606B83D00D61B19 /* SemicirclePuzzle.swift */; };
 		7CF504B726039025002EBFF3 /* PuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF504B626039025002EBFF3 /* PuzzleViewController.swift */; };
 		7CF504C226039236002EBFF3 /* PuzzleScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7CF504C126039236002EBFF3 /* PuzzleScene.sks */; };
@@ -83,6 +83,7 @@
 		0F9EA92225FA835F00EC66D6 /* InteractableObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractableObjects.swift; sourceTree = "<group>"; };
 		0F9EA92A25FBADD100EC66D6 /* DialogueBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueBox.swift; sourceTree = "<group>"; };
 		0FA7D57C2608B0620000DD65 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
+		7C5B37D4260A27830071DFE6 /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		7C9E819E2606B83D00D61B19 /* SemicirclePuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemicirclePuzzle.swift; sourceTree = "<group>"; };
 		7CF504B626039025002EBFF3 /* PuzzleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleViewController.swift; sourceTree = "<group>"; };
 		7CF504C126039236002EBFF3 /* PuzzleScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PuzzleScene.sks; sourceTree = "<group>"; };
@@ -231,9 +232,8 @@
 			children = (
 				7CF504B526038F75002EBFF3 /* PuzzleColors */,
 				E956FB7C25FA485200481E9F /* Menu */,
-				0F9EA8B825F660DF00EC66D6 /* Actions.sks */,
-				0F9EA8BA25F660DF00EC66D6 /* GameScene.swift */,
-				0F9EA8B625F660DF00EC66D6 /* GameScene.sks */,
+				7C5B37D0260A27600071DFE6 /* FirstScene */,
+				7C5B37D4260A27830071DFE6 /* SceneCoordinator.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -246,6 +246,16 @@
 				E9B103BB25FA50FD0097C80D /* LaunchScreen.storyboard */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		7C5B37D0260A27600071DFE6 /* FirstScene */ = {
+			isa = PBXGroup;
+			children = (
+				0F9EA8B825F660DF00EC66D6 /* Actions.sks */,
+				0F9EA8BA25F660DF00EC66D6 /* GameScene.swift */,
+				0F9EA8B625F660DF00EC66D6 /* GameScene.sks */,
+			);
+			path = FirstScene;
 			sourceTree = "<group>";
 		};
 		7CF504B526038F75002EBFF3 /* PuzzleColors */ = {
@@ -449,6 +459,7 @@
 				0F9EA92325FA835F00EC66D6 /* InteractableObjects.swift in Sources */,
 				0F9EA90825F7BB1C00EC66D6 /* changeTheModel.swift in Sources */,
 				0F9E73612600DD690003181B /* PuzzleScene.swift in Sources */,
+				7C5B37D5260A27830071DFE6 /* SceneCoordinator.swift in Sources */,
 				0F9EA8FA25F7BAEC00EC66D6 /* Characters.swift in Sources */,
 				0FA7D57D2608B0620000DD65 /* Inventory.swift in Sources */,
 				E904C5D725FF8E6000654E6B /* UIFontsExtension.swift in Sources */,

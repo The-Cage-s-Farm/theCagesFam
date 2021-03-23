@@ -29,6 +29,7 @@ class GameScene: SKScene {
     private var inventory = Inventory(items: [])
 
     override func sceneDidLoad() {
+        SceneCoordinator.coordinator.gameScene = self
         self.scaleMode = .aspectFit
         self.addChild(tony)
         self.addChild(quadro)
