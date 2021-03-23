@@ -43,42 +43,25 @@ class GameScene: SKScene {
         backGround.zPosition = -1
         tony.zPosition = +1
         dialogBox.zPosition = +1
-        self.lastUpdateTime = 0
     }
     override func didChangeSize(_ oldSize: CGSize) {
         quadro.setScale(1)
         quadroPerspectiva.setScale(1)
         comoda.setScale(0.45)
-        
         //Positions
-
         tony.position = CGPoint(x: 250, y: -60)
         cama.position = CGPoint(x: -240, y: -100)
         cama.xScale = -0.9
-
         quadro.position = CGPoint(x: 120, y: 80)
-        
-
         tapete.position = CGPoint(x: -25, y: -90)
         tapete.size = CGSize(width: 175, height: 155)
-
-
         comoda.position = CGPoint(x: 120, y: -20)
-
-
-        //  bau.position = CGPoint(x: -230, y: -100)
-
         quadroPerspectiva.position = CGPoint(x: -250, y: 45)
-        // quadroPerspectiva.xScale = -1
         interruptor.position = CGPoint(x: 240, y: 10)
         bau.position = CGPoint(x: -150, y: -43)
-        // interruptor.size = CGSize(width: 200, height: 200)
-
-        
     }
 
     func interactionObject(pos: CGPoint) {
-
         guard let objectInTouch = atPoint(pos) as? InteractableObjects else {
             if let objects = atPoint(pos) as? DialogueBox {
             tony.isWalking = false
