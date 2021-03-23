@@ -9,6 +9,8 @@ import Foundation
 
 import SpriteKit
 
+// swiftlint:disable identifier_name
+
 extension SKSpriteNode {
 
     func drawBorder(color: UIColor, width: CGFloat) {
@@ -114,7 +116,10 @@ public class InteractableObjects: SKSpriteNode {
         case .comoda:
             self.objectName = "Comoda"
             frontTexture = SKTexture(imageNamed: self.objectName!)
-            answers = ["Hmm, consigo abrir a primeira gaveta sem problemas... Porem nao tem nada","Consigo abrir a segunda gaveta, há um canivete","A Terceira gaveta possui um senha para abrir, qual será?","Outra gaveta sem nada"]
+            answers = [  "Hmm, consigo abrir a primeira gaveta sem problemas..."
+                       + "Porem nao tem nada","Consigo abrir a segunda gaveta, há um canivete",
+                         "A Terceira gaveta possui um senha para abrir, qual será?",
+                         "Outra gaveta sem nada"]
         case .tapete:
             self.objectName = "TapeteQuadrado"
             frontTexture = SKTexture(imageNamed: self.objectName!)

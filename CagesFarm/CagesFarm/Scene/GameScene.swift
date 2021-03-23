@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-//swiftlint:disable identifier_name unused_optional_binding
+// swiftlint:disable identifier_name unused_optional_binding
 class GameScene: SKScene {
 
     var entities = [GKEntity]()
@@ -91,7 +91,7 @@ class GameScene: SKScene {
         }
         
         if objectInTouch.isCloseInteract {
-            //MUDAR PRA TORNAR MAIS AUTOMATICO PRA TODOS OBJETOS
+            // MUDAR PRA TORNAR MAIS AUTOMATICO PRA TODOS OBJETOS
             if dialogBox.parent == nil {
                 let actualAnswerID = objectInTouch.actualAnswer
                 self.addChild(dialogBox)
@@ -103,7 +103,7 @@ class GameScene: SKScene {
     }
     
     func makeMCWalk(pos: CGPoint) {
-        //INVERTER POSICAO DEPENDENDO DE ONDE ANDA AS
+        // INVERTER POSICAO DEPENDENDO DE ONDE ANDA AS
         if !tony.isWalking && pos.x < tony.frame.minX {
             tony.xScale = -1
         } else if !tony.isWalking && pos.x >= tony.frame.minX {
@@ -119,7 +119,7 @@ class GameScene: SKScene {
     
     func touchDown(atPoint pos : CGPoint) {
         
-        //TRANSICAO DE CENA, FALTA COLOCAR A PORTA PARA ISSO OCORRER COM ELA
+        // TRANSICAO DE CENA, FALTA COLOCAR A PORTA PARA ISSO OCORRER COM ELA
         //        let transition:SKTransition = SKTransition.fade(withDuration: 1)
         //        let scene:SKScene = HallwayScene(size: UIScreen.main.bounds.size)
         //        scene.anchorPoint = .init(x: 0.5, y: 0.5)
