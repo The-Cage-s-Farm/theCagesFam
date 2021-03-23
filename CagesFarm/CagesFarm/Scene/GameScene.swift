@@ -26,7 +26,8 @@ class GameScene: SKScene {
     private var quadroPerspectiva = InteractableObjects(objectType: .quadroPerspectiva)
     private var dialogBox = DialogueBox()
     private var backGround = SKSpriteNode(imageNamed: "QuartoBackground")
-    
+    private var inventory = Inventory(items: [])
+
     override func sceneDidLoad() {
         self.scaleMode = .aspectFit
         self.addChild(tony)
@@ -38,6 +39,7 @@ class GameScene: SKScene {
         self.addChild(tapete)
         self.addChild(cama)
         self.addChild(quadroPerspectiva)
+     //   self.addChild(inventory)
         backGround.zPosition = -1
         tony.zPosition = +1
         dialogBox.zPosition = +1
