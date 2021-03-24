@@ -10,14 +10,15 @@ import UIKit
 class ConfigurationsViewController: UIViewController {
 
     var coordinator: Coordinator?
+    let contentView = ConfigurationView()
 
     override func loadView() {
-        view = ConfigurationView()
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissTapping))
-        view.addGestureRecognizer(tapGesture)
+        view = contentView
+        contentView.backButton.addTarget(self, action: #selector(didTapBackButton),
+                                         for: .touchUpInside)
     }
 
-    @objc func dismissTapping() {
+    @objc func didTapBackButton() {
         coordinator?.showMainMenu()
     }
 }

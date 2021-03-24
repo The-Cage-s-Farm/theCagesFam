@@ -9,11 +9,72 @@ import UIKit
 
 class ConfigurationView: UIView {
 
+    var hasDisabledVibration = UserDefaults.standard.bool(forKey: "hasDisabledVibration")
+
     let cardView: UIView = {
         let card = UIView()
         card.translatesAutoresizingMaskIntoConstraints = false
-        card.backgroundColor = .blue
+        card.backgroundColor = .configMenuBackground
+        card.layer.borderWidth = 1
+        card.layer.borderColor = UIColor.white.cgColor
         return card
+    }()
+
+    let configurationsLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Configurações"
+        label.font = .dogicaBold(26)
+        label.textColor = .white
+
+        return label
+    }()
+
+    let soundLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Som"
+        label.font = .dogicaPixel(19)
+        label.textColor = .white
+
+        return label
+    }()
+
+    let vibrationLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Vibração"
+        label.font = .dogicaPixel(19)
+        label.textColor = .white
+
+        return label
+    }()
+
+    lazy var vibrationSwitchButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.tag = hasDisabledVibration ? 0 : 1
+        let status = button.tag == 1 ? "on" : "off"
+        let image = UIImage(named: "config-switch-button-\(status)")
+        button.setImage(image, for: .normal)
+        button.addTarget(self,
+                         action: #selector(toggleVibrationSwitch(sender:)),
+                         for: .touchUpInside)
+        button.imageView?.contentMode = .scaleAspectFit
+        return button
+    }()
+
+    let backButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.cornerRadius = 10
+        let image = UIImage(named: "config-back-button")
+        button.setBackgroundImage(image, for: .normal)
+        button.setTitle("Voltar", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = .dogicaBold(13)
+        
+        return button
     }()
 
     init() {
@@ -26,6 +87,26 @@ class ConfigurationView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    @objc func toggleVibrationSwitch(sender: UIButton) {
+        if sender.tag == 0 {
+            let image = UIImage(named: "config-switch-button-on")
+            vibrationSwitchButton.setImage(image,
+                                                     for: .normal)
+            sender.tag = 1
+            UserDefaults.standard.setValue(false, forKey: "hasDisabledVibration")
+            let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: .medium)
+            impactFeedbackgenerator.prepare()
+            impactFeedbackgenerator.impactOccurred()
+        } else {
+            let image = UIImage(named: "config-switch-button-off")
+            vibrationSwitchButton.setImage(image,
+                                                     for: .normal)
+            sender.tag = 0
+            UserDefaults.standard.setValue(true, forKey: "hasDisabledVibration")
+        }
+    }
+
+    // MARK: View Setup
     private func setupView() {
         buildViewHierarchy()
         setupConstraints()
@@ -33,14 +114,51 @@ class ConfigurationView: UIView {
 
     private func buildViewHierarchy() {
         addSubview(cardView)
+        addSubview(configurationsLabel)
+        addSubview(soundLabel)
+        addSubview(vibrationLabel)
+        addSubview(vibrationSwitchButton)
+        addSubview(backButton)
     }
 
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            cardView.heightAnchor.constraint(equalToConstant: 320),
-            cardView.widthAnchor.constraint(equalToConstant: 400),
+            // CARD VIEW
+            cardView.heightAnchor.constraint(equalToConstant: 340),
+            cardView.widthAnchor.constraint(equalToConstant: 420),
             cardView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            cardView.centerYAnchor.constraint(equalTo: centerYAnchor)
+            cardView.centerYAnchor.constraint(equalTo: centerYAnchor),
+
+            // CONFIGURATION TITLE
+            configurationsLabel.topAnchor.constraint(equalTo: cardView.topAnchor,
+                                                     constant: 32),
+            configurationsLabel.centerXAnchor.constraint(equalTo: cardView.centerXAnchor),
+
+            // SOUND
+            soundLabel.topAnchor.constraint(equalTo: configurationsLabel.bottomAnchor,
+                                            constant: 56),
+            soundLabel.leftAnchor.constraint(equalTo: configurationsLabel.leftAnchor),
+
+            // VIBRATION
+            vibrationLabel.leftAnchor.constraint(equalTo: soundLabel.leftAnchor),
+            vibrationLabel.topAnchor.constraint(equalTo: cardView.centerYAnchor,
+                                                constant: 32),
+
+            // VIBRATION SWITCH
+            vibrationSwitchButton.topAnchor.constraint(equalTo: vibrationLabel.bottomAnchor,
+                                                       constant: 8),
+            vibrationSwitchButton.leftAnchor.constraint(equalTo: vibrationLabel.leftAnchor),
+            vibrationSwitchButton.widthAnchor.constraint(equalTo: cardView.widthAnchor,
+                                                         multiplier: 0.1),
+
+            // BACK
+            backButton.bottomAnchor.constraint(equalTo: cardView.bottomAnchor,
+                                               constant: -16),
+            backButton.rightAnchor.constraint(equalTo: cardView.rightAnchor,
+                                              constant: -16),
+            backButton.widthAnchor.constraint(equalTo: cardView.widthAnchor,
+                                              multiplier: 0.25)
+
         ])
     }
 }
