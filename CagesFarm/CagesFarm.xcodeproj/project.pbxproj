@@ -24,9 +24,9 @@
 		0F9EA92325FA835F00EC66D6 /* InteractableObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA92225FA835F00EC66D6 /* InteractableObjects.swift */; };
 		0F9EA92B25FBADD100EC66D6 /* DialogueBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA92A25FBADD100EC66D6 /* DialogueBox.swift */; };
 		0FA7D57D2608B0620000DD65 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA7D57C2608B0620000DD65 /* Inventory.swift */; };
+		7C55CD7D260B6AF200C0E76D /* Mysterious.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7C55CD7C260B6AF200C0E76D /* Mysterious.wav */; };
 		7C5B37D5260A27830071DFE6 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5B37D4260A27830071DFE6 /* SceneCoordinator.swift */; };
 		7C9E819F2606B83D00D61B19 /* SemicirclePuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E819E2606B83D00D61B19 /* SemicirclePuzzle.swift */; };
-		7CF504B726039025002EBFF3 /* PuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF504B626039025002EBFF3 /* PuzzleViewController.swift */; };
 		7CF504C226039236002EBFF3 /* PuzzleScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7CF504C126039236002EBFF3 /* PuzzleScene.sks */; };
 		E904C5D725FF8E6000654E6B /* UIFontsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904C5D625FF8E6000654E6B /* UIFontsExtension.swift */; };
 		E904C5DF25FF904D00654E6B /* Pixeland.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E904C5DC25FF904100654E6B /* Pixeland.ttf */; };
@@ -83,9 +83,9 @@
 		0F9EA92225FA835F00EC66D6 /* InteractableObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractableObjects.swift; sourceTree = "<group>"; };
 		0F9EA92A25FBADD100EC66D6 /* DialogueBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueBox.swift; sourceTree = "<group>"; };
 		0FA7D57C2608B0620000DD65 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
+		7C55CD7C260B6AF200C0E76D /* Mysterious.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Mysterious.wav; path = ../../../../../../../../../../Downloads/Mysterious.wav; sourceTree = "<group>"; };
 		7C5B37D4260A27830071DFE6 /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		7C9E819E2606B83D00D61B19 /* SemicirclePuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemicirclePuzzle.swift; sourceTree = "<group>"; };
-		7CF504B626039025002EBFF3 /* PuzzleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleViewController.swift; sourceTree = "<group>"; };
 		7CF504C126039236002EBFF3 /* PuzzleScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PuzzleScene.sks; sourceTree = "<group>"; };
 		E904C5D625FF8E6000654E6B /* UIFontsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontsExtension.swift; sourceTree = "<group>"; };
 		E904C5DC25FF904100654E6B /* Pixeland.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pixeland.ttf; sourceTree = "<group>"; };
@@ -241,11 +241,20 @@
 		0F9EA91B25F7BB6B00EC66D6 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				7C55CD7B260B6AE500C0E76D /* Sounds */,
 				E904C5DB25FF902100654E6B /* Fonts */,
 				0F9EA8B425F660DF00EC66D6 /* AppDelegate.swift */,
 				E9B103BB25FA50FD0097C80D /* LaunchScreen.storyboard */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		7C55CD7B260B6AE500C0E76D /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				7C55CD7C260B6AF200C0E76D /* Mysterious.wav */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		7C5B37D0260A27600071DFE6 /* FirstScene */ = {
@@ -261,7 +270,6 @@
 		7CF504B526038F75002EBFF3 /* PuzzleColors */ = {
 			isa = PBXGroup;
 			children = (
-				7CF504B626039025002EBFF3 /* PuzzleViewController.swift */,
 				0F9E73602600DD690003181B /* PuzzleScene.swift */,
 				7CF504C126039236002EBFF3 /* PuzzleScene.sks */,
 			);
@@ -403,6 +411,7 @@
 				E904C5EA25FF907400654E6B /* dogicapixel.ttf in Resources */,
 				E904C5EC25FF907400654E6B /* dogicabold.ttf in Resources */,
 				E904C5E025FF904D00654E6B /* pixelplay.ttf in Resources */,
+				7C55CD7D260B6AF200C0E76D /* Mysterious.wav in Resources */,
 				E904C5EB25FF907400654E6B /* dogica.ttf in Resources */,
 				E9B103BC25FA50FD0097C80D /* LaunchScreen.storyboard in Resources */,
 				0F9EA8C225F660E000EC66D6 /* Assets.xcassets in Resources */,
@@ -468,7 +477,6 @@
 				7C9E819F2606B83D00D61B19 /* SemicirclePuzzle.swift in Sources */,
 				0F9EA8BD25F660DF00EC66D6 /* GameViewController.swift in Sources */,
 				0F9EA91225F7BB4800EC66D6 /* changeTheComponent.swift in Sources */,
-				7CF504B726039025002EBFF3 /* PuzzleViewController.swift in Sources */,
 				0F9EA8B525F660DF00EC66D6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

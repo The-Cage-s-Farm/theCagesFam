@@ -79,6 +79,7 @@ class PuzzleScene: SKScene {
                 let transition:SKTransition = SKTransition.fade(withDuration: 1)
                 let scene:SKScene = SceneCoordinator.coordinator.gameScene!
                 scene.anchorPoint = .init(x: 0.5, y: 0.5)
+                SceneCoordinator.coordinator.gameScene!.backgroundSound?.play()
                 self.view?.presentScene(scene, transition: transition)
             }
         }
