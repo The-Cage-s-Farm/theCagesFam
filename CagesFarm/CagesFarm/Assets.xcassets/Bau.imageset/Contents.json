@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Bau clone.png",
+      "filename" : "bau.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "bau@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "bau@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
