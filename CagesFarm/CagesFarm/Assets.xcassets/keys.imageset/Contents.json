@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "bau.png",
+      "filename" : "Chave.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "bau@2x.png",
+      "filename" : "Chave@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "bau@3x.png",
+      "filename" : "Chave@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
