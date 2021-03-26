@@ -74,8 +74,8 @@ class GameScene: SKScene {
         }
         
         if objectInTouch.objectName == "Bau" {
-            let transition:SKTransition = SKTransition.fade(withDuration: 1)
-            let scene:SKScene = PuzzleScene(size: UIScreen.main.bounds.size)
+            let transition: SKTransition = SKTransition.fade(withDuration: 1)
+            let scene: SKScene = PuzzleScene(size: UIScreen.main.bounds.size)
             scene.anchorPoint = .init(x: 0.5, y: 0.5)
             self.view?.presentScene(scene, transition: transition)
         }
