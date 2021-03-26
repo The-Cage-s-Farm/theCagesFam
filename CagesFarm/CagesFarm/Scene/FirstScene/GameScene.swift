@@ -96,7 +96,7 @@ class GameScene: SKScene {
     func makeMCWalk(pos: CGPoint) {
         //INVERTER POSICAO DEPENDENDO DE ONDE ANDA AS
         let itIsInventory = atPoint(pos)
-        if !(itIsInventory is Inventory) {
+        if !(itIsInventory is Inventory) && !(itIsInventory is SKShapeNode) {
         if !tony.isWalking && pos.x < tony.frame.minX {
             tony.xScale = -1
         } else if !tony.isWalking && pos.x >= tony.frame.minX {

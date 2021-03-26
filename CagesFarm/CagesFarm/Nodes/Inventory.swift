@@ -12,6 +12,7 @@ class Inventory: SKSpriteNode {
     var items: [Items]
     var textureBackground: SKSpriteNode = SKSpriteNode(imageNamed: "Inventario")
     var squares: [SKShapeNode] = []
+    var auxPositionItem = 0
     func organizeInventory() {
         for increment in 0...4 {
             squares.append(SKShapeNode(rect: CGRect(x: -30, y: 128 - increment*65, width: 40, height: 40), cornerRadius: 5))
@@ -19,9 +20,18 @@ class Inventory: SKSpriteNode {
             squares[increment].fillColor = .gray
             squares[increment].zPosition = +1
         }
-        var auxPositionItem = 0
-        for item in items {
 
+        organizeItems()
+
+        self.size = CGSize(width: 70, height: UIScreen.main.bounds.height)
+        //self.addChild(textureBackground)
+        self.position = CGPoint(x: 339, y: 0)
+    }
+
+    func organizeItems() {
+
+        for item in items {
+            if item.parent == nil {
             addChild(item)
             item.size = squares[auxPositionItem].frame.size
             item.setScale(0.95)
@@ -29,14 +39,16 @@ class Inventory: SKSpriteNode {
             item.position.y = squares[auxPositionItem].frame.origin.y + item.size.height/2 + 1
             auxPositionItem += 1
             item.zPosition = +1
+            }
 
         }
-        self.size = CGSize(width: 70, height: UIScreen.main.bounds.height)
-        //self.addChild(textureBackground)
-        self.position = CGPoint(x: 339, y: 0)
+
     }
+
     func addItem(itemName: String) {
-        
+        guard let unwrappedItemType = ItemType(rawValue: itemName) else { return }
+        items.append(Items(itemType: unwrappedItemType))
+        organizeItems()
     }
     func removeItem() {}
 

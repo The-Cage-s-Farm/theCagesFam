@@ -20,6 +20,7 @@ class Items: SKSpriteNode {
     let itemName: String?
     let image: SKTexture?
     var itemType: ItemType
+    var actualPosition: Int = 0
 
     init(itemType: ItemType) {
 //        self.texture = image
