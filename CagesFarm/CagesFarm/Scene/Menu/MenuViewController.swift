@@ -18,7 +18,6 @@ class MenuViewController: UIViewController {
         contentView.configButton.addTarget(self, action: #selector(configurations), for: .touchUpInside)
         view = contentView
     }
-    
     @objc func play() {
        // self.show(GameViewController(), sender: self)
         // let navigation = UINavigationController(rootViewController: GameViewController())
