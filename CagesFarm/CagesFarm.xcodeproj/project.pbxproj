@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F918096260B6E140079B2E1 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F918095260B6E140079B2E1 /* Items.swift */; };
 		0F9E73612600DD690003181B /* PuzzleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9E73602600DD690003181B /* PuzzleScene.swift */; };
 		0F9EA8B525F660DF00EC66D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA8B425F660DF00EC66D6 /* AppDelegate.swift */; };
 		0F9EA8B725F660DF00EC66D6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0F9EA8B625F660DF00EC66D6 /* GameScene.sks */; };
@@ -24,7 +25,6 @@
 		0F9EA92325FA835F00EC66D6 /* InteractableObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA92225FA835F00EC66D6 /* InteractableObjects.swift */; };
 		0F9EA92B25FBADD100EC66D6 /* DialogueBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA92A25FBADD100EC66D6 /* DialogueBox.swift */; };
 		0FA7D57D2608B0620000DD65 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA7D57C2608B0620000DD65 /* Inventory.swift */; };
-
 		7C9E819F2606B83D00D61B19 /* SemicirclePuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E819E2606B83D00D61B19 /* SemicirclePuzzle.swift */; };
 		7CF504B726039025002EBFF3 /* PuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF504B626039025002EBFF3 /* PuzzleViewController.swift */; };
 		7CF504C226039236002EBFF3 /* PuzzleScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7CF504C126039236002EBFF3 /* PuzzleScene.sks */; };
@@ -60,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F918095260B6E140079B2E1 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
 		0F9E73602600DD690003181B /* PuzzleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleScene.swift; sourceTree = "<group>"; };
 		0F9EA8B125F660DF00EC66D6 /* CagesFarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CagesFarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F9EA8B425F660DF00EC66D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -222,6 +223,7 @@
 				0F9EA92A25FBADD100EC66D6 /* DialogueBox.swift */,
 				0FA7D57C2608B0620000DD65 /* Inventory.swift */,
 				7C9E819E2606B83D00D61B19 /* SemicirclePuzzle.swift */,
+				0F918095260B6E140079B2E1 /* Items.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -451,6 +453,7 @@
 				0F9E73612600DD690003181B /* PuzzleScene.swift in Sources */,
 				0F9EA8FA25F7BAEC00EC66D6 /* Characters.swift in Sources */,
 				0FA7D57D2608B0620000DD65 /* Inventory.swift in Sources */,
+				0F918096260B6E140079B2E1 /* Items.swift in Sources */,
 				E904C5D725FF8E6000654E6B /* UIFontsExtension.swift in Sources */,
 				E9C9F38425FA46EC00DBFEA6 /* MenuViewController.swift in Sources */,
 				E956FB7E25FA487300481E9F /* MenuView.swift in Sources */,

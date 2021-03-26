@@ -26,7 +26,7 @@ class GameScene: SKScene {
     private var quadroPerspectiva = InteractableObjects(objectType: .quadroPerspectiva)
     private var dialogBox = DialogueBox()
     private var backGround = SKSpriteNode(imageNamed: "QuartoBackground")
-    private var inventory = Inventory(items: [])
+    private var inventory = Inventory(items: [Items(itemType: .knife), Items(itemType: .contract), Items(itemType: .keys)])
 
     override func sceneDidLoad() {
         self.scaleMode = .aspectFit
@@ -39,7 +39,8 @@ class GameScene: SKScene {
         self.addChild(tapete)
         self.addChild(cama)
         self.addChild(quadroPerspectiva)
-     //   self.addChild(inventory)
+        self.addChild(inventory)
+       //self.addChild(inventory.squares[0])
         backGround.zPosition = -1
         tony.zPosition = +1
         dialogBox.zPosition = +1
@@ -48,7 +49,10 @@ class GameScene: SKScene {
         quadro.setScale(1)
         quadroPerspectiva.setScale(1)
         comoda.setScale(0.45)
+
         //Positions
+        
+        backGround.constraints = [SKConstraint.distance(SKRange(lowerLimit: 0), to: inventory)]
         tony.position = CGPoint(x: 250, y: -60)
         cama.position = CGPoint(x: -240, y: -100)
         cama.xScale = -0.9
@@ -96,6 +100,9 @@ class GameScene: SKScene {
     func makeMCWalk(pos: CGPoint){
 
         //INVERTER POSICAO DEPENDENDO DE ONDE ANDA AS
+        let itIsInventory = atPoint(pos)
+
+        if !(itIsInventory is Inventory) {
         if !tony.isWalking && pos.x < tony.frame.minX {
             tony.xScale = -1
         }else if !tony.isWalking && pos.x >= tony.frame.minX {
@@ -106,6 +113,7 @@ class GameScene: SKScene {
             if !(isBackground is InteractableObjects) {
                 tony.walk(posx: pos.x)
             }
+        }
         }
 
     }
