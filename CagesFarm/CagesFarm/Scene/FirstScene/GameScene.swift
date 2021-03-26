@@ -52,8 +52,8 @@ class GameScene: SKScene {
         comoda.setScale(0.45)
         //Positions
         tony.position = CGPoint(x: 250, y: -60)
-        cama.position = CGPoint(x: -240, y: -100)
-        cama.xScale = -0.9
+        cama.position = CGPoint(x: -245, y: -100)
+        cama.setScale(0.8)
         quadro.position = CGPoint(x: 120, y: 80)
         tapete.position = CGPoint(x: -25, y: -90)
         tapete.size = CGSize(width: 175, height: 155)
