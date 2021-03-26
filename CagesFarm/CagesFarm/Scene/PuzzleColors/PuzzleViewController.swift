@@ -9,7 +9,7 @@ import UIKit
 
 class PuzzleViewController: UIViewController {
 
-    let contentView = MenuView()
+    let contentView = MainMenuView()
 
     override func loadView() {
         contentView.playButton.addTarget(self, action: #selector(play), for: .touchUpInside)

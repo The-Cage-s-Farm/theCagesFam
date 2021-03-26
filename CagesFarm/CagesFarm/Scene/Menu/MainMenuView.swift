@@ -7,8 +7,8 @@
 
 import UIKit
 
-
-class MenuView: UIView {
+// swiftlint:disable identifier_name
+class MainMenuView: UIView {
     let backgroundImage: UIImageView = {
         let bg = UIImageView()
         bg.translatesAutoresizingMaskIntoConstraints = false
@@ -33,7 +33,7 @@ class MenuView: UIView {
         title.textColor = .white
         return title
     }()
-
+    
     let playButton: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
@@ -68,6 +68,20 @@ class MenuView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func prepareForShowingConfigurations() {
+        configButton.isHidden = true
+        playButton.isHidden = true
+        exitButton.isHidden = true
+        gameTitle.isHidden = true
+    }
+
+    func willReappearFromConfigurations() {
+        configButton.isHidden = false
+        playButton.isHidden = false
+        exitButton.isHidden = false
+        gameTitle.isHidden = false
     }
     
     private func setupView() {
@@ -113,12 +127,7 @@ class MenuView: UIView {
             
             // EXIT BUTTON
             exitButton.topAnchor.constraint(equalTo: configButton.topAnchor),
-            exitButton.leadingAnchor.constraint(equalTo: configButton.trailingAnchor, constant: 16),
-            
+            exitButton.leadingAnchor.constraint(equalTo: configButton.trailingAnchor, constant: 16)
         ])
     }
-
-    
-
-
 }

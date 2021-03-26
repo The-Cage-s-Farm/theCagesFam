@@ -8,17 +8,16 @@
 import Foundation
 import SpriteKit
 
-
 class Inventory: SKSpriteNode {
     var items: [Items]
     var textureBackground: SKSpriteNode = SKSpriteNode(imageNamed: "Inventario")
     var squares: [SKShapeNode] = []
     func organizeInventory() {
-        for i in 0...4 {
-            squares.append(SKShapeNode(rect: CGRect(x: -30, y: 128 - i*65, width: 40, height: 40), cornerRadius: 5))
-            self.addChild(squares[i])
-            squares[i].fillColor = .gray
-            squares[i].zPosition = +1
+        for increment in 0...4 {
+            squares.append(SKShapeNode(rect: CGRect(x: -30, y: 128 - increment*65, width: 40, height: 40), cornerRadius: 5))
+            self.addChild(squares[increment])
+            squares[increment].fillColor = .gray
+            squares[increment].zPosition = +1
         }
         var auxPositionItem = 0
         for item in items {
@@ -35,17 +34,10 @@ class Inventory: SKSpriteNode {
         self.size = CGSize(width: 70, height: UIScreen.main.bounds.height)
         //self.addChild(textureBackground)
         self.position = CGPoint(x: 339, y: 0)
-
-
     }
-
     func addItem(itemName: String) {
-
-
-
+        
     }
-
-
     func removeItem() {}
 
     func touchItem() {}
@@ -59,8 +51,4 @@ class Inventory: SKSpriteNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-
-
-
 }
