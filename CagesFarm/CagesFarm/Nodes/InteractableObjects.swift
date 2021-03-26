@@ -129,7 +129,7 @@ public class InteractableObjects: SKSpriteNode {
             frontTexture = SKTexture(imageNamed: self.objectName!)
             answers = ["Parece que há algo escondido no travesseiro...Oque será, preciso de um canivete pra cortar","Havia um pequeno baü"]
         case .bau:
-            self.objectName = "Baú"
+            self.objectName = "Bau"
             frontTexture = SKTexture(imageNamed: self.objectName!)
             answers = ["Um Pequeno puzzle? oque faço?"]
         case .quadroPerspectiva:

@@ -30,6 +30,7 @@ class GameScene: SKScene {
     private var inventory = Inventory(items: [])
     
     override func sceneDidLoad() {
+        SceneCoordinator.coordinator.gameScene = self
         self.scaleMode = .aspectFit
         self.addChild(tony)
         self.addChild(quadro)
@@ -72,7 +73,7 @@ class GameScene: SKScene {
             return
         }
         
-        if objectInTouch.objectName == "Baú" {
+        if objectInTouch.objectName == "Bau" {
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
             let scene:SKScene = PuzzleScene(size: UIScreen.main.bounds.size)
             scene.anchorPoint = .init(x: 0.5, y: 0.5)

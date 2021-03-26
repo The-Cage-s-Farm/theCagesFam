@@ -24,6 +24,7 @@
 		0F9EA92325FA835F00EC66D6 /* InteractableObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA92225FA835F00EC66D6 /* InteractableObjects.swift */; };
 		0F9EA92B25FBADD100EC66D6 /* DialogueBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA92A25FBADD100EC66D6 /* DialogueBox.swift */; };
 		0FA7D57D2608B0620000DD65 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA7D57C2608B0620000DD65 /* Inventory.swift */; };
+		7C5B37D5260A27830071DFE6 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5B37D4260A27830071DFE6 /* SceneCoordinator.swift */; };
 		7C9E819F2606B83D00D61B19 /* SemicirclePuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E819E2606B83D00D61B19 /* SemicirclePuzzle.swift */; };
 		7CF504B726039025002EBFF3 /* PuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF504B626039025002EBFF3 /* PuzzleViewController.swift */; };
 		7CF504C226039236002EBFF3 /* PuzzleScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7CF504C126039236002EBFF3 /* PuzzleScene.sks */; };
@@ -35,7 +36,11 @@
 		E904C5EA25FF907400654E6B /* dogicapixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E904C5E625FF907400654E6B /* dogicapixel.ttf */; };
 		E904C5EB25FF907400654E6B /* dogica.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E904C5E725FF907400654E6B /* dogica.ttf */; };
 		E904C5EC25FF907400654E6B /* dogicabold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E904C5E825FF907400654E6B /* dogicabold.ttf */; };
-		E956FB7E25FA487300481E9F /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E956FB7D25FA487300481E9F /* MenuView.swift */; };
+		E92E1998260B67D800AA9E25 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92E1997260B67D800AA9E25 /* UIColorExtension.swift */; };
+		E956FB7E25FA487300481E9F /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E956FB7D25FA487300481E9F /* MainMenuView.swift */; };
+		E95C60C8260A2B0F0039BABD /* ConfigurationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95C60C7260A2B0F0039BABD /* ConfigurationsViewController.swift */; };
+		E95C60D0260A2B2C0039BABD /* ConfigurationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95C60CF260A2B2C0039BABD /* ConfigurationsView.swift */; };
+		E95C60D5260A31820039BABD /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95C60D4260A31820039BABD /* MainCoordinator.swift */; };
 		E9B103BC25FA50FD0097C80D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9B103BB25FA50FD0097C80D /* LaunchScreen.storyboard */; };
 		E9C9F38425FA46EC00DBFEA6 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C9F38325FA46EC00DBFEA6 /* MenuViewController.swift */; };
 		E9D29FAD25FF9E79002FCDC7 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E9D29FAC25FF9E79002FCDC7 /* .swiftlint.yml */; };
@@ -82,6 +87,7 @@
 		0F9EA92225FA835F00EC66D6 /* InteractableObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractableObjects.swift; sourceTree = "<group>"; };
 		0F9EA92A25FBADD100EC66D6 /* DialogueBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueBox.swift; sourceTree = "<group>"; };
 		0FA7D57C2608B0620000DD65 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
+		7C5B37D4260A27830071DFE6 /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		7C9E819E2606B83D00D61B19 /* SemicirclePuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemicirclePuzzle.swift; sourceTree = "<group>"; };
 		7CF504B626039025002EBFF3 /* PuzzleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleViewController.swift; sourceTree = "<group>"; };
 		7CF504C126039236002EBFF3 /* PuzzleScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PuzzleScene.sks; sourceTree = "<group>"; };
@@ -93,7 +99,11 @@
 		E904C5E625FF907400654E6B /* dogicapixel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dogicapixel.ttf; sourceTree = "<group>"; };
 		E904C5E725FF907400654E6B /* dogica.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dogica.ttf; sourceTree = "<group>"; };
 		E904C5E825FF907400654E6B /* dogicabold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dogicabold.ttf; sourceTree = "<group>"; };
-		E956FB7D25FA487300481E9F /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		E92E1997260B67D800AA9E25 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		E956FB7D25FA487300481E9F /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		E95C60C7260A2B0F0039BABD /* ConfigurationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationsViewController.swift; sourceTree = "<group>"; };
+		E95C60CF260A2B2C0039BABD /* ConfigurationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationsView.swift; sourceTree = "<group>"; };
+		E95C60D4260A31820039BABD /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		E9B103BB25FA50FD0097C80D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E9C9F38325FA46EC00DBFEA6 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		E9D29FAC25FF9E79002FCDC7 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -201,6 +211,7 @@
 			children = (
 				0F9EA90C25F7BB3B00EC66D6 /* changeTheExtension.swift */,
 				E904C5D625FF8E6000654E6B /* UIFontsExtension.swift */,
+				E92E1997260B67D800AA9E25 /* UIColorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -230,9 +241,9 @@
 			children = (
 				7CF504B526038F75002EBFF3 /* PuzzleColors */,
 				E956FB7C25FA485200481E9F /* Menu */,
-				0F9EA8B825F660DF00EC66D6 /* Actions.sks */,
-				0F9EA8BA25F660DF00EC66D6 /* GameScene.swift */,
-				0F9EA8B625F660DF00EC66D6 /* GameScene.sks */,
+				7C5B37D0260A27600071DFE6 /* FirstScene */,
+				7C5B37D4260A27830071DFE6 /* SceneCoordinator.swift */,
+				E95C60D4260A31820039BABD /* MainCoordinator.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -245,6 +256,16 @@
 				E9B103BB25FA50FD0097C80D /* LaunchScreen.storyboard */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		7C5B37D0260A27600071DFE6 /* FirstScene */ = {
+			isa = PBXGroup;
+			children = (
+				0F9EA8B825F660DF00EC66D6 /* Actions.sks */,
+				0F9EA8BA25F660DF00EC66D6 /* GameScene.swift */,
+				0F9EA8B625F660DF00EC66D6 /* GameScene.sks */,
+			);
+			path = FirstScene;
 			sourceTree = "<group>";
 		};
 		7CF504B526038F75002EBFF3 /* PuzzleColors */ = {
@@ -274,10 +295,20 @@
 		E956FB7C25FA485200481E9F /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				E95C60C6260A2AF40039BABD /* Configurations */,
 				E9C9F38325FA46EC00DBFEA6 /* MenuViewController.swift */,
-				E956FB7D25FA487300481E9F /* MenuView.swift */,
+				E956FB7D25FA487300481E9F /* MainMenuView.swift */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		E95C60C6260A2AF40039BABD /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				E95C60C7260A2B0F0039BABD /* ConfigurationsViewController.swift */,
+				E95C60CF260A2B2C0039BABD /* ConfigurationsView.swift */,
+			);
+			path = Configurations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -443,16 +474,21 @@
 			files = (
 				0F9EA8BB25F660DF00EC66D6 /* GameScene.swift in Sources */,
 				0F9EA90D25F7BB3B00EC66D6 /* changeTheExtension.swift in Sources */,
+				E95C60D0260A2B2C0039BABD /* ConfigurationsView.swift in Sources */,
 				0F9EA91725F7BB5300EC66D6 /* changeTheEntity.swift in Sources */,
+				E95C60C8260A2B0F0039BABD /* ConfigurationsViewController.swift in Sources */,
 				0F9EA92B25FBADD100EC66D6 /* DialogueBox.swift in Sources */,
 				0F9EA92325FA835F00EC66D6 /* InteractableObjects.swift in Sources */,
 				0F9EA90825F7BB1C00EC66D6 /* changeTheModel.swift in Sources */,
+				E92E1998260B67D800AA9E25 /* UIColorExtension.swift in Sources */,
 				0F9E73612600DD690003181B /* PuzzleScene.swift in Sources */,
+				7C5B37D5260A27830071DFE6 /* SceneCoordinator.swift in Sources */,
 				0F9EA8FA25F7BAEC00EC66D6 /* Characters.swift in Sources */,
 				0FA7D57D2608B0620000DD65 /* Inventory.swift in Sources */,
 				E904C5D725FF8E6000654E6B /* UIFontsExtension.swift in Sources */,
 				E9C9F38425FA46EC00DBFEA6 /* MenuViewController.swift in Sources */,
-				E956FB7E25FA487300481E9F /* MenuView.swift in Sources */,
+				E95C60D5260A31820039BABD /* MainCoordinator.swift in Sources */,
+				E956FB7E25FA487300481E9F /* MainMenuView.swift in Sources */,
 				7C9E819F2606B83D00D61B19 /* SemicirclePuzzle.swift in Sources */,
 				0F9EA8BD25F660DF00EC66D6 /* GameViewController.swift in Sources */,
 				0F9EA91225F7BB4800EC66D6 /* changeTheComponent.swift in Sources */,
@@ -615,7 +651,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B5BH4949Y8;
+				DEVELOPMENT_TEAM = BABNQ3LD22;
 				INFOPLIST_FILE = CagesFarm/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -635,7 +671,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B5BH4949Y8;
+				DEVELOPMENT_TEAM = BABNQ3LD22;
 				INFOPLIST_FILE = CagesFarm/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
