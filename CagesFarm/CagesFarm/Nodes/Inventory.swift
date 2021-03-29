@@ -56,6 +56,7 @@ class Inventory: SKSpriteNode {
 
     init(items: [Items]) {
         self.items = items
+        self.textureBackground.color =  .clear
         super.init(texture: self.textureBackground.texture, color: .clear, size: (self.textureBackground.texture?.size())!)
         organizeInventory()
     }
