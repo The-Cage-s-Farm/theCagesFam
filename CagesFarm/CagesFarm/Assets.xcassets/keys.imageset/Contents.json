@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "quarto-background clone.png",
+      "filename" : "Chave.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Chave@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Chave@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
