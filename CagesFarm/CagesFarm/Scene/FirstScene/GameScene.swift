@@ -27,7 +27,7 @@ class GameScene: SKScene {
     private var quadroPerspectiva = InteractableObjects(objectType: .quadroPerspectiva)
     private var dialogBox = DialogueBox()
     private var backGround = SKSpriteNode(imageNamed: "QuartoBackground")
-    private var inventory = Inventory(items: [])
+    var inventory = Inventory(items: [])
     override func sceneDidLoad() {
         SceneCoordinator.coordinator.gameScene = self
         self.scaleMode = .aspectFit
@@ -76,8 +76,8 @@ class GameScene: SKScene {
         }
         
         if objectInTouch.objectName == "Bau" {
-            let transition:SKTransition = SKTransition.fade(withDuration: 1)
-            let scene:SKScene = PuzzleScene(size: UIScreen.main.bounds.size)
+            let transition: SKTransition = SKTransition.fade(withDuration: 1)
+            let scene: SKScene = PuzzleScene(size: UIScreen.main.bounds.size)
             scene.anchorPoint = .init(x: 0.5, y: 0.5)
             self.view?.presentScene(scene, transition: transition)
         }
