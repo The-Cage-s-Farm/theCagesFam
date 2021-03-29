@@ -36,6 +36,8 @@
 		E904C5EA25FF907400654E6B /* dogicapixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E904C5E625FF907400654E6B /* dogicapixel.ttf */; };
 		E904C5EB25FF907400654E6B /* dogica.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E904C5E725FF907400654E6B /* dogica.ttf */; };
 		E904C5EC25FF907400654E6B /* dogicabold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E904C5E825FF907400654E6B /* dogicabold.ttf */; };
+		E924230D260E0F2D00FF7E20 /* DresserKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E924230C260E0F2D00FF7E20 /* DresserKeyboard.swift */; };
+		E924231B260E2DB100FF7E20 /* KeyboardNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E924231A260E2DB100FF7E20 /* KeyboardNumber.swift */; };
 		E92E1998260B67D800AA9E25 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92E1997260B67D800AA9E25 /* UIColorExtension.swift */; };
 		E956FB7E25FA487300481E9F /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E956FB7D25FA487300481E9F /* MainMenuView.swift */; };
 		E95C60C8260A2B0F0039BABD /* ConfigurationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95C60C7260A2B0F0039BABD /* ConfigurationsViewController.swift */; };
@@ -99,6 +101,8 @@
 		E904C5E625FF907400654E6B /* dogicapixel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dogicapixel.ttf; sourceTree = "<group>"; };
 		E904C5E725FF907400654E6B /* dogica.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dogica.ttf; sourceTree = "<group>"; };
 		E904C5E825FF907400654E6B /* dogicabold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = dogicabold.ttf; sourceTree = "<group>"; };
+		E924230C260E0F2D00FF7E20 /* DresserKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DresserKeyboard.swift; sourceTree = "<group>"; };
+		E924231A260E2DB100FF7E20 /* KeyboardNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNumber.swift; sourceTree = "<group>"; };
 		E92E1997260B67D800AA9E25 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		E956FB7D25FA487300481E9F /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		E95C60C7260A2B0F0039BABD /* ConfigurationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationsViewController.swift; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 				0F9EA92A25FBADD100EC66D6 /* DialogueBox.swift */,
 				0FA7D57C2608B0620000DD65 /* Inventory.swift */,
 				7C9E819E2606B83D00D61B19 /* SemicirclePuzzle.swift */,
+				E924231A260E2DB100FF7E20 /* KeyboardNumber.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -239,6 +244,7 @@
 		0F9EA8F025F7B6D800EC66D6 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				E924230B260E0BED00FF7E20 /* Dresser */,
 				7CF504B526038F75002EBFF3 /* PuzzleColors */,
 				E956FB7C25FA485200481E9F /* Menu */,
 				7C5B37D0260A27600071DFE6 /* FirstScene */,
@@ -290,6 +296,14 @@
 				E904C5E525FF907400654E6B /* dogicapixelbold.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		E924230B260E0BED00FF7E20 /* Dresser */ = {
+			isa = PBXGroup;
+			children = (
+				E924230C260E0F2D00FF7E20 /* DresserKeyboard.swift */,
+			);
+			path = Dresser;
 			sourceTree = "<group>";
 		};
 		E956FB7C25FA485200481E9F /* Menu */ = {
@@ -473,6 +487,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F9EA8BB25F660DF00EC66D6 /* GameScene.swift in Sources */,
+				E924231B260E2DB100FF7E20 /* KeyboardNumber.swift in Sources */,
 				0F9EA90D25F7BB3B00EC66D6 /* changeTheExtension.swift in Sources */,
 				E95C60D0260A2B2C0039BABD /* ConfigurationsView.swift in Sources */,
 				0F9EA91725F7BB5300EC66D6 /* changeTheEntity.swift in Sources */,
@@ -491,6 +506,7 @@
 				E956FB7E25FA487300481E9F /* MainMenuView.swift in Sources */,
 				7C9E819F2606B83D00D61B19 /* SemicirclePuzzle.swift in Sources */,
 				0F9EA8BD25F660DF00EC66D6 /* GameViewController.swift in Sources */,
+				E924230D260E0F2D00FF7E20 /* DresserKeyboard.swift in Sources */,
 				0F9EA91225F7BB4800EC66D6 /* changeTheComponent.swift in Sources */,
 				7CF504B726039025002EBFF3 /* PuzzleViewController.swift in Sources */,
 				0F9EA8B525F660DF00EC66D6 /* AppDelegate.swift in Sources */,
