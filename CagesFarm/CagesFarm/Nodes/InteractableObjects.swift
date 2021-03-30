@@ -56,7 +56,7 @@ public class InteractableObjects: SKSpriteNode {
     let objectName: String?
     var isCloseInteract = false
     var answers: [String]
-    //var options: [String]
+    var options: [String]?
     var itemToGive: ItemType?
     var actualAnswer = 0
     var isIteracting = false
@@ -97,6 +97,11 @@ public class InteractableObjects: SKSpriteNode {
         self.xScale = x
         self.yScale = y
 
+    }
+
+    func giveItem() {
+
+        
     }
     
     init(objectType: ObjectType) {
