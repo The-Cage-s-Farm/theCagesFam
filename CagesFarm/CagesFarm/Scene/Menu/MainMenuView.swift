@@ -56,6 +56,7 @@ class MainMenuView: UIView {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.layer.cornerRadius = 10
+        btn.alpha = 0.5
         let image = UIImage(named: "exit-button")
         btn.setImage(image, for: .normal)
         return btn

@@ -62,6 +62,7 @@ class GameScene: SKScene {
         tapete.size = CGSize(width: 175, height: 155)
         comoda.position = CGPoint(x: 120, y: -20)
         quadroPerspectiva.position = CGPoint(x: -250, y: 45)
+        quadroPerspectiva.xScale = -1
         interruptor.position = CGPoint(x: 240, y: 10)
         bau.position = CGPoint(x: -150, y: -43)
     }

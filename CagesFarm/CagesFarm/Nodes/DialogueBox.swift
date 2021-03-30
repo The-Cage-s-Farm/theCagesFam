@@ -8,7 +8,7 @@
 import Foundation
 
 import SpriteKit
-
+//swiftlint:disable todo
 class DialogueBox: SKSpriteNode {
     
     var dialogTexture: SKTexture?
@@ -21,11 +21,19 @@ class DialogueBox: SKSpriteNode {
     
     init() {
         dialogTexture = SKTexture(imageNamed: "DialogBox")
+        super.init(texture: dialogTexture, color: .clear, size: (dialogTexture?.size())!)
         let attributedText = NSAttributedString(string: "a", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 28)])
         dialog = SKLabelNode(attributedText: attributedText)
-        super.init(texture: dialogTexture, color: .clear, size: (dialogTexture?.size())!)
+        dialog?.numberOfLines = 2
+        // TODO: Lógica de quebra de linhas de uma fala com  mais de uma linha.
+        //        Tentamos utilizar a logica de constraints, mas temos que mesurar os valores de constraints ideais.
+        //        let xPositionOfBack = self.frame.width * 0.45
+        //        dialog?.constraints = [
+        //            SKConstraint.positionX(SKRange(lowerLimit: -xPositionOfBack)),
+        //            SKConstraint.positionY(SKRange(lowerLimit: 130))
+        //        ]
         organizeDialog()
-
+        
     }
     
     func organizeDialog() {
@@ -38,23 +46,23 @@ class DialogueBox: SKSpriteNode {
         self.run(fadeIn)
         self.addChild(dialog!)
         dialog?.constraints = [SKConstraint.positionX(SKRange(lowerLimit: 30, upperLimit: 300)),SKConstraint.positionY(SKRange(lowerLimit: 0, upperLimit: 200))]
-       // dialog?.position = CGPoint(x: 50, y: 0)
+        // dialog?.position = CGPoint(x: 50, y: 0)
         self.addChild(nextOption)
         nextOption.size = CGSize(width: self.size.width/16, height: self.size.height/3)
         print(15*self.size.width/16)
         nextOption.constraints = [  SKConstraint.positionX(
-                                    SKRange(lowerLimit: 15*self.size.width/32)),
+                                        SKRange(lowerLimit: 15*self.size.width/32)),
                                     SKConstraint.positionY(SKRange(upperLimit: -self.size.height/3))]
         dialog?.zPosition = +1
         nextOption.zPosition = +1
-
+        
     }
-
+    
     func nextText(answer: String) {
-
+        
         var runCount = 0
         Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { timer in
-
+            
             runCount += 1
             self.dialog?.attributedText = NSAttributedString(string: answer.substring(with: 0..<runCount),
                                                              attributes: [NSAttributedString.Key.font: UIFont.pixelPlay(17)])
@@ -62,7 +70,7 @@ class DialogueBox: SKSpriteNode {
                 
                 timer.invalidate()
             }
-
+            
         }
         
     }
