@@ -8,6 +8,7 @@
 import Foundation
 import SpriteKit
 
+// swiftlint:disable for_where
 class Inventory: SKSpriteNode {
     var items: [Items]
     var textureBackground: SKSpriteNode = SKSpriteNode(imageNamed: "Inventario")

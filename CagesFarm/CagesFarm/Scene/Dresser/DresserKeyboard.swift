@@ -11,7 +11,6 @@ import GameplayKit
 import UIKit
 
 class DresserKeyboard: SKScene {
-    // swiftlint:disable identifier_name
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
     let numberSequence = [6,5,4,6]
@@ -51,7 +50,7 @@ class DresserKeyboard: SKScene {
         keyboard.addChild(viewer)
     }
 
-    /// Draws Components.
+    // Draws Components.
     private func initialDrawing() {
 
         backButton.fontName = "Dogica"
@@ -81,8 +80,6 @@ class DresserKeyboard: SKScene {
     }
 
     func touchUp(atPoint position: CGPoint) {
-        guard let keyPressed = atPoint(position) as? KeyboardNumber else { return }
-
+        // guard let keyPressed = atPoint(position) as? KeyboardNumber else { return }
     }
-
 }
