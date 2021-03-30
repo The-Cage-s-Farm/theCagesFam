@@ -32,13 +32,13 @@ class Inventory: SKSpriteNode {
 
         for item in items {
             if item.parent == nil {
-            addChild(item)
-            item.size = squares[auxPositionItem].frame.size
-            item.setScale(0.95)
-            item.position.x = squares[auxPositionItem].frame.origin.x + item.size.width/2 + 1
-            item.position.y = squares[auxPositionItem].frame.origin.y + item.size.height/2 + 1
-            auxPositionItem += 1
-            item.zPosition = +1
+                addChild(item)
+                item.size = squares[auxPositionItem].frame.size
+                item.setScale(0.95)
+                item.position.x = squares[auxPositionItem].frame.origin.x + item.size.width/2 + 1
+                item.position.y = squares[auxPositionItem].frame.origin.y + item.size.height/2 + 1
+                auxPositionItem += 1
+                item.zPosition = +1
             }
 
         }

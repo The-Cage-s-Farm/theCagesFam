@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "cama.png",
+      "filename" : "comoda_0.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "comoda_0@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "comoda_0@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
