@@ -56,7 +56,8 @@ public class InteractableObjects: SKSpriteNode {
     let objectName: String?
     var isCloseInteract = false
     var answers: [String]
-  //  var options: [String]
+    var options: [String]?
+    var itemToGive: ItemType?
     var actualAnswer = 0
     var isIteracting = false
     var isMicroInteractionON = false
@@ -97,6 +98,10 @@ public class InteractableObjects: SKSpriteNode {
         self.yScale = y
 
     }
+
+    func giveItem() {
+
+    }
     
     init(objectType: ObjectType) {
         self.objectType = objectType
@@ -114,7 +119,7 @@ public class InteractableObjects: SKSpriteNode {
 
             }
         case .comoda:
-            self.objectName = "Comoda"
+            self.objectName = "comoda_fechada"
             frontTexture = SKTexture(imageNamed: self.objectName!)
             answers = [  "Hmm, consigo abrir a primeira gaveta sem problemas..."
                        + "Porem nao tem nada","Consigo abrir a segunda gaveta, há um canivete",
@@ -127,11 +132,11 @@ public class InteractableObjects: SKSpriteNode {
         case .cama:
             self.objectName = "Cama"
             frontTexture = SKTexture(imageNamed: self.objectName!)
-            answers = ["Parece que há algo escondido no travesseiro...Oque será, preciso de um canivete pra cortar","Havia um pequeno baü"]
+            answers = ["Parece que há algo escondido no travesseiro... O que será, preciso de um canivete pra cortar","Havia um pequeno baü"]
         case .bau:
             self.objectName = "Bau"
             frontTexture = SKTexture(imageNamed: self.objectName!)
-            answers = ["Um Pequeno puzzle? oque faço?"]
+            answers = ["Um Pequeno puzzle? O que faço?"]
         case .quadroPerspectiva:
             self.objectName = "QuadroPerspectiva"
             frontTexture = SKTexture(imageNamed: self.objectName!)

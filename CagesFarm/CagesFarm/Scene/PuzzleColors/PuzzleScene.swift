@@ -8,7 +8,6 @@
 import Foundation
 import SpriteKit
 import GameplayKit
-import UIKit
 
 class PuzzleScene: SKScene {
 
@@ -65,6 +64,11 @@ class PuzzleScene: SKScene {
         addChild(backButton)
     }
 
+    private func quitScene() {
+        SceneCoordinator.coordinator.gameScene!.backgroundSound?.play()
+        SceneCoordinator.coordinator.returnToMainScene(view: self.view)
+    }
+
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch: AnyObject in touches {
             let location = touch.location(in: self)
@@ -72,15 +76,15 @@ class PuzzleScene: SKScene {
                 let handledColors = [semicircleOne.strokeColor, semicircleTwo.strokeColor, semicircleThree.strokeColor, semicircleFour.strokeColor]
                 if handledColors.elementsEqual(colorSequence) {
                     print("Correct Sequence.")
+                    let transition: SKTransition = SKTransition.fade(withDuration: 1)
+                    let scene: SKScene = OpenedTrunkScene(size: UIScreen.main.bounds.size)
+                    scene.anchorPoint = .init(x: 0.5, y: 0.5)
+                    self.view?.presentScene(scene, transition: transition)
                 } else {
                     print("Wrong Sequence.")
                 }
             } else if backButton.contains(location) {
-                let transition:SKTransition = SKTransition.fade(withDuration: 1)
-                let scene:SKScene = SceneCoordinator.coordinator.gameScene!
-                scene.anchorPoint = .init(x: 0.5, y: 0.5)
-                SceneCoordinator.coordinator.gameScene!.backgroundSound?.play()
-                self.view?.presentScene(scene, transition: transition)
+               quitScene()
             }
         }
     }
