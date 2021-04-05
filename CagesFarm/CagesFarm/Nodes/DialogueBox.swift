@@ -14,7 +14,8 @@ class DialogueBox: SKSpriteNode {
     var dialogTexture: SKTexture?
     var dialog: SKLabelNode?
     var nextOption =  SKSpriteNode(texture: SKTexture(imageNamed: "Seta"), color: .clear, size: SKTexture(imageNamed: "Seta").size())
-    
+ //   var talker = SKSpriteNode(texture: SKTexture(imageNamed: "talk_sprite"), color: <#T##UIColor#>, size: <#T##CGSize#>)
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding not supported")
     }
@@ -22,8 +23,10 @@ class DialogueBox: SKSpriteNode {
     init() {
         dialogTexture = SKTexture(imageNamed: "DialogBox")
         super.init(texture: dialogTexture, color: .clear, size: (dialogTexture?.size())!)
-        let attributedText = NSAttributedString(string: "a", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 28)])
+        let attributedText = NSAttributedString(string: "a", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 28), NSAttributedString.Key.foregroundColor: UIColor.white])
+
         dialog = SKLabelNode(attributedText: attributedText)
+
         dialog?.numberOfLines = 2
         // TODO: Lógica de quebra de linhas de uma fala com  mais de uma linha.
         //        Tentamos utilizar a logica de constraints, mas temos que mesurar os valores de constraints ideais.
@@ -64,7 +67,7 @@ class DialogueBox: SKSpriteNode {
             
             runCount += 1
             self.dialog?.attributedText = NSAttributedString(string: answer.substring(with: 0..<runCount),
-                                                             attributes: [NSAttributedString.Key.font: UIFont.pixelPlay(17)])
+                                                             attributes: [NSAttributedString.Key.font: UIFont.pixelPlay(17),NSAttributedString.Key.foregroundColor: UIColor.white])
             if runCount == answer.count {
                 
                 timer.invalidate()
