@@ -67,7 +67,7 @@ class DresserKeyboard: SKScene {
         let isValid = viewer.digit.text ?? "" == numberSequence ? true : false
         if isValid {
             addKeyToInventory()
-            SceneCoordinator.coordinator.shouldShouldKeyboardPuzzle = false
+            SceneCoordinator.coordinator.entryPuzzleScenes["keyboard"] = false
             SceneCoordinator.coordinator.gameScene!.backgroundSound?.play()
             SceneCoordinator.coordinator.returnToMainScene(view: self.view)
         }

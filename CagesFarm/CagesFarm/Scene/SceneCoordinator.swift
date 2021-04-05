@@ -13,7 +13,7 @@ class SceneCoordinator {
     static var coordinator = SceneCoordinator()
     var gameScene: GameScene?
     var puzzleScene: PuzzleScene?
-    var shouldShouldKeyboardPuzzle = true
+    var entryPuzzleScenes = ["keyboard" : true, "colors" : true]
 
     func addItemToInventory(item: String) {
         gameScene?.inventory.addItem(itemName: item)

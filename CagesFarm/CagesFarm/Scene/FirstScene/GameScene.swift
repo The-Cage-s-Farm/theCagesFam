@@ -92,15 +92,17 @@ class GameScene: SKScene {
         }
         
         if objectInTouch.objectName == "Bau" {
-            let transition: SKTransition = SKTransition.fade(withDuration: 1)
-            let scene: SKScene = PuzzleScene(size: UIScreen.main.bounds.size)
-            scene.anchorPoint = .init(x: 0.5, y: 0.5)
-            backgroundSound?.stop()
-            self.view?.presentScene(scene, transition: transition)
+            if SceneCoordinator.coordinator.entryPuzzleScenes["colors"]! {
+                let transition: SKTransition = SKTransition.fade(withDuration: 1)
+                let scene: SKScene = PuzzleScene(size: UIScreen.main.bounds.size)
+                scene.anchorPoint = .init(x: 0.5, y: 0.5)
+                backgroundSound?.stop()
+                self.view?.presentScene(scene, transition: transition)
+            }
         }
 
         if objectInTouch.objectType == .comoda {
-            if SceneCoordinator.coordinator.shouldShouldKeyboardPuzzle {
+            if SceneCoordinator.coordinator.entryPuzzleScenes["keyboard"]! {
                 let transition:SKTransition = SKTransition.fade(withDuration: 1)
                 let scene:SKScene = DresserKeyboard(size: UIScreen.main.bounds.size)
                 scene.anchorPoint = .init(x: 0.5, y: 0.5)
