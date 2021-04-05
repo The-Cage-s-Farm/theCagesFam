@@ -27,11 +27,10 @@ class DialogueBox: SKSpriteNode {
         dialog?.numberOfLines = 2
         // TODO: Lógica de quebra de linhas de uma fala com  mais de uma linha.
         //        Tentamos utilizar a logica de constraints, mas temos que mesurar os valores de constraints ideais.
-        //        let xPositionOfBack = self.frame.width * 0.45
-        //        dialog?.constraints = [
-        //            SKConstraint.positionX(SKRange(lowerLimit: -xPositionOfBack)),
-        //            SKConstraint.positionY(SKRange(lowerLimit: 130))
-        //        ]
+        dialog?.horizontalAlignmentMode = .center
+        dialog?.preferredMaxLayoutWidth = 300
+        dialog?.verticalAlignmentMode = .center
+
         organizeDialog()
         
     }
