@@ -25,7 +25,7 @@ class OpenedTrunkScene: SKScene {
 
     private func setsComponents() {
         deed.texture =  SKTexture(imageNamed: "contract")
-        deed.position = CGPoint(x: 0, y: 50)
+        deed.position = CGPoint(x: 0, y: 0)
         deed.size = CGSize(width: 300, height: 300)
         addChild(deed)
     }
