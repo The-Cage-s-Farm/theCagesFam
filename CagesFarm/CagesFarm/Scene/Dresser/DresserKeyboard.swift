@@ -13,12 +13,13 @@ import UIKit
 class DresserKeyboard: SKScene {
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
-    let numberSequence = [6,5,4,6]
+    let numberSequence = "6546"
     let keysXPosition: [Double] = [-82.0, -6.0, 74]
     let keysYIncrement: Double = 60
 
     // Puzzle's components
     let backButton = SKLabelNode()
+    let viewer = KeyboardNumber(digit: 0)
     let keyboardTexture = SKTexture(imageNamed: "teclado-matricial")
     lazy var keyboard = SKSpriteNode(texture: keyboardTexture)
 
@@ -28,7 +29,7 @@ class DresserKeyboard: SKScene {
 
     private func setupKeyboard() {
         var currentY = 117.0
-        for digit in 1...9 {
+        for digit in 1...12 {
             let keyNumber = KeyboardNumber(digit: digit)
             var xPosition = (digit % 3) - 1
             if xPosition == -1 { xPosition = 2 }
@@ -37,12 +38,53 @@ class DresserKeyboard: SKScene {
 
             keyNumber.position = CGPoint(x: keysXPosition[xPosition], y: currentY)
             keyNumber.zPosition = +2
+
+            if digit < 10 || digit == 11 {
+                if digit == 11 {
+                    keyNumber.digit.text = "0"
+                    keyNumber.numberValue = 0
+                }
+
+                keyNumber.didTouchNumberKey = didTouchNumberKey(of:)
+            } else {
+                keyNumber.digit.text = ""
+                keyNumber.checkConfirmCancelAction = checkConfirmCancelAction(isClearButton:)
+            }
+
             keyboard.addChild(keyNumber)
         }
     }
 
+    private func checkConfirmCancelAction(isClearButton: Bool) {
+        if isClearButton {
+            clearViewer()
+        } else {
+            checkValidCode()
+        }
+    }
+
+    private func checkValidCode() {
+        let isValid = viewer.digit.text ?? "" == numberSequence ? true : false
+        if isValid {
+            addKeyToInventory()
+            SceneCoordinator.coordinator.shouldShouldKeyboardPuzzle = false
+            SceneCoordinator.coordinator.returnToMainScene(view: self.view)
+        }
+    }
+
+    private func addKeyToInventory() {
+        SceneCoordinator.coordinator.addItemToInventory(item: ItemType.keys.rawValue)
+    }
+
+    private func clearViewer() {
+        let currentText = viewer.digit.text ?? ""
+        if !currentText.isEmpty {
+            viewer.digit.text?.removeLast()
+        }
+    }
+
     private func setupPasswordViewer() {
-        let viewer = KeyboardNumber(digit: 0)
+        viewer.shouldHighlight = false
         viewer.digit.fontColor = .black
         viewer.digit.text = ""
         viewer.digit.horizontalAlignmentMode = .center
@@ -71,15 +113,33 @@ class DresserKeyboard: SKScene {
         setupPasswordViewer()
     }
 
-    func touchDown(atPoint position: CGPoint) {
-
+    private func vibrateValidCode() {
+        let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: .light)
+        impactFeedbackgenerator.prepare()
+        impactFeedbackgenerator.impactOccurred()
     }
 
-    func touchMoved(toPoint position: CGPoint) {
-
+    private func didExceedNumberCount() {
+        let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: .heavy)
+        impactFeedbackgenerator.prepare()
+        impactFeedbackgenerator.impactOccurred()
     }
 
-    func touchUp(atPoint position: CGPoint) {
-        // guard let keyPressed = atPoint(position) as? KeyboardNumber else { return }
+    private func didTouchNumberKey(of number: Int) {
+        let textSize = viewer.digit.text?.count ?? 0
+        if !(textSize >= 4) {
+            viewer.digit.text?.append("\(number)")
+        } else {
+            didExceedNumberCount()
+        }
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+            if backButton.contains(location) {
+                SceneCoordinator.coordinator.returnToMainScene(view: self.view)
+            }
+        }
     }
 }
