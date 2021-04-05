@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Interruptor - on.png",
+      "filename" : "light_switch_on.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "light_switch_on@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "light_switch_on@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
