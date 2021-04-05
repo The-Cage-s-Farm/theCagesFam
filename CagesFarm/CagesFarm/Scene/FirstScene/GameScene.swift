@@ -50,7 +50,7 @@ class GameScene: SKScene {
         quadroPerspectiva.setScale(1)
         comoda.setScale(0.45)
 
-        //Positions
+        // Positions
         tony.position = CGPoint(x: 250, y: -35)
         tony.size = CGSize(width: 120, height: 120)
         cama.position = CGPoint(x: -255, y: -115)
@@ -83,10 +83,12 @@ class GameScene: SKScene {
         }
 
         if objectInTouch.objectType == .comoda {
-            let transition:SKTransition = SKTransition.fade(withDuration: 1)
-            let scene:SKScene = DresserKeyboard(size: UIScreen.main.bounds.size)
-            scene.anchorPoint = .init(x: 0.5, y: 0.5)
-            self.view?.presentScene(scene, transition: transition)
+            if SceneCoordinator.coordinator.shouldShouldKeyboardPuzzle {
+                let transition:SKTransition = SKTransition.fade(withDuration: 1)
+                let scene:SKScene = DresserKeyboard(size: UIScreen.main.bounds.size)
+                scene.anchorPoint = .init(x: 0.5, y: 0.5)
+                self.view?.presentScene(scene, transition: transition)
+            }
         }
         
         if objectInTouch.isCloseInteract {
@@ -101,7 +103,7 @@ class GameScene: SKScene {
         }
     }
     func makeMCWalk(pos: CGPoint) {
-        //INVERTER POSICAO DEPENDENDO DE ONDE ANDA AS
+        // INVERTER POSICAO DEPENDENDO DE ONDE ANDA AS
         let itIsInventory = atPoint(pos)
         if !(itIsInventory is Inventory) && !(itIsInventory is SKShapeNode) {
         if !tony.isWalking && pos.x < tony.frame.minX {
