@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "canivete.png",
+      "filename" : "tony_getting_up_sprite_18.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "canivete@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "canivete@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
