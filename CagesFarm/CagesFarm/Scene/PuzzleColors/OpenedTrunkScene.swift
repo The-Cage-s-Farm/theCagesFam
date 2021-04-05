@@ -44,6 +44,7 @@ class OpenedTrunkScene: SKScene {
             } else if dialogBox.contains(location) {
                 let transition: SKTransition = SKTransition.fade(withDuration: 1)
                 let scene: SKScene = SceneCoordinator.coordinator.gameScene!
+                SceneCoordinator.coordinator.gameScene!.backgroundSound?.play()
                 self.view?.presentScene(scene, transition: transition)
             }
         }

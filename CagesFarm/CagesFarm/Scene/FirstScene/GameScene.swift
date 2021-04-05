@@ -7,12 +7,15 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 // swiftlint:disable identifier_name unused_optional_binding
 class GameScene: SKScene {
 
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
+
+    var backgroundSound: AVAudioPlayer?
     
     private var lastUpdateTime : TimeInterval = 0
     private var label : SKLabelNode?
@@ -44,7 +47,20 @@ class GameScene: SKScene {
         backGround.zPosition = -1
         tony.zPosition = +1
         dialogBox.zPosition = +1
+
+        let path = Bundle.main.path(forResource: "Mysterious.wav", ofType:nil)!
+        let url = URL(fileURLWithPath: path)
+
+        do {
+            backgroundSound = try AVAudioPlayer(contentsOf: url)
+            backgroundSound?.numberOfLoops = -1
+            backgroundSound?.play()
+        } catch {
+            //Error("Can not read sound.")
+        }
+
     }
+
     override func didChangeSize(_ oldSize: CGSize) {
         quadro.setScale(1)
         quadroPerspectiva.setScale(1)
@@ -76,17 +92,21 @@ class GameScene: SKScene {
         }
         
         if objectInTouch.objectName == "Bau" {
-            let transition: SKTransition = SKTransition.fade(withDuration: 1)
-            let scene: SKScene = PuzzleScene(size: UIScreen.main.bounds.size)
-            scene.anchorPoint = .init(x: 0.5, y: 0.5)
-            self.view?.presentScene(scene, transition: transition)
+            if SceneCoordinator.coordinator.entryPuzzleScenes["colors"]! {
+                let transition: SKTransition = SKTransition.fade(withDuration: 1)
+                let scene: SKScene = PuzzleScene(size: UIScreen.main.bounds.size)
+                scene.anchorPoint = .init(x: 0.5, y: 0.5)
+                backgroundSound?.stop()
+                self.view?.presentScene(scene, transition: transition)
+            }
         }
 
         if objectInTouch.objectType == .comoda {
-            if SceneCoordinator.coordinator.shouldShouldKeyboardPuzzle {
+            if SceneCoordinator.coordinator.entryPuzzleScenes["keyboard"]! {
                 let transition:SKTransition = SKTransition.fade(withDuration: 1)
                 let scene:SKScene = DresserKeyboard(size: UIScreen.main.bounds.size)
                 scene.anchorPoint = .init(x: 0.5, y: 0.5)
+                backgroundSound?.stop()
                 self.view?.presentScene(scene, transition: transition)
             }
         }

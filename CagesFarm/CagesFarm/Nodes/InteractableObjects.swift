@@ -101,7 +101,6 @@ public class InteractableObjects: SKSpriteNode {
 
     func giveItem() {
 
-        
     }
     
     init(objectType: ObjectType) {
