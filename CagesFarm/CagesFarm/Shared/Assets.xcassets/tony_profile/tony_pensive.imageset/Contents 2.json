@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "canivete.png",
+      "filename" : "tony_pensive.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "canivete@2x.png",
+      "filename" : "tony_pensive@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "canivete@3x.png",
+      "filename" : "tony_pensive@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

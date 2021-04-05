@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "canivete.png",
+      "filename" : "Quadro clone 2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "canivete@2x.png",
+      "filename" : "Quadro clone 2@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "canivete@3x.png",
+      "filename" : "Quadro clone 2@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

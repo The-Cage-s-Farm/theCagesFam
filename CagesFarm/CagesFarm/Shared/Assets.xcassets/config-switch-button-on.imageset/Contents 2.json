@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "canivete.png",
+      "filename" : "botao_config_desligado.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "canivete@2x.png",
+      "filename" : "botao_config_desligado@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "canivete@3x.png",
+      "filename" : "botao_config_desligado@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

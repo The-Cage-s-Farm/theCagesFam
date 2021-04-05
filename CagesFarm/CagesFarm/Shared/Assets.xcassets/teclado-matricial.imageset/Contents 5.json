@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "canivete.png",
+      "filename" : "teclado_matricial.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "canivete@2x.png",
+      "filename" : "teclado_matricial@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "canivete@3x.png",
+      "filename" : "teclado_matricial@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
