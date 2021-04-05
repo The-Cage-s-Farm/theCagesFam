@@ -8,12 +8,18 @@
 import Foundation
 
 import SpriteKit
-//swiftlint:disable todo
+
+protocol DialogueBoxDelegate: class {
+    func didFinishShowingText()
+}
+
+// swiftlint:disable todo
 class DialogueBox: SKSpriteNode {
     
     var dialogTexture: SKTexture?
     var dialog: SKLabelNode?
     var nextOption =  SKSpriteNode(texture: SKTexture(imageNamed: "Seta"), color: .clear, size: SKTexture(imageNamed: "Seta").size())
+    weak var delegate: DialogueBoxDelegate?
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding not supported")
@@ -69,8 +75,8 @@ class DialogueBox: SKSpriteNode {
             if runCount == answer.count {
                 
                 timer.invalidate()
+                self.delegate?.didFinishShowingText()
             }
-            
         }
         
     }
