@@ -121,6 +121,15 @@ class GameScene: SKScene {
                 objectInTouch.nextDialogue()
             }
         }
+
+        if objectInTouch.objectName == "Interruptor" {
+            if SceneCoordinator.coordinator.entryPuzzleScenes["interrupter"]! {
+                let transition: SKTransition = SKTransition.fade(withDuration: 1)
+                let scene: SKScene = InterrupterScene(size: UIScreen.main.bounds.size)
+                scene.anchorPoint = .init(x: 0.5, y: 0.5)
+                self.view?.presentScene(scene, transition: transition)
+            }
+        }
     }
     func makeMCWalk(pos: CGPoint) {
         // INVERTER POSICAO DEPENDENDO DE ONDE ANDA AS

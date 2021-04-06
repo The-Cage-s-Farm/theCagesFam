@@ -113,7 +113,7 @@ public class InteractableObjects: SKSpriteNode {
             self.objectName = "Quadro"
         case .interruptor:
             self.objectName = "Interruptor"
-            frontTexture = SKTexture(imageNamed: "InterruptorOff")
+            frontTexture = SKTexture(imageNamed: "light_switch_off")
             answers = ["-- Hmm, pergunto-me se este interruptor ligará a luz"]
             func lightOn() {
 
