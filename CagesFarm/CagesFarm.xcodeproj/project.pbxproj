@@ -27,7 +27,9 @@
 		0F9EA92B25FBADD100EC66D6 /* DialogueBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA92A25FBADD100EC66D6 /* DialogueBox.swift */; };
 		0FA7D57D2608B0620000DD65 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA7D57C2608B0620000DD65 /* Inventory.swift */; };
 		77DA48DA26136CE40020508F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77DA48D926136CE40020508F /* Assets.xcassets */; };
+		7C07F2B3261C834F0011E5E1 /* InterrupterScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C07F2B2261C834F0011E5E1 /* InterrupterScene.swift */; };
 		7C460CF6260E046B00CF0415 /* OpenedTrunkScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C460CF5260E046B00CF0415 /* OpenedTrunkScene.swift */; };
+		7C55CD7D260B6AF200C0E76D /* Mysterious.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7C55CD7C260B6AF200C0E76D /* Mysterious.wav */; };
 		7C5B37D5260A27830071DFE6 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5B37D4260A27830071DFE6 /* SceneCoordinator.swift */; };
 		7C9E819F2606B83D00D61B19 /* SemicirclePuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E819E2606B83D00D61B19 /* SemicirclePuzzle.swift */; };
 		7CF504C226039236002EBFF3 /* PuzzleScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7CF504C126039236002EBFF3 /* PuzzleScene.sks */; };
@@ -96,7 +98,9 @@
 		0FA7D57C2608B0620000DD65 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
 		77DA48CF26136A760020508F /* CagesFarm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CagesFarm.entitlements; sourceTree = "<group>"; };
 		77DA48D926136CE40020508F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7C07F2B2261C834F0011E5E1 /* InterrupterScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterrupterScene.swift; sourceTree = "<group>"; };
 		7C460CF5260E046B00CF0415 /* OpenedTrunkScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenedTrunkScene.swift; sourceTree = "<group>"; };
+		7C55CD7C260B6AF200C0E76D /* Mysterious.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Mysterious.wav; path = ../../../../../../../../../../Downloads/Mysterious.wav; sourceTree = "<group>"; };
 		7C5B37D4260A27830071DFE6 /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		7C9E819E2606B83D00D61B19 /* SemicirclePuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemicirclePuzzle.swift; sourceTree = "<group>"; };
 		7CF504C126039236002EBFF3 /* PuzzleScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PuzzleScene.sks; sourceTree = "<group>"; };
@@ -254,6 +258,7 @@
 		0F9EA8F025F7B6D800EC66D6 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				7C07F2B1261C83260011E5E1 /* Interrupter */,
 				E924230B260E0BED00FF7E20 /* Dresser */,
 				7CF504B526038F75002EBFF3 /* PuzzleColors */,
 				E956FB7C25FA485200481E9F /* Menu */,
@@ -273,6 +278,22 @@
 				E9B103BB25FA50FD0097C80D /* LaunchScreen.storyboard */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		7C07F2B1261C83260011E5E1 /* Interrupter */ = {
+			isa = PBXGroup;
+			children = (
+				7C07F2B2261C834F0011E5E1 /* InterrupterScene.swift */,
+			);
+			path = Interrupter;
+			sourceTree = "<group>";
+		};
+		7C55CD7B260B6AE500C0E76D /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				7C55CD7C260B6AF200C0E76D /* Mysterious.wav */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		7C5B37D0260A27600071DFE6 /* FirstScene */ = {
@@ -514,6 +535,7 @@
 				7C5B37D5260A27830071DFE6 /* SceneCoordinator.swift in Sources */,
 				0F9EA8FA25F7BAEC00EC66D6 /* Characters.swift in Sources */,
 				0FA7D57D2608B0620000DD65 /* Inventory.swift in Sources */,
+				7C07F2B3261C834F0011E5E1 /* InterrupterScene.swift in Sources */,
 				0F918096260B6E140079B2E1 /* Items.swift in Sources */,
 				E904C5D725FF8E6000654E6B /* UIFontsExtension.swift in Sources */,
 				E9C9F38425FA46EC00DBFEA6 /* MenuViewController.swift in Sources */,
