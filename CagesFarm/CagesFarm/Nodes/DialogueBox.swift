@@ -8,23 +8,33 @@
 import Foundation
 
 import SpriteKit
-//swiftlint:disable todo line_length
-class DialogueBox: SKSpriteNode {
+
+protocol DialogueBoxDelegate: class {
+    func didFinishShowingText()
+}
+
+// swiftlint:disable todo
+
+class DialogueBox: SKSpriteNode,ImageRetriever {
     
     var dialogTexture: SKTexture?
     var dialog: SKLabelNode?
     var nextOption =  SKSpriteNode(texture: SKTexture(imageNamed: "Seta"), color: .clear, size: SKTexture(imageNamed: "Seta").size())
- //   var talker = SKSpriteNode(texture: SKTexture(imageNamed: "talk_sprite"), color: <#T##UIColor#>, size: <#T##CGSize#>)
+    var talker: SKTexture?
+
+
+    weak var delegate: DialogueBoxDelegate?
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding not supported")
     }
     
     init() {
+
         dialogTexture = SKTexture(imageNamed: "DialogBox")
         super.init(texture: dialogTexture, color: .clear, size: (dialogTexture?.size())!)
         let attributedText = NSAttributedString(string: "a", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 28), NSAttributedString.Key.foregroundColor: UIColor.white])
-
+        //let initialTonyFace: UIImage = image(.tonySmiling)
         dialog = SKLabelNode(attributedText: attributedText)
 
         dialog?.numberOfLines = 2
@@ -71,8 +81,8 @@ class DialogueBox: SKSpriteNode {
             if runCount == answer.count {
                 
                 timer.invalidate()
+                self.delegate?.didFinishShowingText()
             }
-            
         }
         
     }

@@ -10,7 +10,7 @@ import GameplayKit
 import AVFoundation
 
 // swiftlint:disable identifier_name unused_optional_binding
-class GameScene: SKScene {
+class GameScene: SKScene, DialogueBoxDelegate {
 
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
@@ -31,6 +31,8 @@ class GameScene: SKScene {
     private var dialogBox = DialogueBox()
     private var backGround = SKSpriteNode(imageNamed: "QuartoBackground")
     var inventory = Inventory(items: [])
+    private var lastInteraction: LastInteraction?
+
     override func sceneDidLoad() {
         SceneCoordinator.coordinator.gameScene = self
         self.scaleMode = .aspectFit
@@ -44,6 +46,7 @@ class GameScene: SKScene {
         self.addChild(cama)
         self.addChild(quadroPerspectiva)
         self.addChild(inventory)
+        dialogBox.delegate = self
         backGround.zPosition = -1
         tony.zPosition = +1
         dialogBox.zPosition = +1
@@ -102,13 +105,14 @@ class GameScene: SKScene {
             }
         }
 
-        if objectInTouch.objectType == .comoda {
-            if SceneCoordinator.coordinator.entryPuzzleScenes["keyboard"]! {
-                let transition:SKTransition = SKTransition.fade(withDuration: 1)
-                let scene:SKScene = DresserKeyboard(size: UIScreen.main.bounds.size)
-                scene.anchorPoint = .init(x: 0.5, y: 0.5)
-                backgroundSound?.stop()
-                self.view?.presentScene(scene, transition: transition)
+        if  objectInTouch.objectType == .comoda {
+            if let shouldShowPuzzle = SceneCoordinator.coordinator.shouldShouldKeyboardPuzzle {
+                if shouldShowPuzzle {
+                    objectInTouch.actualAnswer = 2
+                } else {
+                    objectInTouch.actualAnswer = 3
+                }
+
             }
         }
         
@@ -119,7 +123,12 @@ class GameScene: SKScene {
                 self.addChild(dialogBox)
                 self.dialogBox.nextText(answer: objectInTouch.answers[actualAnswerID])
                 tony.isWalking = true
-                objectInTouch.nextDialogue()
+                lastInteraction = nil
+                lastInteraction = LastInteraction(objectType: objectInTouch,
+                                                  currentAnswer: objectInTouch.actualAnswer)
+                if objectInTouch.canProceedInteraction {
+                    objectInTouch.nextDialogue()
+                }
             }
         }
     }
@@ -138,6 +147,45 @@ class GameScene: SKScene {
                 tony.walk(posx: pos.x)
             }
         }
+        }
+    }
+
+    func didShowDialog(currentDialog: Int, object: InteractableObjects) {
+        switch object.objectType {
+        case .comoda:
+            handleComodaTouch(currentDialog: currentDialog, comoda: object)
+        default:
+            break
+        }
+    }
+
+    func didFinishShowingText() {
+        if let lastInteraction = lastInteraction {
+            didShowDialog(currentDialog: lastInteraction.currentAnswer,
+                          object: lastInteraction.objectType)
+        }
+    }
+
+    private func handleComodaTouch(currentDialog: Int, comoda: InteractableObjects) {
+        let coordinator = SceneCoordinator.coordinator
+        if currentDialog == 1 {
+            if coordinator.shouldAddKnife {
+                coordinator.addItemToInventory(item: ItemType.knife.rawValue)
+                coordinator.shouldAddKnife = false
+            }
+        }
+
+        if currentDialog == 2 && coordinator.shouldShouldKeyboardPuzzle == nil {
+            coordinator.shouldShouldKeyboardPuzzle = true
+        }
+        
+        comoda.canProceedInteraction = !(coordinator.shouldShouldKeyboardPuzzle ?? false)
+
+        if coordinator.shouldShouldKeyboardPuzzle ?? false {
+            let transition:SKTransition = SKTransition.fade(withDuration: 1)
+            let scene:SKScene = DresserKeyboard(size: UIScreen.main.bounds.size)
+            scene.anchorPoint = .init(x: 0.5, y: 0.5)
+            self.view?.presentScene(scene, transition: transition)
         }
     }
     
@@ -172,11 +220,11 @@ class GameScene: SKScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
-    
+
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
-    
+
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         

@@ -57,7 +57,7 @@ public class Characters: SKSpriteNode {
             for number in Range(0...5) {
                 self.textures.append(SKTexture(imageNamed: "sprite_\(number)"))
             }
-            self.characterName = "Tony"
+            self.characterName = "tony"
         case .mrCage:
             for number in Range(0...5) {
                 self.textures.append(SKTexture(imageNamed: "sprite_\(number)"))

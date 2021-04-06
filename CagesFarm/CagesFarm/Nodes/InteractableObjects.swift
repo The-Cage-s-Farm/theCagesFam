@@ -61,6 +61,7 @@ public class InteractableObjects: SKSpriteNode {
     var actualAnswer = 0
     var isIteracting = false
     var isMicroInteractionON = false
+    var canProceedInteraction = true
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding not supported")
