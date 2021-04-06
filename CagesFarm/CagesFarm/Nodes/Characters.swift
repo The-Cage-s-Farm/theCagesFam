@@ -14,20 +14,20 @@ public enum CharacterType :Int {
          mrCage,
          mrsCage
 }
-
 public class Characters: SKSpriteNode {
     let characterType :CharacterType
     var textures :[SKTexture] = []
     let characterName: String?
     var isWalking = false
     var actualImageID = 0
+    var feeling: String = "Sorriso"
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding not supported")
     }
     
     func walk(posx: CGFloat) {
-        
+
         let beginWalk = SKAction.run {
             self.isWalking = true
             Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
@@ -57,7 +57,7 @@ public class Characters: SKSpriteNode {
             for number in Range(0...5) {
                 self.textures.append(SKTexture(imageNamed: "sprite_\(number)"))
             }
-            self.characterName = "Tony"
+            self.characterName = "tony"
         case .mrCage:
             for number in Range(0...5) {
                 self.textures.append(SKTexture(imageNamed: "sprite_\(number)"))

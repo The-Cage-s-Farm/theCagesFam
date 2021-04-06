@@ -15,6 +15,9 @@ class SceneCoordinator {
     var puzzleScene: PuzzleScene?
     var entryPuzzleScenes = ["keyboard" : true, "colors" : true]
 
+    var shouldShouldKeyboardPuzzle: Bool?
+    var shouldAddKnife = true
+
     func addItemToInventory(item: String) {
         gameScene?.inventory.addItem(itemName: item)
     }
@@ -25,4 +28,9 @@ class SceneCoordinator {
         scene.anchorPoint = .init(x: 0.5, y: 0.5)
         view?.presentScene(scene, transition: transition)
     }
+}
+
+struct LastInteraction {
+    var objectType: InteractableObjects
+    var currentAnswer: Int
 }
