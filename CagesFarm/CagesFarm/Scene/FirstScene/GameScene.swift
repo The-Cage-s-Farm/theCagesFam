@@ -48,11 +48,12 @@ class GameScene: SKScene {
         tony.zPosition = +1
         dialogBox.zPosition = +1
 
-        let path = Bundle.main.path(forResource: "Mysterious.wav", ofType:nil)!
-        let url = URL(fileURLWithPath: path)
+        // let path = Bundle.main.path(forResource: "Mysterious.wav", ofType:nil)!
+        //let url = URL(fileURLWithPath: path)
+        let data = NSDataAsset(name: "Mysterious")!.data
 
         do {
-            backgroundSound = try AVAudioPlayer(contentsOf: url)
+            backgroundSound = try AVAudioPlayer(data: data)
             backgroundSound?.numberOfLoops = -1
             backgroundSound?.play()
         } catch {

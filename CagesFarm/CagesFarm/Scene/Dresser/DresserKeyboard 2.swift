@@ -11,7 +11,7 @@ import GameplayKit
 import UIKit
 
 class DresserKeyboard: SKScene {
-    // swiftlint:disable identifier_name
+
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
     let numberSequence = [6,5,4,6]

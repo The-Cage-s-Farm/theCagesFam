@@ -8,7 +8,7 @@
 import Foundation
 
 import SpriteKit
-//swiftlint:disable todo
+//swiftlint:disable todo line_length
 class DialogueBox: SKSpriteNode {
     
     var dialogTexture: SKTexture?

@@ -14,9 +14,6 @@ public enum CharacterType :Int {
          mrCage,
          mrsCage
 }
-
-
-
 public class Characters: SKSpriteNode {
     let characterType :CharacterType
     var textures :[SKTexture] = []
