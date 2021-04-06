@@ -24,7 +24,6 @@
 		0F9EA92325FA835F00EC66D6 /* InteractableObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA92225FA835F00EC66D6 /* InteractableObjects.swift */; };
 		0F9EA92B25FBADD100EC66D6 /* DialogueBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA92A25FBADD100EC66D6 /* DialogueBox.swift */; };
 		0FA7D57D2608B0620000DD65 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA7D57C2608B0620000DD65 /* Inventory.swift */; };
-		7C55CD7D260B6AF200C0E76D /* Mysterious.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7C55CD7C260B6AF200C0E76D /* Mysterious.wav */; };
 		77DA48DA26136CE40020508F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77DA48D926136CE40020508F /* Assets.xcassets */; };
 		7C460CF6260E046B00CF0415 /* OpenedTrunkScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C460CF5260E046B00CF0415 /* OpenedTrunkScene.swift */; };
 		7C5B37D5260A27830071DFE6 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5B37D4260A27830071DFE6 /* SceneCoordinator.swift */; };
@@ -91,7 +90,6 @@
 		0F9EA92225FA835F00EC66D6 /* InteractableObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractableObjects.swift; sourceTree = "<group>"; };
 		0F9EA92A25FBADD100EC66D6 /* DialogueBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueBox.swift; sourceTree = "<group>"; };
 		0FA7D57C2608B0620000DD65 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
-		7C55CD7C260B6AF200C0E76D /* Mysterious.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Mysterious.wav; path = ../../../../../../../../../../Downloads/Mysterious.wav; sourceTree = "<group>"; };
 		77DA48CF26136A760020508F /* CagesFarm.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CagesFarm.entitlements; sourceTree = "<group>"; };
 		77DA48D926136CE40020508F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C460CF5260E046B00CF0415 /* OpenedTrunkScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenedTrunkScene.swift; sourceTree = "<group>"; };
@@ -263,21 +261,12 @@
 		0F9EA91B25F7BB6B00EC66D6 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				7C55CD7B260B6AE500C0E76D /* Sounds */,
 				77DA48D926136CE40020508F /* Assets.xcassets */,
 				E904C5DB25FF902100654E6B /* Fonts */,
 				0F9EA8B425F660DF00EC66D6 /* AppDelegate.swift */,
 				E9B103BB25FA50FD0097C80D /* LaunchScreen.storyboard */,
 			);
 			path = Shared;
-			sourceTree = "<group>";
-		};
-		7C55CD7B260B6AE500C0E76D /* Sounds */ = {
-			isa = PBXGroup;
-			children = (
-				7C55CD7C260B6AF200C0E76D /* Mysterious.wav */,
-			);
-			path = Sounds;
 			sourceTree = "<group>";
 		};
 		7C5B37D0260A27600071DFE6 /* FirstScene */ = {
@@ -454,7 +443,6 @@
 				77DA48DA26136CE40020508F /* Assets.xcassets in Resources */,
 				E904C5EC25FF907400654E6B /* dogicabold.ttf in Resources */,
 				E904C5E025FF904D00654E6B /* pixelplay.ttf in Resources */,
-				7C55CD7D260B6AF200C0E76D /* Mysterious.wav in Resources */,
 				E904C5EB25FF907400654E6B /* dogica.ttf in Resources */,
 				E9B103BC25FA50FD0097C80D /* LaunchScreen.storyboard in Resources */,
 				E904C5DF25FF904D00654E6B /* Pixeland.ttf in Resources */,
@@ -686,7 +674,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = CagesFarm/CagesFarm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BABNQ3LD22;
+				DEVELOPMENT_TEAM = VH525588L5;
 				INFOPLIST_FILE = CagesFarm/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -707,7 +695,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = CagesFarm/CagesFarm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BABNQ3LD22;
+				DEVELOPMENT_TEAM = VH525588L5;
 				INFOPLIST_FILE = CagesFarm/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
