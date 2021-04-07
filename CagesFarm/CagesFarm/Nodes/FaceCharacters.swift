@@ -10,7 +10,6 @@ import  Foundation
 import SpriteKit
 import UIKit
 
-
 public class FaceCharacters: SKSpriteNode, ImageRetriever {
     var textures :[SKTexture] = []
     let characterName: String? = "tony"
@@ -23,8 +22,6 @@ public class FaceCharacters: SKSpriteNode, ImageRetriever {
     }
 
     init() {
-
-
         super.init(texture: textures[0], color: .clear, size: textures[0].size())
     }
 }
