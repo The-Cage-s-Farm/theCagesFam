@@ -98,6 +98,12 @@ class GameScene: SKScene {
                 scene.anchorPoint = .init(x: 0.5, y: 0.5)
                 backgroundSound?.stop()
                 self.view?.presentScene(scene, transition: transition)
+            } else {
+                let transition: SKTransition = SKTransition.fade(withDuration: 1)
+                let scene: SKScene = OpenedTrunkScene(size: UIScreen.main.bounds.size)
+                scene.anchorPoint = .init(x: 0.5, y: 0.5)
+                backgroundSound?.stop()
+                self.view?.presentScene(scene, transition: transition)
             }
         }
 

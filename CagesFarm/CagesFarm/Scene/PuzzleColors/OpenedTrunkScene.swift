@@ -36,7 +36,10 @@ class OpenedTrunkScene: SKScene {
             if deed.contains(location) {
                 dialogBox.zPosition = +1
                 dialogBox.position = CGPoint(x: 0, y: -150)
-                SceneCoordinator.coordinator.gameScene!.inventory.addItem(itemName: "contract")
+                if SceneCoordinator.coordinator.entryPuzzleScenes["colors"]! {
+                    SceneCoordinator.coordinator.gameScene!.inventory.addItem(itemName: "contract")
+                }
+                SceneCoordinator.coordinator.entryPuzzleScenes["colors"] = false
                 self.addChild(dialogBox)
                 self.deed.removeFromParent()
                 self.deed.size = CGSize(width: 0, height: 0)
