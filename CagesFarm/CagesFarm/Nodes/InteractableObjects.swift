@@ -10,21 +10,19 @@ import Foundation
 import SpriteKit
 
 // swiftlint:disable identifier_name
-
 extension SKSpriteNode {
-
+    
     func drawBorder(color: UIColor, width: CGFloat) {
-
+        
         for layer in self.children where layer.name == "border" {
-
-                layer.removeFromParent()
-
+            layer.removeFromParent()
+            
         }
-
+        
         let imageSize = self.texture?.size()
-
+        
         let lineWidth = (imageSize!.width / self.size.width) * width
-
+        
         let shapeNode = SKShapeNode(rect: CGRect(x: -imageSize!.width/2, y: -imageSize!.height/2, width: imageSize!.width, height: imageSize!.height))
         shapeNode.fillColor = .clear
         shapeNode.strokeColor = color
@@ -32,22 +30,21 @@ extension SKSpriteNode {
         shapeNode.name = "border"
         shapeNode.zPosition = 999
         self.addChild(shapeNode)
-
+        
         self.zPosition = 1000
-
+        
     }
-
+    
 }
 
 public enum ObjectType :Int {
     case quadro,
-    interruptor,
-    cama,
-    comoda,
-    tapete,
-    bau,
-    quadroPerspectiva
-
+         interruptor,
+         cama,
+         comoda,
+         tapete,
+         bau,
+         quadroPerspectiva
 }
 
 public class InteractableObjects: SKSpriteNode {
@@ -62,7 +59,7 @@ public class InteractableObjects: SKSpriteNode {
     var isIteracting = false
     var isMicroInteractionON = false
     var canProceedInteraction = true
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding not supported")
     }
@@ -87,26 +84,22 @@ public class InteractableObjects: SKSpriteNode {
     
     func nextDialogue() {
         if !(actualAnswer == answers.count - 1) {
-            
-            actualAnswer += 1
-        
+            actualAnswer += 1            
         }
     }
-
+    
     func makeRatio(x:CGFloat, y: CGFloat) {
-
         self.xScale = x
         self.yScale = y
-
     }
-
+    
     func giveItem() {
-
+        
     }
     
     init(objectType: ObjectType) {
         self.objectType = objectType
-    
+        
         switch objectType {
         case .quadro:
             frontTexture = SKTexture(imageNamed: "Quadro")
@@ -117,13 +110,13 @@ public class InteractableObjects: SKSpriteNode {
             frontTexture = SKTexture(imageNamed: "light_switch_off")
             answers = ["-- Hmm, pergunto-me se este interruptor ligará a luz"]
             func lightOn() {
-
+                
             }
         case .comoda:
             self.objectName = "comoda_fechada"
             frontTexture = SKTexture(imageNamed: self.objectName!)
             answers = [  "Hmm, consigo abrir a primeira gaveta sem problemas..."
-                       + "Porem nao tem nada","Consigo abrir a segunda gaveta, há um canivete",
+                            + "Porem nao tem nada","Consigo abrir a segunda gaveta, há um canivete",
                          "A Terceira gaveta possui um senha para abrir, qual será?",
                          "Outra gaveta sem nada"]
         case .tapete:
@@ -142,10 +135,8 @@ public class InteractableObjects: SKSpriteNode {
             self.objectName = "QuadroPerspectiva"
             frontTexture = SKTexture(imageNamed: self.objectName!)
             answers = ["Bonito"]
-
         }
         
         super.init(texture: frontTexture, color: .clear, size: frontTexture.size())
     }
-    
 }

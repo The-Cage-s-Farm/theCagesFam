@@ -11,10 +11,10 @@ import AVFoundation
 
 // swiftlint:disable identifier_name unused_optional_binding cyclomatic_complexity
 class GameScene: SKScene, DialogueBoxDelegate {
-
+    
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
-
+    
     var backgroundSound: AVAudioPlayer?
     
     private var lastUpdateTime : TimeInterval = 0
@@ -29,16 +29,16 @@ class GameScene: SKScene, DialogueBoxDelegate {
     private var tapete = InteractableObjects(objectType: .tapete)
     private var quadroPerspectiva = InteractableObjects(objectType: .quadroPerspectiva)
     private var dialogBox = DialogueBox()
-    private var backGround = SKSpriteNode(imageNamed: "QuartoBackground")
+    private var background = SKSpriteNode(imageNamed: "QuartoBackground")
     var inventory = Inventory(items: [])
     private var lastInteraction: LastInteraction?
-
+    
     override func sceneDidLoad() {
         SceneCoordinator.coordinator.gameScene = self
         self.scaleMode = .aspectFit
         self.addChild(tony)
         self.addChild(quadro)
-        self.addChild(backGround)
+        self.addChild(background)
         self.addChild(bau)
         self.addChild(comoda)
         self.addChild(interruptor)
@@ -47,12 +47,12 @@ class GameScene: SKScene, DialogueBoxDelegate {
         self.addChild(quadroPerspectiva)
         self.addChild(inventory)
         dialogBox.delegate = self
-        backGround.zPosition = -1
+        background.zPosition = -1
         tony.zPosition = +1
         dialogBox.zPosition = +1
         
         let data = NSDataAsset(name: "Mysterious")!.data
-
+        
         do {
             backgroundSound = try AVAudioPlayer(data: data)
             backgroundSound?.numberOfLoops = -1
@@ -60,14 +60,13 @@ class GameScene: SKScene, DialogueBoxDelegate {
         } catch {
             //Error("Can not read sound.")
         }
-
     }
-
+    
     override func didChangeSize(_ oldSize: CGSize) {
         quadro.setScale(1)
         quadroPerspectiva.setScale(1)
         comoda.setScale(0.45)
-
+        
         // Positions
         tony.position = CGPoint(x: 250, y: -35)
         tony.size = CGSize(width: 120, height: 120)
@@ -80,7 +79,7 @@ class GameScene: SKScene, DialogueBoxDelegate {
         quadroPerspectiva.position = CGPoint(x: -250, y: 45)
         quadroPerspectiva.xScale = -1
         interruptor.position = CGPoint(x: 240, y: 10)
-        bau.position = CGPoint(x: -150, y: -43)
+        bau.position = CGPoint(x: -150, y: -53)
     }
     
     func interactionObject(pos: CGPoint) {
@@ -102,7 +101,7 @@ class GameScene: SKScene, DialogueBoxDelegate {
                 self.view?.presentScene(scene, transition: transition)
             }
         }
-
+        
         if  objectInTouch.objectType == .comoda {
             if let shouldShowPuzzle = SceneCoordinator.coordinator.shouldShouldKeyboardPuzzle {
                 if shouldShowPuzzle {
@@ -110,7 +109,7 @@ class GameScene: SKScene, DialogueBoxDelegate {
                 } else {
                     objectInTouch.actualAnswer = 3
                 }
-
+                
             }
         }
         
@@ -129,7 +128,7 @@ class GameScene: SKScene, DialogueBoxDelegate {
                 }
             }
         }
-
+        
         if objectInTouch.objectName == "Interruptor" {
             if SceneCoordinator.coordinator.entryPuzzleScenes["interrupter"]! {
                 let transition: SKTransition = SKTransition.fade(withDuration: 1)
@@ -139,24 +138,25 @@ class GameScene: SKScene, DialogueBoxDelegate {
             }
         }
     }
+    
     func makeMCWalk(pos: CGPoint) {
         // INVERTER POSICAO DEPENDENDO DE ONDE ANDA AS
         let itIsInventory = atPoint(pos)
         if !(itIsInventory is Inventory) && !(itIsInventory is SKShapeNode) {
-        if !tony.isWalking && pos.x < tony.frame.minX {
-            tony.xScale = -1
-        } else if !tony.isWalking && pos.x >= tony.frame.minX {
-            tony.xScale = +1
-        }
-        if !tony.isWalking {
-            let isBackground = atPoint(pos)
-            if !(isBackground is InteractableObjects) {
-                tony.walk(posx: pos.x)
+            if !tony.isWalking && pos.x < tony.frame.minX {
+                tony.xScale = -1
+            } else if !tony.isWalking && pos.x >= tony.frame.minX {
+                tony.xScale = +1
+            }
+            if !tony.isWalking {
+                let isBackground = atPoint(pos)
+                if !(isBackground is InteractableObjects) {
+                    tony.walk(posx: pos.x)
+                }
             }
         }
-        }
     }
-
+    
     func didShowDialog(currentDialog: Int, object: InteractableObjects) {
         switch object.objectType {
         case .comoda:
@@ -165,14 +165,14 @@ class GameScene: SKScene, DialogueBoxDelegate {
             break
         }
     }
-
+    
     func didFinishShowingText() {
         if let lastInteraction = lastInteraction {
             didShowDialog(currentDialog: lastInteraction.currentAnswer,
                           object: lastInteraction.objectType)
         }
     }
-
+    
     private func handleComodaTouch(currentDialog: Int, comoda: InteractableObjects) {
         let coordinator = SceneCoordinator.coordinator
         if currentDialog == 1 {
@@ -181,13 +181,13 @@ class GameScene: SKScene, DialogueBoxDelegate {
                 coordinator.shouldAddKnife = false
             }
         }
-
+        
         if currentDialog == 2 && coordinator.shouldShouldKeyboardPuzzle == nil {
             coordinator.shouldShouldKeyboardPuzzle = true
         }
         
         comoda.canProceedInteraction = !(coordinator.shouldShouldKeyboardPuzzle ?? false)
-
+        
         if coordinator.shouldShouldKeyboardPuzzle ?? false {
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
             let scene:SKScene = DresserKeyboard(size: UIScreen.main.bounds.size)
@@ -227,11 +227,11 @@ class GameScene: SKScene, DialogueBoxDelegate {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
-
+    
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
-
+    
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         
