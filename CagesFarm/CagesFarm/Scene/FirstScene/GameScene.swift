@@ -121,7 +121,8 @@ class GameScene: SKScene, DialogueBoxDelegate {
             if dialogBox.parent == nil {
                 let actualAnswerID = objectInTouch.actualAnswer
                 self.addChild(dialogBox)
-                self.dialogBox.nextText(answer: objectInTouch.answers[actualAnswerID])
+                guard let answer = objectInTouch.answers else {return}
+                self.dialogBox.nextText(answer: answer[actualAnswerID])
                 tony.isWalking = true
                 lastInteraction = nil
                 lastInteraction = LastInteraction(objectType: objectInTouch,

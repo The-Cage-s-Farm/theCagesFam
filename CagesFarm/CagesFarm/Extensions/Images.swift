@@ -19,7 +19,7 @@ public protocol BundleIdentifiable {
 }
 
 public enum GlobalImage: String, ImageDescriptor {
-    case tonyAstonished,tonyAngry,tonyPensive,tonySmiling
+    case tonyAstonished,tonyAngry,tonyPensive,tonySmiling,tonyTalkingSprite0,tonyTalkingSprite1,quadro,quartoBackground,quadroPerspectiva,comoda,interruptor,cama,lightSwitchOff,lightSwitchOn
 }
 
 public protocol ImageDescriptor: RawRepresentable where RawValue == String { }
