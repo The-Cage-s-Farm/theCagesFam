@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F0FCFF9261C835600B33057 /* FaceCharacters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0FCFF8261C835600B33057 /* FaceCharacters.swift */; };
+		0F0FCFFE261C8B4900B33057 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0FCFFD261C8B4900B33057 /* Images.swift */; };
 		0F918096260B6E140079B2E1 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F918095260B6E140079B2E1 /* Items.swift */; };
 		0F9E73612600DD690003181B /* PuzzleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9E73602600DD690003181B /* PuzzleScene.swift */; };
 		0F9EA8B525F660DF00EC66D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9EA8B425F660DF00EC66D6 /* AppDelegate.swift */; };
@@ -69,6 +71,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F0FCFF8261C835600B33057 /* FaceCharacters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceCharacters.swift; sourceTree = "<group>"; };
+		0F0FCFFD261C8B4900B33057 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		0F918095260B6E140079B2E1 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
 		0F9E73602600DD690003181B /* PuzzleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleScene.swift; sourceTree = "<group>"; };
 		0F9EA8B125F660DF00EC66D6 /* CagesFarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CagesFarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,6 +227,7 @@
 				0F9EA90C25F7BB3B00EC66D6 /* changeTheExtension.swift */,
 				E904C5D625FF8E6000654E6B /* UIFontsExtension.swift */,
 				E92E1997260B67D800AA9E25 /* UIColorExtension.swift */,
+				0F0FCFFD261C8B4900B33057 /* Images.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -245,6 +250,7 @@
 				7C9E819E2606B83D00D61B19 /* SemicirclePuzzle.swift */,
 				E924231A260E2DB100FF7E20 /* KeyboardNumber.swift */,
 				0F918095260B6E140079B2E1 /* Items.swift */,
+				0F0FCFF8261C835600B33057 /* FaceCharacters.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -266,7 +272,6 @@
 		0F9EA91B25F7BB6B00EC66D6 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				7C55CD7B260B6AE500C0E76D /* Sounds */,
 				77DA48D926136CE40020508F /* Assets.xcassets */,
 				E904C5DB25FF902100654E6B /* Fonts */,
 				0F9EA8B425F660DF00EC66D6 /* AppDelegate.swift */,
@@ -465,7 +470,6 @@
 				77DA48DA26136CE40020508F /* Assets.xcassets in Resources */,
 				E904C5EC25FF907400654E6B /* dogicabold.ttf in Resources */,
 				E904C5E025FF904D00654E6B /* pixelplay.ttf in Resources */,
-				7C55CD7D260B6AF200C0E76D /* Mysterious.wav in Resources */,
 				E904C5EB25FF907400654E6B /* dogica.ttf in Resources */,
 				E9B103BC25FA50FD0097C80D /* LaunchScreen.storyboard in Resources */,
 				E904C5DF25FF904D00654E6B /* Pixeland.ttf in Resources */,
@@ -518,6 +522,8 @@
 				E924231B260E2DB100FF7E20 /* KeyboardNumber.swift in Sources */,
 				7C460CF6260E046B00CF0415 /* OpenedTrunkScene.swift in Sources */,
 				0F9EA90D25F7BB3B00EC66D6 /* changeTheExtension.swift in Sources */,
+				0F0FCFFE261C8B4900B33057 /* Images.swift in Sources */,
+				0F0FCFF9261C835600B33057 /* FaceCharacters.swift in Sources */,
 				E95C60D0260A2B2C0039BABD /* ConfigurationsView.swift in Sources */,
 				0F9EA91725F7BB5300EC66D6 /* changeTheEntity.swift in Sources */,
 				E95C60C8260A2B0F0039BABD /* ConfigurationsViewController.swift in Sources */,
@@ -698,7 +704,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = CagesFarm/CagesFarm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BABNQ3LD22;
+				DEVELOPMENT_TEAM = VH525588L5;
 				INFOPLIST_FILE = CagesFarm/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -719,7 +725,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = CagesFarm/CagesFarm.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BABNQ3LD22;
+				DEVELOPMENT_TEAM = VH525588L5;
 				INFOPLIST_FILE = CagesFarm/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
