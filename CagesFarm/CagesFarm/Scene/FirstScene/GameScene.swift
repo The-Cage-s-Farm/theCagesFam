@@ -28,6 +28,7 @@ class GameScene: SKScene, DialogueBoxDelegate {
     private var interruptor = InteractableObjects(objectType: .interruptor)
     private var tapete = InteractableObjects(objectType: .tapete)
     private var quadroPerspectiva = InteractableObjects(objectType: .quadroPerspectiva)
+    private var door = InteractableObjects(objectType: .door)
     private var dialogBox = DialogueBox()
     private var background = SKSpriteNode(imageNamed: "QuartoBackground")
     var inventory = Inventory(items: [])
@@ -46,6 +47,8 @@ class GameScene: SKScene, DialogueBoxDelegate {
         self.addChild(cama)
         self.addChild(quadroPerspectiva)
         self.addChild(inventory)
+        self.addChild(door)
+        
         dialogBox.delegate = self
         background.zPosition = -1
         tony.zPosition = +1
@@ -73,13 +76,15 @@ class GameScene: SKScene, DialogueBoxDelegate {
         cama.position = CGPoint(x: -255, y: -115)
         cama.setScale(0.8)
         quadro.position = CGPoint(x: 120, y: 80)
-        tapete.position = CGPoint(x: -25, y: -90)
-        tapete.size = CGSize(width: 175, height: 155)
+        tapete.position = CGPoint(x: -25, y: -120)
+        tapete.setScale(2)
         comoda.position = CGPoint(x: 120, y: -20)
         quadroPerspectiva.position = CGPoint(x: -250, y: 45)
         quadroPerspectiva.xScale = -1
         interruptor.position = CGPoint(x: 240, y: 10)
         bau.position = CGPoint(x: -150, y: -53)
+        door.position = CGPoint(x: -25, y: 16)
+        door.setScale(0.6)
     }
     
     func interactionObject(pos: CGPoint) {
@@ -136,6 +141,10 @@ class GameScene: SKScene, DialogueBoxDelegate {
                 scene.anchorPoint = .init(x: 0.5, y: 0.5)
                 self.view?.presentScene(scene, transition: transition)
             }
+        }
+        
+        if  objectInTouch.objectType == .door {
+            print("chegou aqui")
         }
     }
     

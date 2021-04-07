@@ -44,7 +44,8 @@ public enum ObjectType :Int {
          comoda,
          tapete,
          bau,
-         quadroPerspectiva
+         quadroPerspectiva,
+         door
 }
 
 public class InteractableObjects: SKSpriteNode {
@@ -135,6 +136,10 @@ public class InteractableObjects: SKSpriteNode {
             self.objectName = "QuadroPerspectiva"
             frontTexture = SKTexture(imageNamed: self.objectName!)
             answers = ["Bonito"]
+        case .door:
+            self.objectName = "door"
+            frontTexture = SKTexture(imageNamed: self.objectName!)
+            answers = []
         }
         
         super.init(texture: frontTexture, color: .clear, size: frontTexture.size())
