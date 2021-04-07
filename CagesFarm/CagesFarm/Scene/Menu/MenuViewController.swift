@@ -16,6 +16,7 @@ class MenuViewController: UIViewController {
     override func loadView() {
         contentView.playButton.addTarget(self, action: #selector(play), for: .touchUpInside)
         contentView.configButton.addTarget(self, action: #selector(configurations), for: .touchUpInside)
+        contentView.exitButton.addTarget(self, action: #selector(close), for: .touchUpInside)
         view = contentView
     }
     @objc func play() {
@@ -25,6 +26,15 @@ class MenuViewController: UIViewController {
         let gameViewController = GameViewController()
         gameViewController.modalPresentationStyle = .fullScreen
         self.present(gameViewController, animated: true, completion: nil)
+    }
+
+    @objc func close() {
+        UIView.animate(withDuration: 2) {
+            self.view.alpha = 0
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            exit(1)
+        }
     }
 
     @objc func configurations() {
