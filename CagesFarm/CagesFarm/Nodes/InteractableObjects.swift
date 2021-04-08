@@ -139,7 +139,7 @@ public class InteractableObjects: SKSpriteNode {
         case .door:
             self.objectName = "door"
             frontTexture = SKTexture(imageNamed: self.objectName!)
-            answers = ["Vamos tentar sair desse lugar!"]
+            answers = ["Preciso sair desse lugar... Mas está trancada. Tenho que encontrar a chave."]
         }
         
         super.init(texture: frontTexture, color: .clear, size: frontTexture.size())

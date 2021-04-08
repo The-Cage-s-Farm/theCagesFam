@@ -9,7 +9,7 @@ import SpriteKit
 import GameplayKit
 import AVFoundation
 
-// swiftlint:disable identifier_name unused_optional_binding cyclomatic_complexity function_body_length
+// swiftlint:disable identifier_name unused_optional_binding cyclomatic_complexity
 class GameScene: SKScene, DialogueBoxDelegate {
     let keys = Items(itemType: .keys)
     let knifer = Items(itemType: .knife)
@@ -144,7 +144,6 @@ class GameScene: SKScene, DialogueBoxDelegate {
                 }
             }
             
-            print(SceneCoordinator.coordinator.gameScene!.inventory.items)
             if  objectInTouch.objectType == .door && SceneCoordinator.coordinator.gameScene!.inventory.items.contains(keys) {
                 let transition:SKTransition = SKTransition.fade(withDuration: 1)
                 let scene:SKScene = HallScene(size: UIScreen.main.bounds.size)
@@ -228,8 +227,11 @@ class GameScene: SKScene, DialogueBoxDelegate {
         
         makeMCWalk(pos: pos)
         tony.zPosition = -1
+        dialogBox.zPosition = -1
+
         interactionObject(pos: pos)
         tony.zPosition = +1
+        dialogBox.zPosition = +1
     }
     
     func touchMoved(toPoint pos : CGPoint) {
