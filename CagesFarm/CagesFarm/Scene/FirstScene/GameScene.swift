@@ -25,7 +25,7 @@ class GameScene: SKScene, DialogueBoxDelegate {
     private var bau = InteractableObjects(objectType: .bau)
     private var cama = InteractableObjects(objectType: .cama)
     private var comoda = InteractableObjects(objectType: .comoda)
-    private var interruptor = InteractableObjects(objectType: .interruptor)
+    var interruptor = InteractableObjects(objectType: .interruptor)
     private var tapete = InteractableObjects(objectType: .tapete)
     private var quadroPerspectiva = InteractableObjects(objectType: .quadroPerspectiva)
     private var dialogBox = DialogueBox()
