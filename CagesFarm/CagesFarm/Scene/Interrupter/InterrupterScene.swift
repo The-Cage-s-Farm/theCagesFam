@@ -53,6 +53,9 @@ class InterrupterScene: SKScene {
 
     func quitScene() {
         SceneCoordinator.coordinator.entryPuzzleScenes["interrupter"] = false
+        SceneCoordinator.coordinator.gameScene?.scene?.alpha = 1
+        SceneCoordinator.coordinator.gameScene?.blackOverlay.removeFromParent()
+        SceneCoordinator.coordinator.gameScene?.interruptor.texture = SKTexture(imageNamed: "light_switch_on")
         SceneCoordinator.coordinator.returnToMainScene(view: self.view)
     }
 }

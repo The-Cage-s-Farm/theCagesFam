@@ -16,6 +16,7 @@ class SceneCoordinator {
     var entryPuzzleScenes = ["keyboard" : true, "colors" : true, "interrupter" : true]
 
     var shouldShouldKeyboardPuzzle: Bool?
+    var shouldShowInterrupterScene = false
     var shouldAddKnife = true
 
     func addItemToInventory(item: String) {
