@@ -9,8 +9,11 @@ import SpriteKit
 import GameplayKit
 import AVFoundation
 
-// swiftlint:disable identifier_name unused_optional_binding cyclomatic_complexity
+// swiftlint:disable identifier_name unused_optional_binding cyclomatic_complexity function_body_length
 class GameScene: SKScene, DialogueBoxDelegate {
+    let keys = Items(itemType: .keys)
+    let knifer = Items(itemType: .knife)
+    let contract = Items(itemType: .contract)
     
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
@@ -114,7 +117,6 @@ class GameScene: SKScene, DialogueBoxDelegate {
                 } else {
                     objectInTouch.actualAnswer = 3
                 }
-                
             }
         }
         
@@ -132,20 +134,33 @@ class GameScene: SKScene, DialogueBoxDelegate {
                     objectInTouch.nextDialogue()
                 }
             }
-        }
-        
-        if objectInTouch.objectName == "Interruptor" {
-            if SceneCoordinator.coordinator.entryPuzzleScenes["interrupter"]! {
-                let transition: SKTransition = SKTransition.fade(withDuration: 1)
-                let scene: SKScene = InterrupterScene(size: UIScreen.main.bounds.size)
+            
+            if objectInTouch.objectName == "Interruptor" {
+                if SceneCoordinator.coordinator.entryPuzzleScenes["interrupter"]! {
+                    let transition: SKTransition = SKTransition.fade(withDuration: 1)
+                    let scene: SKScene = InterrupterScene(size: UIScreen.main.bounds.size)
+                    scene.anchorPoint = .init(x: 0.5, y: 0.5)
+                    self.view?.presentScene(scene, transition: transition)
+                }
+            }
+            
+            print(SceneCoordinator.coordinator.gameScene!.inventory.items)
+            if  objectInTouch.objectType == .door && SceneCoordinator.coordinator.gameScene!.inventory.items.contains(keys) {
+                let transition:SKTransition = SKTransition.fade(withDuration: 1)
+                let scene:SKScene = HallScene(size: UIScreen.main.bounds.size)
                 scene.anchorPoint = .init(x: 0.5, y: 0.5)
                 self.view?.presentScene(scene, transition: transition)
             }
         }
         
-        if  objectInTouch.objectType == .door {
-            print("chegou aqui")
-        }
+        //        if objectInTouch.objectName == "Interruptor" {
+        //            if SceneCoordinator.coordinator.entryPuzzleScenes["interrupter"]! {
+        //                let transition: SKTransition = SKTransition.fade(withDuration: 1)
+        //                let scene: SKScene = InterrupterScene(size: UIScreen.main.bounds.size)
+        //                scene.anchorPoint = .init(x: 0.5, y: 0.5)
+        //                self.view?.presentScene(scene, transition: transition)
+        //            }
+        //        }
     }
     
     func makeMCWalk(pos: CGPoint) {
@@ -158,10 +173,7 @@ class GameScene: SKScene, DialogueBoxDelegate {
                 tony.xScale = +1
             }
             if !tony.isWalking {
-                let isBackground = atPoint(pos)
-                if !(isBackground is InteractableObjects) {
-                    tony.walk(posx: pos.x)
-                }
+                tony.walk(posx: pos.x)
             }
         }
     }
@@ -186,7 +198,8 @@ class GameScene: SKScene, DialogueBoxDelegate {
         let coordinator = SceneCoordinator.coordinator
         if currentDialog == 1 {
             if coordinator.shouldAddKnife {
-                coordinator.addItemToInventory(item: ItemType.knife.rawValue)
+                guard let kniferItem = SceneCoordinator.coordinator.gameScene?.knifer else { return }
+                coordinator.addItemToInventory(item: kniferItem)
                 coordinator.shouldAddKnife = false
             }
         }
@@ -214,7 +227,9 @@ class GameScene: SKScene, DialogueBoxDelegate {
         //        self.view?.presentScene(scene, transition: transition)
         
         makeMCWalk(pos: pos)
+        tony.zPosition = -1
         interactionObject(pos: pos)
+        tony.zPosition = +1
     }
     
     func touchMoved(toPoint pos : CGPoint) {
@@ -259,6 +274,8 @@ class GameScene: SKScene, DialogueBoxDelegate {
         cama.microInteraction(player: tony)
         comoda.microInteraction(player: tony)
         bau.microInteraction(player: tony)
+        door.microInteraction(player: tony)
+        
         // Update entities
         for entity in self.entities {
             entity.update(deltaTime: dt)

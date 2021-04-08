@@ -117,7 +117,7 @@ public class InteractableObjects: SKSpriteNode {
             self.objectName = "comoda_fechada"
             frontTexture = SKTexture(imageNamed: self.objectName!)
             answers = [  "Hmm, consigo abrir a primeira gaveta sem problemas..."
-                            + "Porem nao tem nada","Consigo abrir a segunda gaveta, há um canivete",
+                            + " Porem não tem nada.","Consigo abrir a segunda gaveta, há um canivete",
                          "A Terceira gaveta possui um senha para abrir, qual será?",
                          "Outra gaveta sem nada"]
         case .tapete:
@@ -139,7 +139,7 @@ public class InteractableObjects: SKSpriteNode {
         case .door:
             self.objectName = "door"
             frontTexture = SKTexture(imageNamed: self.objectName!)
-            answers = []
+            answers = ["Vamos tentar sair desse lugar!"]
         }
         
         super.init(texture: frontTexture, color: .clear, size: frontTexture.size())
