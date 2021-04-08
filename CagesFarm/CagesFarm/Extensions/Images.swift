@@ -5,12 +5,11 @@
 //  Created by Gilberto Magno on 4/6/21.
 //
 
-
 import Foundation
-
 import UIKit
 import SpriteKit
 
+//swiftlint:disable identifier_name
 public enum ImageExtension: String {
     case png, jpeg, jpg, svg
 }
@@ -29,7 +28,7 @@ public protocol ImageRetriever {
     func image<ImageType: ImageDescriptor>(_ imageName: ImageType) -> UIImage
     func imageUrl<ImageType: ImageDescriptor>(_ imageName: ImageType,
                                               imageExtension: ImageExtension) -> URL?
-
+    
     func image(_ imageName: ImageDescriptorType) -> UIImage
     func imageUrl(_ imageName: ImageDescriptorType, imageExtension: ImageExtension) -> URL?
 }

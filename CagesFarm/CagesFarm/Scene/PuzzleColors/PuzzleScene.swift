@@ -73,7 +73,7 @@ class PuzzleScene: SKScene {
         for touch: AnyObject in touches {
             let location = touch.location(in: self)
             if checkButton.contains(location) {
-                let handledColors = [semicircleOne.strokeColor, semicircleTwo.strokeColor, semicircleThree.strokeColor, semicircleFour.strokeColor]
+                let handledColors = [semicircleTwo.strokeColor, semicircleOne.strokeColor, semicircleFour.strokeColor, semicircleThree.strokeColor]
                 if handledColors.elementsEqual(colorSequence) {
                     print("Correct Sequence.")
                     let transition: SKTransition = SKTransition.fade(withDuration: 1)
@@ -89,5 +89,4 @@ class PuzzleScene: SKScene {
             }
         }
     }
-
 }

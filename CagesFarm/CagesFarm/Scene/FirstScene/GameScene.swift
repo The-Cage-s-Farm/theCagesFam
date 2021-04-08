@@ -9,8 +9,10 @@ import SpriteKit
 import GameplayKit
 import AVFoundation
 
-// swiftlint:disable identifier_name unused_optional_binding
+
+// swiftlint:disable identifier_name unused_optional_binding cyclomatic_complexity
 class GameScene: SKScene, DialogueBoxDelegate,ImageRetriever{
+
 
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
@@ -52,9 +54,7 @@ class GameScene: SKScene, DialogueBoxDelegate,ImageRetriever{
         backGround.zPosition = -1
         tony.zPosition = +1
         dialogBox.zPosition = +1
-
-        // let path = Bundle.main.path(forResource: "Mysterious.wav", ofType:nil)!
-        //let url = URL(fileURLWithPath: path)
+        
         let data = NSDataAsset(name: "Mysterious")!.data
 
         do {
@@ -132,6 +132,15 @@ class GameScene: SKScene, DialogueBoxDelegate,ImageRetriever{
                 if objectInTouch.canProceedInteraction {
                     objectInTouch.nextDialogue()
                 }
+            }
+        }
+
+        if objectInTouch.objectName == "Interruptor" {
+            if SceneCoordinator.coordinator.entryPuzzleScenes["interrupter"]! {
+                let transition: SKTransition = SKTransition.fade(withDuration: 1)
+                let scene: SKScene = InterrupterScene(size: UIScreen.main.bounds.size)
+                scene.anchorPoint = .init(x: 0.5, y: 0.5)
+                self.view?.presentScene(scene, transition: transition)
             }
         }
     }

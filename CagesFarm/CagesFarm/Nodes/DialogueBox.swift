@@ -6,9 +6,9 @@
 //
 
 import Foundation
-
 import SpriteKit
 
+// swiftlint:disable line_length
 protocol DialogueBoxDelegate: class {
     func didFinishShowingText()
 }
@@ -21,7 +21,6 @@ class DialogueBox: SKSpriteNode,ImageRetriever {
     var dialog: SKLabelNode?
     var nextOption =  SKSpriteNode(texture: SKTexture(imageNamed: "Seta"), color: .clear, size: SKTexture(imageNamed: "Seta").size())
     var talker: SKSpriteNode? = SKSpriteNode()
-
 
     weak var delegate: DialogueBoxDelegate?
 
