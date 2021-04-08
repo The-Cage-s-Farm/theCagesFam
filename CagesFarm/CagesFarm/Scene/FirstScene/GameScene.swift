@@ -30,27 +30,16 @@ class GameScene: SKScene, DialogueBoxDelegate {
     private var quadroPerspectiva = InteractableObjects(objectType: .quadroPerspectiva)
     private var dialogBox = DialogueBox()
     private var backGround = SKSpriteNode(imageNamed: "QuartoBackground")
+    lazy var blackOverlay = SKSpriteNode(color: .black, size: frame.size)
     var inventory = Inventory(items: [])
     private var lastInteraction: LastInteraction?
 
     override func sceneDidLoad() {
         SceneCoordinator.coordinator.gameScene = self
-        self.scaleMode = .aspectFit
-        self.addChild(tony)
-        self.addChild(quadro)
-        self.addChild(backGround)
-        self.addChild(bau)
-        self.addChild(comoda)
-        self.addChild(interruptor)
-        self.addChild(tapete)
-        self.addChild(cama)
-        self.addChild(quadroPerspectiva)
-        self.addChild(inventory)
+        setupNodes()
         dialogBox.delegate = self
-        backGround.zPosition = -1
-        tony.zPosition = +1
-        dialogBox.zPosition = +1
-
+        configureZPositions()
+        customizeNodes()
         let data = NSDataAsset(name: "Mysterious")!.data
 
         do {
@@ -63,6 +52,33 @@ class GameScene: SKScene, DialogueBoxDelegate {
 
         animates()
 
+    }
+
+    private func setupNodes() {
+        self.scaleMode = .aspectFit
+        self.addChild(tony)
+        self.addChild(quadro)
+        self.addChild(backGround)
+        self.addChild(bau)
+        self.addChild(comoda)
+        self.addChild(interruptor)
+        self.addChild(tapete)
+        self.addChild(cama)
+        self.addChild(quadroPerspectiva)
+        self.addChild(inventory)
+        self.addChild(blackOverlay)
+    }
+
+    private func configureZPositions() {
+        backGround.zPosition = -1
+        tony.zPosition = +3
+        dialogBox.zPosition = +4
+        interruptor.zPosition = +2
+        blackOverlay.zPosition = +1
+    }
+
+    private func customizeNodes() {
+        blackOverlay.alpha = 0.5
     }
 
     private func buildSprite() -> [SKTexture] {
@@ -98,7 +114,7 @@ class GameScene: SKScene, DialogueBoxDelegate {
         tony.xScale = -1
 
         // Positions
-        tony.position = CGPoint(x: 250, y: -35)
+        tony.position = CGPoint(x: 240, y: -35)
         tony.size = CGSize(width: 120, height: 120)
         cama.position = CGPoint(x: -255, y: -115)
         cama.setScale(0.8)
@@ -122,7 +138,7 @@ class GameScene: SKScene, DialogueBoxDelegate {
             return
         }
         
-        if objectInTouch.objectName == "Bau" {
+        if objectInTouch.objectName == "Bau", objectInTouch.isCloseInteract {
             if SceneCoordinator.coordinator.entryPuzzleScenes["colors"]! {
                 let transition: SKTransition = SKTransition.fade(withDuration: 1)
                 let scene: SKScene = PuzzleScene(size: UIScreen.main.bounds.size)
@@ -138,7 +154,7 @@ class GameScene: SKScene, DialogueBoxDelegate {
             }
         }
 
-        if  objectInTouch.objectType == .comoda {
+        if  objectInTouch.objectType == .comoda, objectInTouch.isCloseInteract {
             if let shouldShowPuzzle = SceneCoordinator.coordinator.shouldShouldKeyboardPuzzle {
                 if shouldShowPuzzle {
                     objectInTouch.actualAnswer = 2
@@ -146,6 +162,19 @@ class GameScene: SKScene, DialogueBoxDelegate {
                     objectInTouch.actualAnswer = 3
                 }
 
+            }
+        }
+
+        if objectInTouch.objectType == .interruptor {
+            if !SceneCoordinator.coordinator.shouldShowInterrupterScene {
+                SceneCoordinator.coordinator.shouldShowInterrupterScene = true
+            } else {
+                if SceneCoordinator.coordinator.entryPuzzleScenes["interrupter"]! {
+                    let transition: SKTransition = SKTransition.fade(withDuration: 0)
+                    let scene: SKScene = InterrupterScene(size: UIScreen.main.bounds.size)
+                    scene.anchorPoint = .init(x: 0.5, y: 0.5)
+                    self.view?.presentScene(scene, transition: transition)
+                }
             }
         }
         
@@ -162,15 +191,6 @@ class GameScene: SKScene, DialogueBoxDelegate {
                 if objectInTouch.canProceedInteraction {
                     objectInTouch.nextDialogue()
                 }
-            }
-        }
-
-        if objectInTouch.objectName == "Interruptor" {
-            if SceneCoordinator.coordinator.entryPuzzleScenes["interrupter"]! {
-                let transition: SKTransition = SKTransition.fade(withDuration: 1)
-                let scene: SKScene = InterrupterScene(size: UIScreen.main.bounds.size)
-                scene.anchorPoint = .init(x: 0.5, y: 0.5)
-                self.view?.presentScene(scene, transition: transition)
             }
         }
     }

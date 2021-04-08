@@ -86,10 +86,20 @@ public class InteractableObjects: SKSpriteNode {
     }
     
     func nextDialogue() {
+        updateAnswersArray()
         if !(actualAnswer == answers.count - 1) {
-            
             actualAnswer += 1
-        
+        }
+    }
+
+    private func updateAnswersArray() {
+        switch objectType {
+        case .interruptor:
+            if SceneCoordinator.coordinator.shouldShowInterrupterScene {
+                answers = ["-- Bem melhor de enxergar assim."]
+            }
+        default:
+            print("")
         }
     }
 
@@ -133,7 +143,7 @@ public class InteractableObjects: SKSpriteNode {
         case .cama:
             self.objectName = "Cama"
             frontTexture = SKTexture(imageNamed: self.objectName!)
-            answers = ["Parece que há algo escondido no travesseiro... O que será, preciso de um canivete pra cortar","Havia um pequeno baü"]
+            answers = ["Parecia que havia algo escondido no travesseiro... Era só minha imaginação."]
         case .bau:
             self.objectName = "Bau"
             frontTexture = SKTexture(imageNamed: self.objectName!)
