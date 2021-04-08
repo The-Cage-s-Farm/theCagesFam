@@ -61,6 +61,7 @@ public class InteractableObjects: SKSpriteNode {
     var actualAnswer = 0
     var isIteracting = false
     var isMicroInteractionON = false
+    var canProceedInteraction = true
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding not supported")
@@ -85,10 +86,20 @@ public class InteractableObjects: SKSpriteNode {
     }
     
     func nextDialogue() {
+        updateAnswersArray()
         if !(actualAnswer == answers.count - 1) {
-            
             actualAnswer += 1
-        
+        }
+    }
+
+    private func updateAnswersArray() {
+        switch objectType {
+        case .interruptor:
+            if SceneCoordinator.coordinator.shouldShowInterrupterScene {
+                answers = ["-- Bem melhor de enxergar assim."]
+            }
+        default:
+            print("")
         }
     }
 
@@ -101,7 +112,6 @@ public class InteractableObjects: SKSpriteNode {
 
     func giveItem() {
 
-        
     }
     
     init(objectType: ObjectType) {
@@ -114,7 +124,7 @@ public class InteractableObjects: SKSpriteNode {
             self.objectName = "Quadro"
         case .interruptor:
             self.objectName = "Interruptor"
-            frontTexture = SKTexture(imageNamed: "InterruptorOff")
+            frontTexture = SKTexture(imageNamed: "light_switch_off")
             answers = ["-- Hmm, pergunto-me se este interruptor ligará a luz"]
             func lightOn() {
 
@@ -133,7 +143,7 @@ public class InteractableObjects: SKSpriteNode {
         case .cama:
             self.objectName = "Cama"
             frontTexture = SKTexture(imageNamed: self.objectName!)
-            answers = ["Parece que há algo escondido no travesseiro... O que será, preciso de um canivete pra cortar","Havia um pequeno baü"]
+            answers = ["Parecia que havia algo escondido no travesseiro... Era só minha imaginação."]
         case .bau:
             self.objectName = "Bau"
             frontTexture = SKTexture(imageNamed: self.objectName!)

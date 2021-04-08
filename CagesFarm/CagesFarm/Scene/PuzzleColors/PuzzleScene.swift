@@ -65,17 +65,15 @@ class PuzzleScene: SKScene {
     }
 
     private func quitScene() {
-        let transition: SKTransition = SKTransition.fade(withDuration: 1)
-        let scene: SKScene = SceneCoordinator.coordinator.gameScene!
-        scene.anchorPoint = .init(x: 0.5, y: 0.5)
-        self.view?.presentScene(scene, transition: transition)
+        SceneCoordinator.coordinator.gameScene!.backgroundSound?.play()
+        SceneCoordinator.coordinator.returnToMainScene(view: self.view)
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch: AnyObject in touches {
             let location = touch.location(in: self)
             if checkButton.contains(location) {
-                let handledColors = [semicircleOne.strokeColor, semicircleTwo.strokeColor, semicircleThree.strokeColor, semicircleFour.strokeColor]
+                let handledColors = [semicircleTwo.strokeColor, semicircleOne.strokeColor, semicircleFour.strokeColor, semicircleThree.strokeColor]
                 if handledColors.elementsEqual(colorSequence) {
                     print("Correct Sequence.")
                     let transition: SKTransition = SKTransition.fade(withDuration: 1)
@@ -84,15 +82,10 @@ class PuzzleScene: SKScene {
                     self.view?.presentScene(scene, transition: transition)
                 } else {
                     print("Wrong Sequence.")
-                    let transition: SKTransition = SKTransition.fade(withDuration: 1)
-                    let scene: SKScene = OpenedTrunkScene(size: UIScreen.main.bounds.size)
-                    scene.anchorPoint = .init(x: 0.5, y: 0.5)
-                    self.view?.presentScene(scene, transition: transition)
                 }
             } else if backButton.contains(location) {
                quitScene()
             }
         }
     }
-
 }
