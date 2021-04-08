@@ -10,7 +10,7 @@ import GameplayKit
 import AVFoundation
 
 // swiftlint:disable identifier_name unused_optional_binding
-class GameScene: SKScene, DialogueBoxDelegate {
+class GameScene: SKScene, DialogueBoxDelegate,ImageRetriever{
 
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
@@ -34,6 +34,8 @@ class GameScene: SKScene, DialogueBoxDelegate {
     private var lastInteraction: LastInteraction?
 
     override func sceneDidLoad() {
+        backGround.texture = SKTexture(image: image(.quartoBackground))
+        backGround.size = SKTexture(image: image(.quartoBackground)).size()
         SceneCoordinator.coordinator.gameScene = self
         self.scaleMode = .aspectFit
         self.addChild(tony)

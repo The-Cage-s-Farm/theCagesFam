@@ -133,30 +133,30 @@ public class InteractableObjects: SKSpriteNode,ImageRetriever {
             self.size = (self.texture?.size())!
         case .interruptor:
             answers = ["-- Hmm, pergunto-me se este interruptor ligará a luz"]
-            self.texture = SKTexture(image: image(.quadro))
+            self.texture = SKTexture(image: image(.lightSwitchOn))
             self.size = (self.texture?.size())!
         case .comoda:
             answers = [  "Hmm, consigo abrir a primeira gaveta sem problemas..."
                        + "Porem nao tem nada","Consigo abrir a segunda gaveta, há um canivete",
                          "A Terceira gaveta possui um senha para abrir, qual será?",
                          "Outra gaveta sem nada"]
-            self.texture = SKTexture(image: image(.quadro))
+            self.texture = SKTexture(image: image(.comodaFechada))
             self.size = (self.texture?.size())!
         case .tapete:
             answers = ["-- Interessante, esta é a mesma imagem do Baú"]
-            self.texture = SKTexture(image: image(.quadro))
+            self.texture = SKTexture(image: image(.tapeteQuadrado))
             self.size = (self.texture?.size())!
         case .cama:
             answers = ["Parece que há algo escondido no travesseiro... O que será, preciso de um canivete pra cortar","Havia um pequeno baü"]
-            self.texture = SKTexture(image: image(.quadro))
+            self.texture = SKTexture(image: image(.cama))
             self.size = (self.texture?.size())!
         case .bau:
             answers = ["Um Pequeno puzzle? O que faço?"]
-            self.texture = SKTexture(image: image(.quadro))
+            self.texture = SKTexture(image: image(.bau))
             self.size = (self.texture?.size())!
         case .quadroPerspectiva:
             answers = ["Bonito"]
-            self.texture = SKTexture(image: image(.quadro))
+            self.texture = SKTexture(image: image(.quadroPerspectiva))
             self.size = (self.texture?.size())!
 
         }

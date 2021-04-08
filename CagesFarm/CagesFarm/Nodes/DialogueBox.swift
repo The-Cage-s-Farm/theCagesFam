@@ -20,7 +20,7 @@ class DialogueBox: SKSpriteNode,ImageRetriever {
     var dialogTexture: SKTexture?
     var dialog: SKLabelNode?
     var nextOption =  SKSpriteNode(texture: SKTexture(imageNamed: "Seta"), color: .clear, size: SKTexture(imageNamed: "Seta").size())
-    var talker: SKSpriteNode?
+    var talker: SKSpriteNode? = SKSpriteNode()
 
 
     weak var delegate: DialogueBoxDelegate?
@@ -67,7 +67,7 @@ class DialogueBox: SKSpriteNode,ImageRetriever {
                                     SKConstraint.positionY(SKRange(upperLimit: -self.size.height/3))]
         dialog?.zPosition = +1
         nextOption.zPosition = +1
-        
+
     }
 
     func organizeFace() {
@@ -75,15 +75,16 @@ class DialogueBox: SKSpriteNode,ImageRetriever {
         self.addChild(trueTalker)
         let initialTonyFace = image(.tonyPensive)
         trueTalker.texture = SKTexture(image: initialTonyFace)
-        trueTalker.position = CGPoint(x: 0, y: 0)
+        trueTalker.size = SKTexture(image: initialTonyFace).size()
+        trueTalker.position = CGPoint(x: -170, y: 5)
         trueTalker.zPosition = +1
     }
     
     func nextText(answer: String) {
-        
+        let talk = [SKTexture(image: image(.tonyTalkingSprite0)),SKTexture(image: image(.tonyTalkingSprite1))]
         var runCount = 0
         Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { timer in
-            
+           // self.talker.texture = talk[]
             runCount += 1
             self.dialog?.attributedText = NSAttributedString(string: answer.substring(with: 0..<runCount),
                                                              attributes: [NSAttributedString.Key.font: UIFont.pixelPlay(17),NSAttributedString.Key.foregroundColor: UIColor.white])
