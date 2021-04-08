@@ -124,7 +124,7 @@ class GameScene: SKScene, DialogueBoxDelegate {
         comoda.position = CGPoint(x: 120, y: -20)
         quadroPerspectiva.position = CGPoint(x: -250, y: 45)
         quadroPerspectiva.xScale = -1
-        interruptor.position = CGPoint(x: 240, y: 10)
+        interruptor.position = CGPoint(x: 280, y: 20)
         bau.position = CGPoint(x: -150, y: -43)
     }
     
