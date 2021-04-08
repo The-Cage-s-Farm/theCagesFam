@@ -79,7 +79,6 @@ class PuzzleScene: SKScene {
                     let transition: SKTransition = SKTransition.fade(withDuration: 1)
                     let scene: SKScene = OpenedTrunkScene(size: UIScreen.main.bounds.size)
                     scene.anchorPoint = .init(x: 0.5, y: 0.5)
-                    SceneCoordinator.coordinator.entryPuzzleScenes["colors"] = false
                     self.view?.presentScene(scene, transition: transition)
                 } else {
                     print("Wrong Sequence.")

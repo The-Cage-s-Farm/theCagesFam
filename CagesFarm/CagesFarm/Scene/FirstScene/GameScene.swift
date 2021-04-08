@@ -16,7 +16,7 @@ class GameScene: SKScene, DialogueBoxDelegate {
     var graphs = [String : GKGraph]()
 
     var backgroundSound: AVAudioPlayer?
-    
+
     private var lastUpdateTime : TimeInterval = 0
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
@@ -50,7 +50,7 @@ class GameScene: SKScene, DialogueBoxDelegate {
         backGround.zPosition = -1
         tony.zPosition = +1
         dialogBox.zPosition = +1
-        
+
         let data = NSDataAsset(name: "Mysterious")!.data
 
         do {
@@ -61,12 +61,41 @@ class GameScene: SKScene, DialogueBoxDelegate {
             //Error("Can not read sound.")
         }
 
+        animates()
+
+    }
+
+    private func buildSprite() -> [SKTexture] {
+      var frames: [SKTexture] = []
+
+      for index in 0...24 {
+        let frame = SKTexture(imageNamed: "tony_getting_up_sprite_\(String(format: "%02d", index))")
+        frames.append(frame)
+      }
+        return frames
+    }
+
+    private func animates() {
+        let frames: [SKTexture] = buildSprite()
+
+        let startedAnimation = SKAction.run {
+            self.tony.isWalking = true
+        }
+
+        let endedAnimation = SKAction.run {
+            self.tony.isWalking = false
+        }
+
+        let animation = SKAction.animate(with: frames, timePerFrame: 0.2)
+        let sequence = SKAction.sequence([startedAnimation, animation, endedAnimation])
+        tony.run(sequence)
     }
 
     override func didChangeSize(_ oldSize: CGSize) {
         quadro.setScale(1)
         quadroPerspectiva.setScale(1)
         comoda.setScale(0.45)
+        tony.xScale = -1
 
         // Positions
         tony.position = CGPoint(x: 250, y: -35)
@@ -97,6 +126,12 @@ class GameScene: SKScene, DialogueBoxDelegate {
             if SceneCoordinator.coordinator.entryPuzzleScenes["colors"]! {
                 let transition: SKTransition = SKTransition.fade(withDuration: 1)
                 let scene: SKScene = PuzzleScene(size: UIScreen.main.bounds.size)
+                scene.anchorPoint = .init(x: 0.5, y: 0.5)
+                backgroundSound?.stop()
+                self.view?.presentScene(scene, transition: transition)
+            } else {
+                let transition: SKTransition = SKTransition.fade(withDuration: 1)
+                let scene: SKScene = OpenedTrunkScene(size: UIScreen.main.bounds.size)
                 scene.anchorPoint = .init(x: 0.5, y: 0.5)
                 backgroundSound?.stop()
                 self.view?.presentScene(scene, transition: transition)
