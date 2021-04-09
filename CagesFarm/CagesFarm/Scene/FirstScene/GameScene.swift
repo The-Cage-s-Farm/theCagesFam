@@ -9,7 +9,7 @@ import SpriteKit
 import GameplayKit
 import AVFoundation
 
-// swiftlint:disable identifier_name unused_optional_binding cyclomatic_complexity
+// swiftlint:disable unused_optional_binding cyclomatic_complexity function_body_length
 class GameScene: SKScene, DialogueBoxDelegate {
     // Inventory components
     let keys = Items(itemType: .keys), knifer = Items(itemType: .knife), contract = Items(itemType: .contract)
@@ -130,7 +130,6 @@ class GameScene: SKScene, DialogueBoxDelegate {
         quadro.setScale(1)
         quadroPerspectiva.setScale(1)
         comoda.setScale(0.45)
-
 
         // Positions
         tony.position = CGPoint(x: 240, y: -35)

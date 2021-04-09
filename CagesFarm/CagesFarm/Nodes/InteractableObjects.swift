@@ -6,10 +6,8 @@
 //
 
 import Foundation
-
 import SpriteKit
 
-// swiftlint:disable identifier_name
 extension SKSpriteNode {
     
     func drawBorder(color: UIColor, width: CGFloat) {
