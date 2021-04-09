@@ -20,7 +20,7 @@ class DialogueBox: SKSpriteNode,ImageRetriever {
     var dialogTexture: SKTexture?
     var dialog: SKLabelNode?
     var nextOption =  SKSpriteNode(texture: SKTexture(imageNamed: "Seta"), color: .clear, size: SKTexture(imageNamed: "Seta").size())
-    var talker: SKSpriteNode? = SKSpriteNode()
+    var talker: SKSpriteNode = SKSpriteNode()
 
     weak var delegate: DialogueBoxDelegate?
 
@@ -70,25 +70,28 @@ class DialogueBox: SKSpriteNode,ImageRetriever {
     }
 
     func organizeFace() {
-        guard let trueTalker = talker else {return}
-        self.addChild(trueTalker)
+
+        self.addChild(talker)
         let initialTonyFace = image(.tonyPensive)
-        trueTalker.texture = SKTexture(image: initialTonyFace)
-        trueTalker.size = SKTexture(image: initialTonyFace).size()
-        trueTalker.position = CGPoint(x: -170, y: 5)
-        trueTalker.zPosition = +1
+        talker.texture = SKTexture(image: initialTonyFace)
+        talker.size = SKTexture(image: initialTonyFace).size()
+        talker.position = CGPoint(x: -170, y: 5)
+        talker.zPosition = +1
     }
     
     func nextText(answer: String) {
         let talk = [SKTexture(image: image(.tonyTalkingSprite0)),SKTexture(image: image(.tonyTalkingSprite1))]
         var runCount = 0
-        Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { timer in
-           // self.talker.texture = talk[]
+        Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { [self] timer in
+            self.talker.texture = talk[runCount%2]
+            self.talker.size = (SKTexture(image: image(.tonySmiling)).size())
+            self.talker.position = CGPoint(x: -170, y: 5)
             runCount += 1
             self.dialog?.attributedText = NSAttributedString(string: answer.substring(with: 0..<runCount),
                                                              attributes: [NSAttributedString.Key.font: UIFont.pixelPlay(17),NSAttributedString.Key.foregroundColor: UIColor.white])
             if runCount == answer.count {
-                
+                self.talker.texture = SKTexture(image: image(.tonySmiling))
+                self.talker.size = (SKTexture(image: image(.tonySmiling)).size())
                 timer.invalidate()
                 self.delegate?.didFinishShowingText()
             }

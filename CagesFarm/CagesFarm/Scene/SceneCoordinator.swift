@@ -18,7 +18,7 @@ class SceneCoordinator {
     var shouldShouldKeyboardPuzzle: Bool?
     var shouldAddKnife = true
 
-    func addItemToInventory(item: String) {
+    func addItemToInventory(item: Items) {
         gameScene?.inventory.addItem(itemName: item)
     }
 
