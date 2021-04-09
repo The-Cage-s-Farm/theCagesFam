@@ -19,10 +19,8 @@ class MenuViewController: UIViewController {
         contentView.exitButton.addTarget(self, action: #selector(close), for: .touchUpInside)
         view = contentView
     }
+    
     @objc func play() {
-       // self.show(GameViewController(), sender: self)
-        // let navigation = UINavigationController(rootViewController: GameViewController())
-       // self.navigationController?.pushViewController(navigation, animated: true)
         let gameViewController = GameViewController()
         gameViewController.modalPresentationStyle = .fullScreen
         self.present(gameViewController, animated: true, completion: nil)
