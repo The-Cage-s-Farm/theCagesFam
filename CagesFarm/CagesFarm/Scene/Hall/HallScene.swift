@@ -41,8 +41,7 @@ class HallScene: SKScene, DialogueBoxDelegate {
     }
     
     func touchDown(atPoint pos : CGPoint) {
-        print("teste")
-        SceneCoordinator.coordinator.gameScene?.makeMCWalk(pos: pos)
+        self.makeMCWalk(pos: pos)
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -50,5 +49,20 @@ class HallScene: SKScene, DialogueBoxDelegate {
     }
     
     func didFinishShowingText() {
+    }
+    
+    private func makeMCWalk(pos: CGPoint) {
+        // INVERTER POSICAO DEPENDENDO DE ONDE ANDA AS
+        let itIsInventory = atPoint(pos)
+        if !(itIsInventory is Inventory) && !(itIsInventory is SKShapeNode) {
+            if !tony.isWalking && pos.x < tony.frame.minX {
+                tony.xScale = -1
+            } else if !tony.isWalking && pos.x >= tony.frame.minX {
+                tony.xScale = +1
+            }
+            if !tony.isWalking {
+                tony.walk(posx: pos.x)
+            }
+        }
     }
 }
