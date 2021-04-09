@@ -57,10 +57,17 @@ class OpenedTrunkScene: SKScene {
             if deed.contains(location) && tappedOnce {
                 dialogBox.zPosition = +1
                 dialogBox.position = CGPoint(x: 0, y: -150)
+<<<<<<< HEAD
                 
                 guard let contractItem = SceneCoordinator.coordinator.gameScene?.contract else { return }
                 SceneCoordinator.coordinator.gameScene!.inventory.addItem(itemName: contractItem)
                 
+=======
+                if SceneCoordinator.coordinator.entryPuzzleScenes["colors"]! {
+                    SceneCoordinator.coordinator.gameScene!.inventory.addItem(itemName: "contract")
+                }
+                SceneCoordinator.coordinator.entryPuzzleScenes["colors"] = false
+>>>>>>> dev
                 self.addChild(dialogBox)
                 self.deed.removeFromParent()
                 self.contractTextLabel.removeFromParent()
