@@ -97,7 +97,7 @@ class GameScene: SKScene, DialogueBoxDelegate {
     }
 
     private func customizeNodes() {
-        blackOverlay.alpha = 0.5
+        blackOverlay.alpha = 0.9
     }
 
     private func buildSprite() -> [SKTexture] {

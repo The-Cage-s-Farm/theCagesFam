@@ -59,6 +59,7 @@ class PuzzleScene: SKScene {
 
         backButton.fontName = "Dogica"
         backButton.text = "Voltar"
+        backButton.fontSize = 22
         backButton.horizontalAlignmentMode = .left
         backButton.position = CGPoint(x: -400, y: 130)
         addChild(backButton)
