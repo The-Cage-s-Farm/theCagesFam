@@ -21,15 +21,7 @@ class GameScene: SKScene, DialogueBoxDelegate {
     private var lastUpdateTime : TimeInterval = 0
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
-    
-    private var tony : Characters = {
-        let node = Characters(characterType: .tony)
-        node.zPosition = +1
-        node.position = CGPoint(x: 250, y: -35)
-        node.size = CGSize(width: 120, height: 120)
-        return node
-    }()
-    
+    private var tony = Characters(characterType: .tony)
     private var quadro = InteractableObjects(objectType: .quadro)
     private var bau = InteractableObjects(objectType: .bau)
     private var cama = InteractableObjects(objectType: .cama)
@@ -60,6 +52,7 @@ class GameScene: SKScene, DialogueBoxDelegate {
         
         dialogBox.delegate = self
         background.zPosition = -1
+        tony.zPosition = +1
         dialogBox.zPosition = +1
         
         let data = NSDataAsset(name: "Mysterious")!.data
@@ -79,6 +72,8 @@ class GameScene: SKScene, DialogueBoxDelegate {
         comoda.setScale(0.45)
         
         // Positions
+        tony.position = CGPoint(x: 250, y: -35)
+        tony.size = CGSize(width: 120, height: 120)
         cama.position = CGPoint(x: -255, y: -115)
         cama.setScale(0.8)
         quadro.position = CGPoint(x: 120, y: 80)
