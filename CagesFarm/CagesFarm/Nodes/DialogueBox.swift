@@ -60,7 +60,6 @@ class DialogueBox: SKSpriteNode,ImageRetriever {
         // dialog?.position = CGPoint(x: 50, y: 0)
         self.addChild(nextOption)
         nextOption.size = CGSize(width: self.size.width/16, height: self.size.height/3)
-        print(15*self.size.width/16)
         nextOption.constraints = [  SKConstraint.positionX(
                                         SKRange(lowerLimit: 15*self.size.width/32)),
                                     SKConstraint.positionY(SKRange(upperLimit: -self.size.height/3))]

@@ -19,7 +19,7 @@ class SceneCoordinator {
     var shouldShowInterrupterScene = false
     var shouldAddKnife = true
 
-    func addItemToInventory(item: String) {
+    func addItemToInventory(item: Items) {
         gameScene?.inventory.addItem(itemName: item)
     }
 
