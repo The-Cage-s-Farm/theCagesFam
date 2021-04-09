@@ -8,9 +8,7 @@
 import UIKit
 
 class MenuViewController: UIViewController {
-    
     let contentView = MainMenuView()
-
     var coordinator: Coordinator?
 
     override func loadView() {
@@ -38,5 +36,4 @@ class MenuViewController: UIViewController {
     @objc func configurations() {
         coordinator?.showConfigurations()
     }
-
 }

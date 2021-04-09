@@ -12,7 +12,6 @@ import GameplayKit
 class GameViewController: UIViewController {
     
     override func loadView() {
-        super.loadView()
         view = SKView()
     }
     
