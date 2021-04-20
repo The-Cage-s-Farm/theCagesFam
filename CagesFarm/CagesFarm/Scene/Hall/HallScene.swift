@@ -8,16 +8,10 @@
 import SpriteKit
 import GameplayKit
 
-class HallScene: SKScene, DialogueBoxDelegate {
+class HallScene: SKScene, DialogueBoxDelegate, ImageRetriever {
+    var closeCallbackToMenu: (() -> Void)?
     private var dialogBox = DialogueBox()
-    
-    private var tony : Characters = {
-        let node = Characters(characterType: .tony)
-        node.zPosition = +1
-        node.position = CGPoint(x: 250, y: -35)
-        node.size = CGSize(width: 120, height: 120)
-        return node
-    }()
+    private var lastInteraction: LastInteraction?
     
     private lazy var background: SKSpriteNode = {
         let node = SKSpriteNode(imageNamed: "hall")
@@ -25,31 +19,40 @@ class HallScene: SKScene, DialogueBoxDelegate {
         return node
     }()
     
-    lazy var doorOne: SKSpriteNode  = {
-        let node = SKSpriteNode(imageNamed: "door")
+    private var tony : Characters = {
+        let node = Characters(characterType: .tony)
+        node.zPosition = +2
+        node.position = CGPoint(x: 250, y: -35)
+        node.size = CGSize(width: 120, height: 120)
+        return node
+    }()
+    
+    lazy var doorOne: InteractableObjects  = {
+        let node = InteractableObjects(objectType: .doorOne)
         node.setScale(0.65)
         node.position = CGPoint(x: -360, y: 18)
         node.zPosition = +1
         return node
     }()
     
-    lazy var doorTwo: SKSpriteNode  = {
-        let node = SKSpriteNode(imageNamed: "door")
+    lazy var doorTwo: InteractableObjects  = {
+        let node = InteractableObjects(objectType: .doorTwo)
         node.setScale(0.65)
         node.position = CGPoint(x: -25, y: 18)
         node.zPosition = +1
         return node
     }()
     
-    lazy var doorThree: SKSpriteNode  = {
-        let node = SKSpriteNode(imageNamed: "door")
+    lazy var doorThree: InteractableObjects  = {
+        let node = InteractableObjects(objectType: .doorThree)
         node.setScale(0.65)
         node.position = CGPoint(x: 320, y: 18)
         node.zPosition = +1
         return node
     }()
-
+    
     override func sceneDidLoad() {
+        tony.isWalking = false
         setScene()
     }
     
@@ -57,6 +60,7 @@ class HallScene: SKScene, DialogueBoxDelegate {
         self.scaleMode = .aspectFit
         addChild()
         dialogBox.delegate = self
+        dialogBox.zPosition = +1
     }
     
     private func addChild() {
@@ -68,18 +72,48 @@ class HallScene: SKScene, DialogueBoxDelegate {
     }
     
     func touchDown(atPoint pos : CGPoint) {
+        print(tony.isWalking)
         self.makeMCWalk(pos: pos)
+        self.tony.zPosition = -1
+        dialogBox.zPosition = -1
+        
+        interactionObject(pos: pos)
+        tony.zPosition = +1
+        dialogBox.zPosition = +1
     }
+    
+    func interactionObject(pos: CGPoint) {
+        guard let objectInTouch = atPoint(pos) as? InteractableObjects else {
+            if let _ = atPoint(pos) as? DialogueBox {
+                tony.isWalking = false
+                self.dialogBox.removeFromParent()
+            }
+            return
+        }
+        
+        if objectInTouch.isCloseInteract {
+            // MUDAR PRA TORNAR MAIS AUTOMATICO PRA TODOS OBJETOS
+            if dialogBox.parent == nil {
+                let actualAnswerID = objectInTouch.actualAnswer
+                self.addChild(dialogBox)
+                guard let answer = objectInTouch.answers else {return}
+                self.dialogBox.nextText(answer: answer[actualAnswerID])
+                tony.isWalking = true
+                lastInteraction = nil
+                lastInteraction = LastInteraction(objectType: objectInTouch,
+                                                  currentAnswer: objectInTouch.actualAnswer)
+                if objectInTouch.canProceedInteraction {
+                    objectInTouch.nextDialogue()
+                }
+            }
 
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-    
-    }
-    
-    func didFinishShowingText() {
+            if  objectInTouch.objectType == .doorThree {
+                closeCallbackToMenu?()
+            }
+        }
     }
     
     private func makeMCWalk(pos: CGPoint) {
-        // INVERTER POSICAO DEPENDENDO DE ONDE ANDA AS
         let itIsInventory = atPoint(pos)
         if !(itIsInventory is Inventory) && !(itIsInventory is SKShapeNode) {
             if !tony.isWalking && pos.x < tony.frame.minX {
@@ -91,5 +125,17 @@ class HallScene: SKScene, DialogueBoxDelegate {
                 tony.walk(posx: pos.x)
             }
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
+    }
+    
+    func didFinishShowingText() {}
+    
+    override func update(_ currentTime: TimeInterval) {
+        doorOne.microInteraction(player: tony)
+        doorTwo.microInteraction(player: tony)
+        doorThree.microInteraction(player: tony)
     }
 }

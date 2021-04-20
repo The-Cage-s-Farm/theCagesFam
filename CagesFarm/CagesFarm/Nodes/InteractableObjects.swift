@@ -136,7 +136,14 @@ public class InteractableObjects: SKSpriteNode,ImageRetriever {
             self.objectName = "QuadroPerspectiva"
         case .door:
             self.objectName = "door"
+        case .doorOne:
+            self.objectName = "doorOne"
+        case .doorTwo:
+            self.objectName = "doorTwo"
+        case .doorThree:
+            self.objectName = "doorThree"
         }
+        
         super.init(texture: frontTexture, color: .clear, size: frontTexture.size())
         
         switch objectType {
@@ -178,21 +185,20 @@ public class InteractableObjects: SKSpriteNode,ImageRetriever {
             self.size = (self.texture?.size())!
             answers = ["Preciso sair desse lugar... Mas está trancada. Tenho que encontrar a chave."]
         case .doorOne:
-            self.objectName = "door"
-            self.texture = SKTexture(imageNamed: self.objectName!)
+            self.objectName = "doorOne"
+            self.texture = SKTexture(image: image(.door))
             self.size = (self.texture?.size())!
             answers = ["A porta está fechada! Preciso sair desse lugar. VOu tentar a próxima"]
         case .doorTwo:
-            self.objectName = "door"
-            self.texture = SKTexture(imageNamed: self.objectName!)
+            self.objectName = "doorTwo"
+            self.texture = SKTexture(image: image(.door))
             self.size = (self.texture?.size())!
             answers = ["A porta está fechada! Preciso sair desse lugar. VOu tentar a próxima"]
         case .doorThree:
-            self.objectName = "door"
-            self.texture = SKTexture(imageNamed: self.objectName!)
+            self.objectName = "doorThree"
+            self.texture = SKTexture(image: image(.door))
             self.size = (self.texture?.size())!
-            answers = ["Oh a porta está aberta, vou sair desse lugar"]
+            answers = ["Oh a porta está aberta, vou sair desse lugar."]
         }
-        
     }
 }

@@ -11,6 +11,8 @@ import AVFoundation
 
 // swiftlint:disable unused_optional_binding cyclomatic_complexity function_body_length
 class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
+    var closeCallbackToMenu: (() -> Void)?
+    
     let keys = Items(itemType: .keys)
     let knifer = Items(itemType: .knife)
     let contract = Items(itemType: .contract)
@@ -45,6 +47,7 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
         background.texture = SKTexture(image: image(.quartoBackground))
         background.size = SKTexture(image: image(.quartoBackground)).size()
         SceneCoordinator.coordinator.gameScene = self
+        inventory.addItem(itemName: keys)
         setupNodes()
         dialogBox.delegate = self
         configureZPositions()
@@ -244,8 +247,9 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
             
             if  objectInTouch.objectType == .door && SceneCoordinator.coordinator.gameScene!.inventory.items.contains(keys) {
                 let transition:SKTransition = SKTransition.fade(withDuration: 1)
-                let scene:SKScene = HallScene(size: UIScreen.main.bounds.size)
+                let scene = HallScene(size: UIScreen.main.bounds.size)
                 scene.anchorPoint = .init(x: 0.5, y: 0.5)
+                scene.closeCallbackToMenu = closeCallbackToMenu
                 self.view?.presentScene(scene, transition: transition)
             }
         }
