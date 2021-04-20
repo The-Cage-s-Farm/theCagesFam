@@ -27,8 +27,8 @@ class HallScene: SKScene, DialogueBoxDelegate {
     
     lazy var doorOne: SKSpriteNode  = {
         let node = SKSpriteNode(imageNamed: "door")
-        node.setScale(0.5)
-        node.position = CGPoint(x: -350, y: 0)
+        node.setScale(0.7)
+        node.position = CGPoint(x: -360, y: 10)
         node.zPosition = +1
         return node
     }()
