@@ -8,6 +8,7 @@
 import SpriteKit
 import GameplayKit
 
+//swiftlint:disable unused_optional_binding
 class HallScene: SKScene, DialogueBoxDelegate, ImageRetriever {
     var closeCallbackToMenu: (() -> Void)?
     private var dialogBox = DialogueBox()
