@@ -178,23 +178,9 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
             
             return
         }
-        
-        if objectInTouch.objectName == "Bau", objectInTouch.isCloseInteract {
-            if SceneCoordinator.coordinator.entryPuzzleScenes["colors"]! {
-                let transition: SKTransition = SKTransition.fade(withDuration: 1)
-                let scene: SKScene = PuzzleScene(size: UIScreen.main.bounds.size)
-                scene.anchorPoint = .init(x: 0.5, y: 0.5)
-                backgroundSound?.stop()
-                self.view?.presentScene(scene, transition: transition)
-            } else {
-                let transition: SKTransition = SKTransition.fade(withDuration: 1)
-                let scene: SKScene = OpenedTrunkScene(size: UIScreen.main.bounds.size)
-                scene.anchorPoint = .init(x: 0.5, y: 0.5)
-                backgroundSound?.stop()
-                self.view?.presentScene(scene, transition: transition)
-            }
-        }
 
+        objectInTouch.updateAnswersArray()
+        
         if  objectInTouch.objectType == .comoda, objectInTouch.isCloseInteract {
             if let shouldShowPuzzle = SceneCoordinator.coordinator.shouldShouldKeyboardPuzzle {
                 if shouldShowPuzzle {
@@ -262,6 +248,8 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
         switch object.objectType {
         case .comoda:
             handleComodaTouch(currentDialog: currentDialog, comoda: object)
+        case .bau:
+            handleChestTouch(bau: object)
         default:
             break
         }
@@ -295,6 +283,24 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
             let scene:SKScene = DresserKeyboard(size: UIScreen.main.bounds.size)
             scene.anchorPoint = .init(x: 0.5, y: 0.5)
+            self.view?.presentScene(scene, transition: transition)
+        }
+    }
+
+    private func handleChestTouch(bau: InteractableObjects) {
+        if SceneCoordinator.coordinator.entryPuzzleScenes["colors"]! {
+            dialogBox.removeFromParent()
+            let transition: SKTransition = SKTransition.fade(withDuration: 1)
+            let scene: SKScene = PuzzleScene(size: UIScreen.main.bounds.size)
+            scene.anchorPoint = .init(x: 0.5, y: 0.5)
+            backgroundSound?.stop()
+            self.view?.presentScene(scene, transition: transition)
+        } else {
+            dialogBox.removeFromParent()
+            let transition: SKTransition = SKTransition.fade(withDuration: 1)
+            let scene: SKScene = OpenedTrunkScene(size: UIScreen.main.bounds.size)
+            scene.anchorPoint = .init(x: 0.5, y: 0.5)
+            backgroundSound?.stop()
             self.view?.presentScene(scene, transition: transition)
         }
     }
