@@ -6,10 +6,8 @@
 //
 
 import Foundation
-
 import SpriteKit
 
-// swiftlint:disable identifier_name
 extension SKSpriteNode {
     
     func drawBorder(color: UIColor, width: CGFloat) {
@@ -84,12 +82,27 @@ public class InteractableObjects: SKSpriteNode,ImageRetriever {
     }
     
     func nextDialogue() {
+
         guard let answers = answers else {return}
+
+        updateAnswersArray()
+
         if !(actualAnswer == answers.count - 1) {
-            actualAnswer += 1            
+            actualAnswer += 1
         }
     }
-    
+
+    private func updateAnswersArray() {
+        switch objectType {
+        case .interruptor:
+            if SceneCoordinator.coordinator.shouldShowInterrupterScene {
+                answers = ["-- Bem melhor de enxergar assim."]
+            }
+        default:
+            print("")
+        }
+    }
+
     func makeRatio(x:CGFloat, y: CGFloat) {
         self.xScale = x
         self.yScale = y
@@ -143,9 +156,9 @@ public class InteractableObjects: SKSpriteNode,ImageRetriever {
             self.texture = SKTexture(image: image(.tapeteQuadrado))
             self.size = (self.texture?.size())!
         case .cama:
-            answers = ["Parece que há algo escondido no travesseiro... O que será, preciso de um canivete pra cortar","Havia um pequeno baü"]
-            self.texture = SKTexture(image: image(.cama))
-            self.size = (self.texture?.size())!
+            self.objectName = "Cama"
+            frontTexture = SKTexture(imageNamed: self.objectName!)
+            answers = ["Parecia que havia algo escondido no travesseiro... Era só minha imaginação."]
         case .bau:
             answers = ["Um Pequeno puzzle? O que faço?"]
             self.texture = SKTexture(image: image(.bau))
@@ -157,7 +170,7 @@ public class InteractableObjects: SKSpriteNode,ImageRetriever {
         case .door:
             self.objectName = "door"
             frontTexture = SKTexture(imageNamed: self.objectName!)
-            answers = ["Vamos tentar sair desse lugar!"]
+            answers = ["Preciso sair desse lugar... Mas está trancada. Tenho que encontrar a chave."]
         }
 
     }

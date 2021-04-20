@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 import SpriteKit
 
-//swiftlint:disable identifier_name
 public enum ImageExtension: String {
     case png, jpeg, jpg, svg
 }

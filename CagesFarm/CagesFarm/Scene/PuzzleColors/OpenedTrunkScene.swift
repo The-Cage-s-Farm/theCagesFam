@@ -58,9 +58,12 @@ class OpenedTrunkScene: SKScene {
                 dialogBox.zPosition = +1
                 dialogBox.position = CGPoint(x: 0, y: -150)
                 
-                guard let contractItem = SceneCoordinator.coordinator.gameScene?.contract else { return }
-                SceneCoordinator.coordinator.gameScene!.inventory.addItem(itemName: contractItem)
+                if SceneCoordinator.coordinator.entryPuzzleScenes["colors"]! {
+                    guard let contractItem = SceneCoordinator.coordinator.gameScene?.contract else { return }
+                    SceneCoordinator.coordinator.gameScene!.inventory.addItem(itemName: contractItem)
+                }
                 
+                SceneCoordinator.coordinator.entryPuzzleScenes["colors"] = false
                 self.addChild(dialogBox)
                 self.deed.removeFromParent()
                 self.contractTextLabel.removeFromParent()
