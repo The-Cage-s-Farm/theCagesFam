@@ -9,11 +9,14 @@ import SpriteKit
 import GameplayKit
 import AVFoundation
 
-// swiftlint:disable unused_optional_binding cyclomatic_complexity function_body_length
-class GameScene: SKScene, DialogueBoxDelegate {
-    // Inventory components
-    let keys = Items(itemType: .keys), knifer = Items(itemType: .knife), contract = Items(itemType: .contract)
+
+// swiftlint:disable identifier_name unused_optional_binding cyclomatic_complexity function_body_length
+class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
+    let keys = Items(itemType: .keys)
+    let knifer = Items(itemType: .knife)
+    let contract = Items(itemType: .contract)
     
+
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
     var backgroundSound: AVAudioPlayer?
@@ -38,6 +41,8 @@ class GameScene: SKScene, DialogueBoxDelegate {
     private var lastInteraction: LastInteraction?
     
     override func sceneDidLoad() {
+        background.texture = SKTexture(image: image(.quartoBackground))
+        background.size = SKTexture(image: image(.quartoBackground)).size()
         SceneCoordinator.coordinator.gameScene = self
         setupNodes()
         dialogBox.delegate = self
@@ -203,7 +208,8 @@ class GameScene: SKScene, DialogueBoxDelegate {
             if dialogBox.parent == nil {
                 let actualAnswerID = objectInTouch.actualAnswer
                 self.addChild(dialogBox)
-                self.dialogBox.nextText(answer: objectInTouch.answers[actualAnswerID])
+                guard let answer = objectInTouch.answers else {return}
+                self.dialogBox.nextText(answer: answer[actualAnswerID])
                 tony.isWalking = true
                 lastInteraction = nil
                 lastInteraction = LastInteraction(objectType: objectInTouch,
