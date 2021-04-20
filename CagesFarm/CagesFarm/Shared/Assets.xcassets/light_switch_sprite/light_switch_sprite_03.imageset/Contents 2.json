@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "carpet.png",
+      "filename" : "light_switch_sprite_03.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "carpet@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "carpet@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

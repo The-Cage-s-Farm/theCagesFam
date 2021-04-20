@@ -11,7 +11,7 @@ import SpriteKit
 // swiftlint:disable for_where
 class Inventory: SKSpriteNode {
     var items: [Items]
-    var textureBackground: SKSpriteNode = SKSpriteNode(imageNamed: "Artboard")
+    var textureBackground: SKSpriteNode = SKSpriteNode(imageNamed: "inventario")
     var squares: [SKShapeNode] = []
     var auxPositionItem = 0
     func organizeInventory() {
@@ -26,7 +26,7 @@ class Inventory: SKSpriteNode {
 
         self.size = CGSize(width: 70, height: UIScreen.main.bounds.height)
         //self.addChild(textureBackground)
-        self.position = CGPoint(x: 339, y: 0)
+        self.position = CGPoint(x: 335, y: 0)
     }
 
     func organizeItems() {
@@ -46,9 +46,8 @@ class Inventory: SKSpriteNode {
 
     }
 
-    func addItem(itemName: String) {
-        guard let unwrappedItemType = ItemType(rawValue: itemName) else { return }
-        items.append(Items(itemType: unwrappedItemType))
+    func addItem(itemName: Items) {
+        items.append(itemName)
         organizeItems()
     }
     func removeItem() {}

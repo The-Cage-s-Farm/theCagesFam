@@ -7,7 +7,6 @@
 
 import UIKit
 
-// swiftlint:disable identifier_name
 class MainMenuView: UIView {
     let backgroundImage: UIImageView = {
         let bg = UIImageView()

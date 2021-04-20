@@ -11,6 +11,9 @@ import GameplayKit
 import UIKit
 
 class DresserKeyboard: SKScene {
+    @UserDefaultsWrapper(key: .isVibrationOn, defaultValueForKey: true)
+    var isVibrationOn: Bool
+    
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
     let numberSequence = "6546"
@@ -74,7 +77,8 @@ class DresserKeyboard: SKScene {
     }
 
     private func addKeyToInventory() {
-        SceneCoordinator.coordinator.addItemToInventory(item: ItemType.keys.rawValue)
+        guard let keysItem = SceneCoordinator.coordinator.gameScene?.keys else { return }
+        SceneCoordinator.coordinator.addItemToInventory(item: keysItem)
     }
 
     private func clearViewer() {
@@ -131,7 +135,9 @@ class DresserKeyboard: SKScene {
         if !(textSize >= 4) {
             viewer.digit.text?.append("\(number)")
         } else {
-            didExceedNumberCount()
+            if isVibrationOn {
+                didExceedNumberCount()
+            }
         }
     }
 

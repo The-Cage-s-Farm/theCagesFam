@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SpriteKit
 
-//swiftlint:disable identifier_name
+//swiftlint:disable line_length
 public enum ImageExtension: String {
     case png, jpeg, jpg, svg
 }
@@ -18,7 +18,7 @@ public protocol BundleIdentifiable {
 }
 
 public enum GlobalImage: String, ImageDescriptor {
-    case tonyAstonished,tonyAngry,tonyPensive,tonySmiling
+    case tonyAstonished,tonyAngry,tonyPensive,tonySmiling,tonyTalkingSprite0,tonyTalkingSprite1,quadro,quartoBackground,quadroPerspectiva,comodaFechada,interruptor,cama,lightSwitchOff,lightSwitchOn,tapeteQuadrado,bau, arrow
 }
 
 public protocol ImageDescriptor: RawRepresentable where RawValue == String { }
