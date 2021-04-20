@@ -46,12 +46,12 @@ public enum ObjectType :Int {
          door
 }
 
-public class InteractableObjects: SKSpriteNode {
+public class InteractableObjects: SKSpriteNode,ImageRetriever {
     let objectType :ObjectType
-    let frontTexture :SKTexture
-    let objectName: String?
+    var frontTexture :SKTexture = SKTexture()
+    var objectName: String?
     var isCloseInteract = false
-    var answers: [String]
+    var answers: [String]?
     var options: [String]?
     var itemToGive: ItemType?
     var actualAnswer = 0
@@ -82,7 +82,11 @@ public class InteractableObjects: SKSpriteNode {
     }
     
     func nextDialogue() {
+
+        guard let answers = answers else {return}
+
         updateAnswersArray()
+
         if !(actualAnswer == answers.count - 1) {
             actualAnswer += 1
         }
@@ -113,45 +117,62 @@ public class InteractableObjects: SKSpriteNode {
         
         switch objectType {
         case .quadro:
-            frontTexture = SKTexture(imageNamed: "Quadro")
-            answers = ["-- Baú de travesseiro... que estranho","-- Será que a pintura é sobre este quarto... e o travesseiro esteja escondendo algo?..."]
             self.objectName = "Quadro"
         case .interruptor:
             self.objectName = "Interruptor"
-            frontTexture = SKTexture(imageNamed: "light_switch_off")
-            answers = ["-- Hmm, pergunto-me se este interruptor ligará a luz"]
-            func lightOn() {
-                
-            }
         case .comoda:
             self.objectName = "comoda_fechada"
-            frontTexture = SKTexture(imageNamed: self.objectName!)
+        case .tapete:
+            self.objectName = "TapeteQuadrado"
+        case .cama:
+            self.objectName = "cama"
+        case .bau:
+            self.objectName = "Bau"
+        case .quadroPerspectiva:
+            self.objectName = "QuadroPerspectiva"
+        case .door:
+            self.objectName = "door"
+        }
+            super.init(texture: frontTexture, color: .clear, size: frontTexture.size())
+
+        switch objectType {
+        case .quadro:
+            answers = ["-- Baú de travesseiro... que estranho","-- Será que a pintura é sobre este quarto... e o travesseiro esteja escondendo algo?..."]
+            self.texture = SKTexture(image: image(.quadro))
+            self.size = (self.texture?.size())!
+        case .interruptor:
+            answers = ["-- Hmm, pergunto-me se este interruptor ligará a luz"]
+            self.texture = SKTexture(image: image(.lightSwitchOn))
+            self.size = (self.texture?.size())!
+        case .comoda:
             answers = [  "Hmm, consigo abrir a primeira gaveta sem problemas..."
                             + " Porem não tem nada.","Consigo abrir a segunda gaveta, há um canivete",
                          "A Terceira gaveta possui um senha para abrir, qual será?",
                          "Outra gaveta sem nada"]
+            self.texture = SKTexture(image: image(.comodaFechada))
+            self.size = (self.texture?.size())!
         case .tapete:
-            self.objectName = "TapeteQuadrado"
-            frontTexture = SKTexture(imageNamed: self.objectName!)
             answers = ["-- Interessante, esta é a mesma imagem do Baú"]
+            self.texture = SKTexture(image: image(.tapeteQuadrado))
+            self.size = (self.texture?.size())!
         case .cama:
-            self.objectName = "Cama"
-            frontTexture = SKTexture(imageNamed: self.objectName!)
+            self.objectName = "cama"
+            self.texture = SKTexture(image: image(.cama))
+            self.size = (self.texture?.size())!
             answers = ["Parecia que havia algo escondido no travesseiro... Era só minha imaginação."]
         case .bau:
-            self.objectName = "Bau"
-            frontTexture = SKTexture(imageNamed: self.objectName!)
             answers = ["Um Pequeno puzzle? O que faço?"]
+            self.texture = SKTexture(image: image(.bau))
+            self.size = (self.texture?.size())!
         case .quadroPerspectiva:
-            self.objectName = "QuadroPerspectiva"
-            frontTexture = SKTexture(imageNamed: self.objectName!)
             answers = ["Bonito"]
+            self.texture = SKTexture(image: image(.quadroPerspectiva))
+            self.size = (self.texture?.size())!
         case .door:
             self.objectName = "door"
             frontTexture = SKTexture(imageNamed: self.objectName!)
             answers = ["Preciso sair desse lugar... Mas está trancada. Tenho que encontrar a chave."]
         }
-        
-        super.init(texture: frontTexture, color: .clear, size: frontTexture.size())
+
     }
 }
