@@ -61,7 +61,7 @@ class HallScene: SKScene, DialogueBoxDelegate, ImageRetriever {
         self.scaleMode = .aspectFit
         addChild()
         dialogBox.delegate = self
-        dialogBox.zPosition = +1
+        dialogBox.zPosition = +2
     }
     
     private func addChild() {
@@ -75,12 +75,9 @@ class HallScene: SKScene, DialogueBoxDelegate, ImageRetriever {
     func touchDown(atPoint pos : CGPoint) {
         print(tony.isWalking)
         self.makeMCWalk(pos: pos)
-        self.tony.zPosition = -1
-        dialogBox.zPosition = -1
         
         interactionObject(pos: pos)
-        tony.zPosition = +1
-        dialogBox.zPosition = +1
+        dialogBox.zPosition = +2
     }
     
     func interactionObject(pos: CGPoint) {
@@ -109,7 +106,13 @@ class HallScene: SKScene, DialogueBoxDelegate, ImageRetriever {
             }
 
             if  objectInTouch.objectType == .doorThree {
-                closeCallbackToMenu?()
+                let otherWait = SKAction.wait(forDuration: 2)
+                let fadOut = SKAction.fadeOut(withDuration: 2)
+                let sequence = SKAction.sequence([otherWait, fadOut])
+                
+                self.run(sequence) {
+                    self.closeCallbackToMenu?()
+                }
             }
         }
     }

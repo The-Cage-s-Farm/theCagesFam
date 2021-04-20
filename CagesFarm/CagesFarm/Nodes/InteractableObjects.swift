@@ -188,12 +188,12 @@ public class InteractableObjects: SKSpriteNode,ImageRetriever {
             self.objectName = "doorOne"
             self.texture = SKTexture(image: image(.door))
             self.size = (self.texture?.size())!
-            answers = ["A porta está fechada! Preciso sair desse lugar. VOu tentar a próxima"]
+            answers = ["A porta está fechada! Preciso sair desse lugar. Vou tentar a próxima"]
         case .doorTwo:
             self.objectName = "doorTwo"
             self.texture = SKTexture(image: image(.door))
             self.size = (self.texture?.size())!
-            answers = ["A porta está fechada! Preciso sair desse lugar. VOu tentar a próxima"]
+            answers = ["A porta está fechada! Preciso sair desse lugar. Vou tentar a próxima"]
         case .doorThree:
             self.objectName = "doorThree"
             self.texture = SKTexture(image: image(.door))
