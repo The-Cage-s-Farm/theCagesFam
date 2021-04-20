@@ -62,6 +62,9 @@ class PuzzleScene: SKScene {
         backButton.fontSize = 22
         backButton.horizontalAlignmentMode = .left
         backButton.position = CGPoint(x: -400, y: 130)
+        let xPositionOfBack = UIScreen.main.bounds.width * 0.45
+        backButton.constraints = [SKConstraint.positionX(SKRange(lowerLimit: -xPositionOfBack)),
+                                  SKConstraint.positionY(SKRange(lowerLimit: 130))]
         addChild(backButton)
     }
 
