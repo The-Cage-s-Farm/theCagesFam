@@ -19,7 +19,7 @@ class DialogueBox: SKSpriteNode,ImageRetriever {
     
     var dialogTexture: SKTexture?
     var dialog: SKLabelNode?
-    var nextOption =  SKSpriteNode(texture: SKTexture(imageNamed: "Seta"), color: .clear, size: SKTexture(imageNamed: "Seta").size())
+    var nextOption =  SKSpriteNode(texture: SKTexture(imageNamed: "arrow"), color: .clear, size: SKTexture(imageNamed: "arrow").size())
     var talker: SKSpriteNode = SKSpriteNode()
 
     weak var delegate: DialogueBoxDelegate?
