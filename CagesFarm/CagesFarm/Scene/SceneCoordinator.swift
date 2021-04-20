@@ -29,6 +29,7 @@ class SceneCoordinator {
         scene.anchorPoint = .init(x: 0.5, y: 0.5)
         view?.presentScene(scene, transition: transition)
     }
+    
 }
 
 struct LastInteraction {
