@@ -11,7 +11,7 @@ import SpriteKit
 // swiftlint:disable for_where
 class Inventory: SKSpriteNode {
     var items: [Items]
-    var textureBackground: SKSpriteNode = SKSpriteNode(imageNamed: "Artboard")
+    var textureBackground: SKSpriteNode = SKSpriteNode(imageNamed: "inventario")
     var squares: [SKShapeNode] = []
     var auxPositionItem = 0
     func organizeInventory() {

@@ -9,14 +9,12 @@ import SpriteKit
 import GameplayKit
 import AVFoundation
 
-
 // swiftlint:disable identifier_name unused_optional_binding cyclomatic_complexity function_body_length
 class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
     let keys = Items(itemType: .keys)
     let knifer = Items(itemType: .knife)
     let contract = Items(itemType: .contract)
     
-
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
     var backgroundSound: AVAudioPlayer?

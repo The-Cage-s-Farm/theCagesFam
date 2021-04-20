@@ -24,6 +24,14 @@ class HallScene: SKScene, DialogueBoxDelegate {
         node.zPosition = -1
         return node
     }()
+    
+    lazy var doorOne: SKSpriteNode  = {
+        let node = SKSpriteNode(imageNamed: "door")
+        node.setScale(0.5)
+        node.position = CGPoint(x: -350, y: 0)
+        node.zPosition = +1
+        return node
+    }()
 
     override func sceneDidLoad() {
         setScene()
@@ -38,6 +46,7 @@ class HallScene: SKScene, DialogueBoxDelegate {
     private func addChild() {
         self.addChild(tony)
         self.addChild(background)
+        self.addChild(doorOne)
     }
     
     func touchDown(atPoint pos : CGPoint) {
