@@ -27,8 +27,24 @@ class HallScene: SKScene, DialogueBoxDelegate {
     
     lazy var doorOne: SKSpriteNode  = {
         let node = SKSpriteNode(imageNamed: "door")
-        node.setScale(0.7)
-        node.position = CGPoint(x: -360, y: 10)
+        node.setScale(0.65)
+        node.position = CGPoint(x: -360, y: 18)
+        node.zPosition = +1
+        return node
+    }()
+    
+    lazy var doorTwo: SKSpriteNode  = {
+        let node = SKSpriteNode(imageNamed: "door")
+        node.setScale(0.65)
+        node.position = CGPoint(x: -25, y: 18)
+        node.zPosition = +1
+        return node
+    }()
+    
+    lazy var doorThree: SKSpriteNode  = {
+        let node = SKSpriteNode(imageNamed: "door")
+        node.setScale(0.65)
+        node.position = CGPoint(x: 320, y: 18)
         node.zPosition = +1
         return node
     }()
@@ -47,6 +63,8 @@ class HallScene: SKScene, DialogueBoxDelegate {
         self.addChild(tony)
         self.addChild(background)
         self.addChild(doorOne)
+        self.addChild(doorTwo)
+        self.addChild(doorThree)
     }
     
     func touchDown(atPoint pos : CGPoint) {

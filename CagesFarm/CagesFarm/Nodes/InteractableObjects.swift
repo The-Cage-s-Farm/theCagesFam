@@ -8,6 +8,7 @@
 import Foundation
 import SpriteKit
 
+//swiftlint:disable function_body_length cyclomatic_complexity
 extension SKSpriteNode {
     
     func drawBorder(color: UIColor, width: CGFloat) {
@@ -43,7 +44,10 @@ public enum ObjectType :Int {
          tapete,
          bau,
          quadroPerspectiva,
-         door
+         door,
+         doorOne,
+         doorTwo,
+         doorThree
 }
 
 public class InteractableObjects: SKSpriteNode,ImageRetriever {
@@ -82,16 +86,16 @@ public class InteractableObjects: SKSpriteNode,ImageRetriever {
     }
     
     func nextDialogue() {
-
+        
         guard let answers = answers else {return}
-
+        
         updateAnswersArray()
-
+        
         if !(actualAnswer == answers.count - 1) {
             actualAnswer += 1
         }
     }
-
+    
     private func updateAnswersArray() {
         switch objectType {
         case .interruptor:
@@ -102,7 +106,7 @@ public class InteractableObjects: SKSpriteNode,ImageRetriever {
             print("")
         }
     }
-
+    
     func makeRatio(x:CGFloat, y: CGFloat) {
         self.xScale = x
         self.yScale = y
@@ -133,8 +137,8 @@ public class InteractableObjects: SKSpriteNode,ImageRetriever {
         case .door:
             self.objectName = "door"
         }
-            super.init(texture: frontTexture, color: .clear, size: frontTexture.size())
-
+        super.init(texture: frontTexture, color: .clear, size: frontTexture.size())
+        
         switch objectType {
         case .quadro:
             answers = ["-- Baú de travesseiro... que estranho","-- Será que a pintura é sobre este quarto... e o travesseiro esteja escondendo algo?..."]
@@ -173,7 +177,22 @@ public class InteractableObjects: SKSpriteNode,ImageRetriever {
             self.texture = SKTexture(imageNamed: self.objectName!)
             self.size = (self.texture?.size())!
             answers = ["Preciso sair desse lugar... Mas está trancada. Tenho que encontrar a chave."]
+        case .doorOne:
+            self.objectName = "door"
+            self.texture = SKTexture(imageNamed: self.objectName!)
+            self.size = (self.texture?.size())!
+            answers = ["A porta está fechada! Preciso sair desse lugar. VOu tentar a próxima"]
+        case .doorTwo:
+            self.objectName = "door"
+            self.texture = SKTexture(imageNamed: self.objectName!)
+            self.size = (self.texture?.size())!
+            answers = ["A porta está fechada! Preciso sair desse lugar. VOu tentar a próxima"]
+        case .doorThree:
+            self.objectName = "door"
+            self.texture = SKTexture(imageNamed: self.objectName!)
+            self.size = (self.texture?.size())!
+            answers = ["Oh a porta está aberta, vou sair desse lugar"]
         }
-
+        
     }
 }
