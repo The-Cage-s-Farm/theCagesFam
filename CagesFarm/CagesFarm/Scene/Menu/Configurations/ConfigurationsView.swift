@@ -9,7 +9,11 @@ import UIKit
 
 class ConfigurationView: UIView {
 
-    var hasDisabledVibration = UserDefaults.standard.bool(forKey: "hasDisabledVibration")
+    @UserDefaultsWrapper(key: .isSoundOn, defaultValueForKey: true)
+    var isSoundOn: Bool
+
+    @UserDefaultsWrapper(key: .isVibrationOn, defaultValueForKey: true)
+    var isVibrationOn: Bool
 
     let cardView: UIView = {
         let card = UIView()
@@ -53,12 +57,26 @@ class ConfigurationView: UIView {
     lazy var vibrationSwitchButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.tag = hasDisabledVibration ? 0 : 1
+        button.tag = isVibrationOn ? 1 : 0
         let status = button.tag == 1 ? "on" : "off"
         let image = UIImage(named: "config-switch-button-\(status)")
         button.setImage(image, for: .normal)
         button.addTarget(self,
                          action: #selector(toggleVibrationSwitch(sender:)),
+                         for: .touchUpInside)
+        button.imageView?.contentMode = .scaleAspectFit
+        return button
+    }()
+
+    lazy var soundSwitchButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.tag = isSoundOn ? 1 : 0
+        let status = button.tag == 1 ? "on" : "off"
+        let image = UIImage(named: "config-switch-button-\(status)")
+        button.setImage(image, for: .normal)
+        button.addTarget(self,
+                         action: #selector(toggleSoundSwitch(sender:)),
                          for: .touchUpInside)
         button.imageView?.contentMode = .scaleAspectFit
         return button
@@ -93,7 +111,7 @@ class ConfigurationView: UIView {
             vibrationSwitchButton.setImage(image,
                                                      for: .normal)
             sender.tag = 1
-            UserDefaults.standard.setValue(false, forKey: "hasDisabledVibration")
+            isVibrationOn = true
             let impactFeedbackgenerator = UIImpactFeedbackGenerator(style: .medium)
             impactFeedbackgenerator.prepare()
             impactFeedbackgenerator.impactOccurred()
@@ -102,7 +120,21 @@ class ConfigurationView: UIView {
             vibrationSwitchButton.setImage(image,
                                                      for: .normal)
             sender.tag = 0
-            UserDefaults.standard.setValue(true, forKey: "hasDisabledVibration")
+            isVibrationOn = false
+        }
+    }
+
+    @objc func toggleSoundSwitch(sender: UIButton) {
+        if sender.tag == 0 {
+            let image = UIImage(named: "config-switch-button-on")
+            soundSwitchButton.setImage(image, for: .normal)
+            sender.tag = 1
+            isSoundOn = true
+        } else {
+            let image = UIImage(named: "config-switch-button-off")
+            soundSwitchButton.setImage(image, for: .normal)
+            sender.tag = 0
+            isSoundOn = false
         }
     }
 
@@ -116,6 +148,7 @@ class ConfigurationView: UIView {
         addSubview(cardView)
         addSubview(configurationsLabel)
         addSubview(soundLabel)
+        addSubview(soundSwitchButton)
         addSubview(vibrationLabel)
         addSubview(vibrationSwitchButton)
         addSubview(backButton)
@@ -138,6 +171,13 @@ class ConfigurationView: UIView {
             soundLabel.topAnchor.constraint(equalTo: configurationsLabel.bottomAnchor,
                                             constant: 56),
             soundLabel.leftAnchor.constraint(equalTo: configurationsLabel.leftAnchor),
+
+            // VIBRATION SWITCH
+            soundSwitchButton.topAnchor.constraint(equalTo: soundLabel.bottomAnchor,
+                                                       constant: 8),
+            soundSwitchButton.leftAnchor.constraint(equalTo: soundLabel.leftAnchor),
+            soundSwitchButton.widthAnchor.constraint(equalTo: cardView.widthAnchor,
+                                                         multiplier: 0.1),
 
             // VIBRATION
             vibrationLabel.leftAnchor.constraint(equalTo: soundLabel.leftAnchor),
