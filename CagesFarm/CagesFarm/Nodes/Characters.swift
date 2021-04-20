@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 import SpriteKit
 
 public enum CharacterType :Int {

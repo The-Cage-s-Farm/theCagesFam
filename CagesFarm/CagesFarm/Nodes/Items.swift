@@ -12,7 +12,6 @@ enum ItemType: String {
     case knife,
          keys,
          contract
-
 }
 
 class Items: SKSpriteNode {
@@ -23,9 +22,6 @@ class Items: SKSpriteNode {
     var actualPosition: Int = 0
 
     init(itemType: ItemType) {
-//        self.texture = image
-//        self.color = .clear
-//        self.size = self.texture!.size()
         self.itemType = itemType
 
         switch itemType {
@@ -38,11 +34,9 @@ class Items: SKSpriteNode {
         case .knife:
             itemName = "knife"
             image = SKTexture(imageNamed: itemName!)
-
         }
         
         super.init(texture: image, color: .clear, size: image!.size())
-
     }
 
     required init?(coder aDecoder: NSCoder) {

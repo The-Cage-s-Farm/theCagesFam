@@ -46,9 +46,8 @@ class Inventory: SKSpriteNode {
 
     }
 
-    func addItem(itemName: String) {
-        guard let unwrappedItemType = ItemType(rawValue: itemName) else { return }
-        items.append(Items(itemType: unwrappedItemType))
+    func addItem(itemName: Items) {
+        items.append(itemName)
         organizeItems()
     }
     func removeItem() {}

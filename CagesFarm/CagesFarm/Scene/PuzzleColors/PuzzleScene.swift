@@ -59,6 +59,7 @@ class PuzzleScene: SKScene {
 
         backButton.fontName = "Dogica"
         backButton.text = "Voltar"
+        backButton.fontSize = 22
         backButton.horizontalAlignmentMode = .left
         backButton.position = CGPoint(x: -400, y: 130)
         addChild(backButton)
@@ -75,13 +76,10 @@ class PuzzleScene: SKScene {
             if checkButton.contains(location) {
                 let handledColors = [semicircleTwo.strokeColor, semicircleOne.strokeColor, semicircleFour.strokeColor, semicircleThree.strokeColor]
                 if handledColors.elementsEqual(colorSequence) {
-                    print("Correct Sequence.")
                     let transition: SKTransition = SKTransition.fade(withDuration: 1)
                     let scene: SKScene = OpenedTrunkScene(size: UIScreen.main.bounds.size)
                     scene.anchorPoint = .init(x: 0.5, y: 0.5)
                     self.view?.presentScene(scene, transition: transition)
-                } else {
-                    print("Wrong Sequence.")
                 }
             } else if backButton.contains(location) {
                quitScene()
