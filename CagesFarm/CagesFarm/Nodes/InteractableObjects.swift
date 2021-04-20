@@ -125,7 +125,7 @@ public class InteractableObjects: SKSpriteNode,ImageRetriever {
         case .tapete:
             self.objectName = "TapeteQuadrado"
         case .cama:
-            self.objectName = "Cama"
+            self.objectName = "cama"
         case .bau:
             self.objectName = "Bau"
         case .quadroPerspectiva:
@@ -156,8 +156,9 @@ public class InteractableObjects: SKSpriteNode,ImageRetriever {
             self.texture = SKTexture(image: image(.tapeteQuadrado))
             self.size = (self.texture?.size())!
         case .cama:
-            self.objectName = "Cama"
-            frontTexture = SKTexture(imageNamed: self.objectName!)
+            self.objectName = "cama"
+            self.texture = SKTexture(image: image(.cama))
+            self.size = (self.texture?.size())!
             answers = ["Parecia que havia algo escondido no travesseiro... Era só minha imaginação."]
         case .bau:
             answers = ["Um Pequeno puzzle? O que faço?"]
