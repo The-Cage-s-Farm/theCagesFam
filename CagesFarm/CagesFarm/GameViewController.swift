@@ -10,7 +10,7 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-    
+
     override func loadView() { view = SKView() }
     // swiftlint:disable force_cast
     override func viewDidLoad() {

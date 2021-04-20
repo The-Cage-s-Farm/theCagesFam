@@ -17,6 +17,9 @@ class GameScene: SKScene, DialogueBoxDelegate {
 
     var backgroundSound: AVAudioPlayer?
 
+    @UserDefaultsWrapper(key: .isSoundOn, defaultValueForKey: true)
+    var isSoundOn: Bool
+
     private var lastUpdateTime : TimeInterval = 0
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
@@ -40,6 +43,15 @@ class GameScene: SKScene, DialogueBoxDelegate {
         dialogBox.delegate = self
         configureZPositions()
         customizeNodes()
+
+        if isSoundOn { loadBackgroundAudio() }
+        NotificationCenter.default.addObserver(self, selector: #selector(willResignActive), name: UIScene.willDeactivateNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: UIScene.willEnterForegroundNotification, object: nil)
+
+        animates()
+    }
+
+    private func loadBackgroundAudio() {
         let data = NSDataAsset(name: "Mysterious")!.data
 
         do {
@@ -47,11 +59,16 @@ class GameScene: SKScene, DialogueBoxDelegate {
             backgroundSound?.numberOfLoops = -1
             backgroundSound?.play()
         } catch {
-            //Error("Can not read sound.")
+            // Error("Can not read sound.")
         }
+    }
 
-        animates()
+    @objc private func willResignActive() {
+        backgroundSound?.pause()
+    }
 
+    @objc private func willEnterForeground() {
+        backgroundSound?.play()
     }
 
     private func setupNodes() {
