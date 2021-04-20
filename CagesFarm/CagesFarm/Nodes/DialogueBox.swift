@@ -21,27 +21,27 @@ class DialogueBox: SKSpriteNode,ImageRetriever {
     var dialog: SKLabelNode?
     var nextOption =  SKSpriteNode(texture: SKTexture(imageNamed: "arrow"), color: .clear, size: SKTexture(imageNamed: "arrow").size())
     var talker: SKSpriteNode = SKSpriteNode()
-
+    
     weak var delegate: DialogueBoxDelegate?
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding not supported")
     }
     
     init() {
-
+        
         dialogTexture = SKTexture(imageNamed: "DialogBox")
         super.init(texture: dialogTexture, color: .clear, size: (dialogTexture?.size())!)
         let attributedText = NSAttributedString(string: "a", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 28), NSAttributedString.Key.foregroundColor: UIColor.white])
         dialog = SKLabelNode(attributedText: attributedText)
-
+        
         dialog?.numberOfLines = 2
         // TODO: Lógica de quebra de linhas de uma fala com  mais de uma linha.
         //        Tentamos utilizar a logica de constraints, mas temos que mesurar os valores de constraints ideais.
         dialog?.horizontalAlignmentMode = .center
         dialog?.preferredMaxLayoutWidth = 300
         dialog?.verticalAlignmentMode = .center
-
+        
         organizeDialog()
         organizeFace()
         
@@ -65,11 +65,11 @@ class DialogueBox: SKSpriteNode,ImageRetriever {
                                     SKConstraint.positionY(SKRange(upperLimit: -self.size.height/3))]
         dialog?.zPosition = +1
         nextOption.zPosition = +1
-
+        
     }
-
+    
     func organizeFace() {
-
+        
         self.addChild(talker)
         let initialTonyFace = image(.tonyPensive)
         talker.texture = SKTexture(image: initialTonyFace)
@@ -95,6 +95,5 @@ class DialogueBox: SKSpriteNode,ImageRetriever {
                 self.delegate?.didFinishShowingText()
             }
         }
-        
     }
 }
