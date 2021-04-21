@@ -25,8 +25,8 @@ public class Characters: SKSpriteNode {
         fatalError("NSCoding not supported")
     }
     
-    func walk(posx: CGFloat) {
-
+    func walk(posx: CGFloat,gameScene: SKScene) {
+        let offset = 100
         let beginWalk = SKAction.run {
             self.isWalking = true
             Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
@@ -39,7 +39,16 @@ public class Characters: SKSpriteNode {
             }
         }
         let distance = abs(posx - self.position.x)
-        let andar = SKAction.move(by: CGVector(dx: posx - self.position.x, dy: 0), duration: TimeInterval(distance/120))
+        print(gameScene.size.width)
+        var andar = SKAction()
+        if posx > gameScene.size.width/2-CGFloat(offset) {
+            andar = SKAction.move(by: CGVector(dx: gameScene.size.width/2-CGFloat(offset) - self.position.x, dy: 0), duration: TimeInterval(distance/120))
+        }else if posx < -gameScene.size.width/2 + CGFloat(offset) {
+             andar = SKAction.move(by: CGVector(dx: -gameScene.size.width/2 + CGFloat(offset) - self.position.x, dy: 0), duration: TimeInterval(distance/120))
+
+        }else {
+             andar = SKAction.move(by: CGVector(dx: posx - self.position.x, dy: 0), duration: TimeInterval(distance/120))
+        }
         let endWalk = SKAction.run {
             self.isWalking = false
         }
