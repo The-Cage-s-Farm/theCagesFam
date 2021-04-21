@@ -26,6 +26,7 @@ class GameViewController: UIViewController {
             if let sceneNode = scene.rootNode as? GameScene {
                 sceneNode.entities = scene.entities
                 sceneNode.graphs = scene.graphs
+                sceneNode.closeCallbackToMenu = closeCallbackToMenu
                 
                 // Set the scale mode to scale to fit the window
                 sceneNode.scaleMode = .aspectFill
@@ -55,5 +56,9 @@ class GameViewController: UIViewController {
     
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    func closeCallbackToMenu() {
+        self.dismiss(animated: true, completion: nil)
     }
 }
