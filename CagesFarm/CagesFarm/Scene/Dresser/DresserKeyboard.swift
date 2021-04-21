@@ -80,6 +80,7 @@ class DresserKeyboard: SKScene {
     private func addKeyToInventory() {
         guard let keysItem = SceneCoordinator.coordinator.gameScene?.keys else { return }
         SceneCoordinator.coordinator.addItemToInventory(item: keysItem)
+        SceneCoordinator.coordinator.canLeaveBedroom = true
     }
 
     private func clearViewer() {
