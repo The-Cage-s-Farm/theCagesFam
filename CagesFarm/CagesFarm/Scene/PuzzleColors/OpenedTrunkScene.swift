@@ -26,7 +26,7 @@ class OpenedTrunkScene: SKScene {
                                     """
     private lazy var contractTextLabel = SKLabelNode(text: contractContent)
     private var tappedOnce = false
-
+    private var tappedTwice = false
     private var deed = SKSpriteNode()
 
     override func sceneDidLoad() {
@@ -54,7 +54,13 @@ class OpenedTrunkScene: SKScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch: AnyObject in touches {
             let location = touch.location(in: self)
-            if deed.contains(location) && tappedOnce {
+            if tappedTwice {
+                let transition: SKTransition = SKTransition.fade(withDuration: 1)
+                let scene: SKScene = SceneCoordinator.coordinator.gameScene!
+                SceneCoordinator.coordinator.gameScene!.backgroundSound?.play()
+                self.view?.presentScene(scene, transition: transition)
+            } else if deed.contains(location) && tappedOnce && !tappedTwice {
+                tappedTwice = true
                 dialogBox.zPosition = +1
                 dialogBox.position = CGPoint(x: 0, y: -150)
                 
@@ -65,15 +71,9 @@ class OpenedTrunkScene: SKScene {
                 
                 SceneCoordinator.coordinator.entryPuzzleScenes["colors"] = false
                 self.addChild(dialogBox)
-                self.deed.removeFromParent()
-                self.contractTextLabel.removeFromParent()
-                self.deed.size = CGSize(width: 0, height: 0)
                 dialogBox.nextText(answer: content)
             } else if dialogBox.contains(location) {
-                let transition: SKTransition = SKTransition.fade(withDuration: 1)
-                let scene: SKScene = SceneCoordinator.coordinator.gameScene!
-                SceneCoordinator.coordinator.gameScene!.backgroundSound?.play()
-                self.view?.presentScene(scene, transition: transition)
+
             }
             if deed.contains(location) && !tappedOnce {
                 tappedOnce = true

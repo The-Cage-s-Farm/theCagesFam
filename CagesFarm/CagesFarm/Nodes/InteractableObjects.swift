@@ -95,12 +95,16 @@ public class InteractableObjects: SKSpriteNode,ImageRetriever {
             actualAnswer += 1
         }
     }
-    
-    private func updateAnswersArray() {
+
+    func updateAnswersArray() {
         switch objectType {
         case .interruptor:
             if SceneCoordinator.coordinator.shouldShowInterrupterScene {
                 answers = ["-- Bem melhor de enxergar assim."]
+            }
+        case .bau:
+            if !SceneCoordinator.coordinator.entryPuzzleScenes["colors"]! {
+                answers = ["-- Consegui a escritura da fazenda!"]
             }
         default:
             print("")
