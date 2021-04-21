@@ -37,7 +37,7 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
     private var quadroPerspectiva = InteractableObjects(objectType: .quadroPerspectiva)
     private var door = InteractableObjects(objectType: .door)
     private var dialogBox = DialogueBox()
-    private var background = SKSpriteNode(imageNamed: "QuartoBackground")
+    private var background = SKSpriteNode(imageNamed: "quartoBackground")
     lazy var blackOverlay = SKSpriteNode(color: .black, size: frame.size)
 
     var inventory = Inventory(items: [])
