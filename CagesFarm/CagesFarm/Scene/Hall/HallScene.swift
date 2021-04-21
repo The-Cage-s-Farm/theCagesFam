@@ -61,7 +61,7 @@ class HallScene: SKScene, DialogueBoxDelegate {
                 tony.xScale = +1
             }
             if !tony.isWalking {
-                tony.walk(posx: pos.x)
+                tony.walk(posx: pos.x,gameScene: self)
             }
         }
     }

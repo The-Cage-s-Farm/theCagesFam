@@ -156,9 +156,17 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
     
     func interactionObject(pos: CGPoint) {
         guard let objectInTouch = atPoint(pos) as? InteractableObjects else {
-            if let _ = atPoint(pos) as? DialogueBox {
-                tony.isWalking = false
+            let object = atPoint(pos)
+            if object is DialogueBox {
                 self.dialogBox.removeFromParent()
+                tony.isWalking = false
+            } else if object is SKSpriteNode {
+                guard let newObject = object as? SKSpriteNode else {return}
+                if newObject.color == UIColor(red: 0, green: 0, blue: 0, alpha: 0) {
+                    self.dialogBox.removeFromParent()
+                    tony.isWalking = false
+                }
+                
             }
             
             return
@@ -209,6 +217,7 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
                 let actualAnswerID = objectInTouch.actualAnswer
                 self.addChild(dialogBox)
                 guard let answer = objectInTouch.answers else {return}
+                tony.isWalking = true
                 self.dialogBox.nextText(answer: answer[actualAnswerID])
                 tony.isWalking = true
                 lastInteraction = nil
@@ -216,6 +225,7 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
                                                   currentAnswer: objectInTouch.actualAnswer)
                 if objectInTouch.canProceedInteraction {
                     objectInTouch.nextDialogue()
+                    
                 }
             }
             if objectInTouch.objectName == "Interruptor" {
@@ -238,14 +248,14 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
     
     func makeMCWalk(pos: CGPoint) {
         let itIsInventory = atPoint(pos)
-        if !(itIsInventory is Inventory) && !(itIsInventory is SKShapeNode) {
+        if !(itIsInventory is Inventory) && !(itIsInventory is SKShapeNode) && !(itIsInventory is DialogueBox) {
             if !tony.isWalking && pos.x < tony.frame.minX {
                 tony.xScale = -1
             } else if !tony.isWalking && pos.x >= tony.frame.minX {
                 tony.xScale = +1
             }
             if !tony.isWalking {
-                tony.walk(posx: pos.x)
+                tony.walk(posx: pos.x,gameScene: self)
             }
         }
     }
@@ -347,7 +357,9 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
         comoda.microInteraction(player: tony)
         bau.microInteraction(player: tony)
         door.microInteraction(player: tony)
-        
+        if !(dialogBox.parent == nil){
+            tony.isWalking = true
+        }
         // Update entities
         for entity in self.entities {
             entity.update(deltaTime: dt)
