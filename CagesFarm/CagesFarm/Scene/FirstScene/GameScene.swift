@@ -47,7 +47,6 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
         background.texture = SKTexture(image: image(.quartoBackground))
         background.size = SKTexture(image: image(.quartoBackground)).size()
         SceneCoordinator.coordinator.gameScene = self
-        inventory.addItem(itemName: keys)
         setupNodes()
         dialogBox.delegate = self
         configureZPositions()
