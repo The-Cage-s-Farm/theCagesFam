@@ -20,6 +20,7 @@ public class Characters: SKSpriteNode {
     var isWalking = false
     var actualImageID = 0
     var feeling: String = "Sorriso"
+    var isReallyWalking = true
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("NSCoding not supported")
@@ -28,12 +29,15 @@ public class Characters: SKSpriteNode {
     func walk(posx: CGFloat,gameScene: SKScene) {
         let offset = 100
         let beginWalk = SKAction.run {
+            
             self.isWalking = true
+            self.isReallyWalking = true
             Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
                 self.actualImageID += 1
                 self.actualImageID = self.actualImageID%6
                 self.texture = self.textures[self.actualImageID]
-                if !self.isWalking {
+                if !self.isWalking || !self.isReallyWalking {
+
                     timer.invalidate()
                 }
             }
@@ -50,6 +54,7 @@ public class Characters: SKSpriteNode {
              andar = SKAction.move(by: CGVector(dx: posx - self.position.x, dy: 0), duration: TimeInterval(distance/120))
         }
         let endWalk = SKAction.run {
+            self.isReallyWalking = false
             self.isWalking = false
         }
         let sequence = SKAction.sequence([beginWalk,andar,endWalk])
