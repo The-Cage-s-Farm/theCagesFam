@@ -150,7 +150,8 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
     
     override func didChangeSize(_ oldSize: CGSize) {
         quadro.setScale(1)
-        quadroPerspectiva.setScale(1)
+        quadroPerspectiva.yScale = 2
+        quadroPerspectiva.xScale = 1.6
         comoda.setScale(0.45)
 
         // Positions
@@ -164,7 +165,6 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
         tapete.setScale(2)
         comoda.position = CGPoint(x: 120, y: -20)
         quadroPerspectiva.position = CGPoint(x: -250, y: 45)
-        quadroPerspectiva.xScale = -1
         interruptor.position = CGPoint(x: 280, y: 20)
         bau.position = CGPoint(x: -150, y: -43)
         door.position = CGPoint(x: -25, y: 16)
@@ -173,9 +173,17 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
     
     func interactionObject(pos: CGPoint) {
         guard let objectInTouch = atPoint(pos) as? InteractableObjects else {
-            if let _ = atPoint(pos) as? DialogueBox {
-                tony.isWalking = false
+            let object = atPoint(pos)
+            if object is DialogueBox {
                 self.dialogBox.removeFromParent()
+                tony.isWalking = false
+            } else if object is SKSpriteNode {
+                guard let newObject = object as? SKSpriteNode else {return}
+                if newObject.color == UIColor(red: 0, green: 0, blue: 0, alpha: 0) {
+                    self.dialogBox.removeFromParent()
+                    tony.isWalking = false
+                }
+                
             }
             
             return
@@ -213,6 +221,7 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
                 let actualAnswerID = objectInTouch.actualAnswer
                 self.addChild(dialogBox)
                 guard let answer = objectInTouch.answers else {return}
+                tony.isWalking = true
                 self.dialogBox.nextText(answer: answer[actualAnswerID])
                 tony.isWalking = true
                 lastInteraction = nil
@@ -220,29 +229,22 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
                                                   currentAnswer: objectInTouch.actualAnswer)
                 if objectInTouch.canProceedInteraction {
                     objectInTouch.nextDialogue()
+                    
                 }
-            }
-            
-            if  objectInTouch.objectType == .door && SceneCoordinator.coordinator.gameScene!.inventory.items.contains(keys) {
-                let transition:SKTransition = SKTransition.fade(withDuration: 1)
-                let scene = HallScene(size: UIScreen.main.bounds.size)
-                scene.anchorPoint = .init(x: 0.5, y: 0.5)
-                scene.closeCallbackToMenu = closeCallbackToMenu
-                self.view?.presentScene(scene, transition: transition)
             }
         }
     }
     
     func makeMCWalk(pos: CGPoint) {
         let itIsInventory = atPoint(pos)
-        if !(itIsInventory is Inventory) && !(itIsInventory is SKShapeNode) {
+        if !(itIsInventory is Inventory) && !(itIsInventory is SKShapeNode) && !(itIsInventory is DialogueBox) {
             if !tony.isWalking && pos.x < tony.frame.minX {
                 tony.xScale = -1
             } else if !tony.isWalking && pos.x >= tony.frame.minX {
                 tony.xScale = +1
             }
             if !tony.isWalking {
-                tony.walk(posx: pos.x)
+                tony.walk(posx: pos.x,gameScene: self)
             }
         }
     }
@@ -253,6 +255,8 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
             handleComodaTouch(currentDialog: currentDialog, comoda: object)
         case .bau:
             handleChestTouch(bau: object)
+        case .door:
+            handleExitRoomTouch()
         default:
             break
         }
@@ -304,6 +308,16 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
             let scene: SKScene = OpenedTrunkScene(size: UIScreen.main.bounds.size)
             scene.anchorPoint = .init(x: 0.5, y: 0.5)
             backgroundSound?.stop()
+            self.view?.presentScene(scene, transition: transition)
+        }
+    }
+
+    private func handleExitRoomTouch() {
+        if SceneCoordinator.coordinator.gameScene!.inventory.items.contains(keys) {
+            let transition:SKTransition = SKTransition.fade(withDuration: 1)
+            let scene = HallScene(size: UIScreen.main.bounds.size)
+            scene.anchorPoint = .init(x: 0.5, y: 0.5)
+            scene.closeCallbackToMenu = closeCallbackToMenu
             self.view?.presentScene(scene, transition: transition)
         }
     }
@@ -365,7 +379,9 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
         comoda.microInteraction(player: tony)
         bau.microInteraction(player: tony)
         door.microInteraction(player: tony)
-        
+        if !(dialogBox.parent == nil){
+            tony.isWalking = true
+        }
         // Update entities
         for entity in self.entities {
             entity.update(deltaTime: dt)
