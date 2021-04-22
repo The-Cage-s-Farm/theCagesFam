@@ -60,5 +60,6 @@ class GameViewController: UIViewController {
     
     func closeCallbackToMenu() {
         self.dismiss(animated: true, completion: nil)
+        SceneCoordinator.coordinator.resetCoordinator()
     }
 }

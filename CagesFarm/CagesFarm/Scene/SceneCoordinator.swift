@@ -31,6 +31,18 @@ class SceneCoordinator {
         scene.anchorPoint = .init(x: 0.5, y: 0.5)
         view?.presentScene(scene, transition: transition)
     }
+
+    func resetCoordinator() {
+        SceneCoordinator.coordinator.gameScene = nil
+        SceneCoordinator.coordinator.puzzleScene = nil
+        SceneCoordinator.coordinator.entryPuzzleScenes =  ["keyboard" : true, "colors" : true, "interrupter" : true]
+        SceneCoordinator.coordinator.shouldAddKnife = true
+        SceneCoordinator.coordinator.shouldShouldKeyboardPuzzle = nil
+        SceneCoordinator.coordinator.shouldShowInterrupterScene = false
+        SceneCoordinator.coordinator.isFirstTapOnInterruptor = true
+        SceneCoordinator.coordinator.canLeaveBedroom = false
+
+    }
     
 }
 
