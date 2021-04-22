@@ -16,7 +16,7 @@ class DresserKeyboard: SKScene {
     
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
-    let numberSequence = "6546"
+    let numberSequence = "6446"
     let keysXPosition: [Double] = [-82.0, -6.0, 74]
     let keysYIncrement: Double = 60
 
