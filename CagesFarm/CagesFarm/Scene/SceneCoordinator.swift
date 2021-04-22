@@ -18,6 +18,8 @@ class SceneCoordinator {
     var shouldShouldKeyboardPuzzle: Bool?
     var shouldShowInterrupterScene = false
     var shouldAddKnife = true
+    var isFirstTapOnInterruptor = true
+    var canLeaveBedroom = false
 
     func addItemToInventory(item: Items) {
         gameScene?.inventory.addItem(itemName: item)

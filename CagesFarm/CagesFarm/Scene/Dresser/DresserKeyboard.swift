@@ -70,6 +70,7 @@ class DresserKeyboard: SKScene {
         let isValid = viewer.digit.text ?? "" == numberSequence ? true : false
         if isValid {
             addKeyToInventory()
+            SceneCoordinator.coordinator.shouldShouldKeyboardPuzzle = false
             SceneCoordinator.coordinator.entryPuzzleScenes["keyboard"] = false
             SceneCoordinator.coordinator.gameScene!.backgroundSound?.play()
             SceneCoordinator.coordinator.returnToMainScene(view: self.view)
@@ -79,6 +80,7 @@ class DresserKeyboard: SKScene {
     private func addKeyToInventory() {
         guard let keysItem = SceneCoordinator.coordinator.gameScene?.keys else { return }
         SceneCoordinator.coordinator.addItemToInventory(item: keysItem)
+        SceneCoordinator.coordinator.canLeaveBedroom = true
     }
 
     private func clearViewer() {
