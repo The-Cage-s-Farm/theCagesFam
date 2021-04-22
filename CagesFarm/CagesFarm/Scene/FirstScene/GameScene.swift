@@ -9,7 +9,7 @@ import SpriteKit
 import GameplayKit
 import AVFoundation
 
-// swiftlint:disable unused_optional_binding cyclomatic_complexity function_body_length
+// swiftlint:disable unused_optional_binding cyclomatic_complexity
 class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
     var closeCallbackToMenu: (() -> Void)?
     
