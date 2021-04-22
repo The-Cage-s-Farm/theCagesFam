@@ -106,6 +106,10 @@ public class InteractableObjects: SKSpriteNode,ImageRetriever {
             if !SceneCoordinator.coordinator.entryPuzzleScenes["colors"]! {
                 answers = ["-- Consegui a escritura da fazenda!"]
             }
+        case .door:
+            if SceneCoordinator.coordinator.canLeaveBedroom {
+                answers = ["A chave funcionou!"]
+            }
         default:
             print("")
         }

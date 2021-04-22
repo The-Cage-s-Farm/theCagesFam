@@ -150,7 +150,8 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
     
     override func didChangeSize(_ oldSize: CGSize) {
         quadro.setScale(1)
-        quadroPerspectiva.setScale(1)
+        quadroPerspectiva.yScale = 2
+        quadroPerspectiva.xScale = 1.6
         comoda.setScale(0.45)
 
         // Positions
@@ -164,7 +165,6 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
         tapete.setScale(2)
         comoda.position = CGPoint(x: 120, y: -20)
         quadroPerspectiva.position = CGPoint(x: -250, y: 45)
-        quadroPerspectiva.xScale = -1
         interruptor.position = CGPoint(x: 280, y: 20)
         bau.position = CGPoint(x: -150, y: -43)
         door.position = CGPoint(x: -25, y: 16)
@@ -232,14 +232,6 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
                     
                 }
             }
-            
-            if  objectInTouch.objectType == .door && SceneCoordinator.coordinator.gameScene!.inventory.items.contains(keys) {
-                let transition:SKTransition = SKTransition.fade(withDuration: 1)
-                let scene = HallScene(size: UIScreen.main.bounds.size)
-                scene.anchorPoint = .init(x: 0.5, y: 0.5)
-                scene.closeCallbackToMenu = closeCallbackToMenu
-                self.view?.presentScene(scene, transition: transition)
-            }
         }
     }
     
@@ -263,6 +255,8 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
             handleComodaTouch(currentDialog: currentDialog, comoda: object)
         case .bau:
             handleChestTouch(bau: object)
+        case .door:
+            handleExitRoomTouch()
         default:
             break
         }
@@ -314,6 +308,16 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
             let scene: SKScene = OpenedTrunkScene(size: UIScreen.main.bounds.size)
             scene.anchorPoint = .init(x: 0.5, y: 0.5)
             backgroundSound?.stop()
+            self.view?.presentScene(scene, transition: transition)
+        }
+    }
+
+    private func handleExitRoomTouch() {
+        if SceneCoordinator.coordinator.gameScene!.inventory.items.contains(keys) {
+            let transition:SKTransition = SKTransition.fade(withDuration: 1)
+            let scene = HallScene(size: UIScreen.main.bounds.size)
+            scene.anchorPoint = .init(x: 0.5, y: 0.5)
+            scene.closeCallbackToMenu = closeCallbackToMenu
             self.view?.presentScene(scene, transition: transition)
         }
     }
