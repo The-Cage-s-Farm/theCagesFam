@@ -100,15 +100,15 @@ public class InteractableObjects: SKSpriteNode,ImageRetriever {
         switch objectType {
         case .interruptor:
             if SceneCoordinator.coordinator.shouldShowInterrupterScene {
-                answers = ["-- Bem melhor de enxergar assim."]
+                answers = ["- Bem melhor de enxergar assim. (Clique na seta para fechar a caixa de dialogo.)"]
             }
         case .bau:
             if !SceneCoordinator.coordinator.entryPuzzleScenes["colors"]! {
-                answers = ["-- Consegui a escritura da fazenda!"]
+                answers = ["- Já consegui a escritura da fazenda! Mas vou dar uma olhada novamente."]
             }
         case .door:
             if SceneCoordinator.coordinator.canLeaveBedroom {
-                answers = ["A chave funcionou!"]
+                answers = ["A chave funcionou! Vou dar o fora daqui."]
             }
         default:
             print("")
@@ -156,35 +156,35 @@ public class InteractableObjects: SKSpriteNode,ImageRetriever {
         
         switch objectType {
         case .quadro:
-            answers = ["-- Baú de travesseiro... que estranho","-- Será que a pintura é sobre este quarto... e o travesseiro esteja escondendo algo?..."]
+            answers = ["- Que quadro estranho! Chegar dar arrepios..."]
             self.texture = SKTexture(image: image(.quadro))
             self.size = (self.texture?.size())!
         case .interruptor:
-            answers = ["-- Hmm, pergunto-me se este interruptor ligará a luz"]
+            answers = ["- Hmm, pergunto-me se este interruptor ligará a luz. (Toque no interruptor novamente)"]
             self.texture = SKTexture(image: image(.lightSwitchOn))
             self.size = (self.texture?.size())!
         case .comoda:
             answers = [  "Hmm, consigo abrir a primeira gaveta sem problemas..."
-                            + " Porem não tem nada.","Consigo abrir a segunda gaveta, há um canivete",
-                         "A Terceira gaveta possui um senha para abrir, qual será?",
-                         "Outra gaveta sem nada"]
+                            + " Mas não tem nada.","Consigo abrir a segunda gaveta, há um canivete.",
+                         "A terceira gaveta possui um senha para abrir, qual será?",
+                         "Só perda de tempo outra gaveta sem nada."]
             self.texture = SKTexture(image: image(.comodaFechada))
             self.size = (self.texture?.size())!
         case .tapete:
-            answers = ["-- Interessante, esta é a mesma imagem do Baú"]
+            answers = ["- Interessante, esta é a mesma imagem do baú."]
             self.texture = SKTexture(image: image(.tapeteQuadrado))
             self.size = (self.texture?.size())!
         case .cama:
             self.objectName = "cama"
             self.texture = SKTexture(image: image(.cama))
             self.size = (self.texture?.size())!
-            answers = ["Parecia que havia algo escondido no travesseiro... Era só minha imaginação."]
+            answers = ["Parecia que havia algo escondido no travesseiro... Ah, era só minha imaginação."]
         case .bau:
-            answers = ["Um Pequeno puzzle? O que faço?"]
+            answers = ["Um pequeno puzzle? O que faço?"]
             self.texture = SKTexture(image: image(.bau))
             self.size = (self.texture?.size())!
         case .quadroPerspectiva:
-            answers = ["Bonito"]
+            answers = ["Esse quadro é bonito!"]
             self.texture = SKTexture(image: image(.quadroPerspectiva))
             self.size = (self.texture?.size())!
         case .door:
