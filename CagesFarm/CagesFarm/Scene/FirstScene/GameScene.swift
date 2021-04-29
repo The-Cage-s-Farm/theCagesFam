@@ -9,7 +9,7 @@ import SpriteKit
 import GameplayKit
 import AVFoundation
 
-// swiftlint:disable unused_optional_binding cyclomatic_complexity function_body_length
+// swiftlint:disable unused_optional_binding cyclomatic_complexity
 class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
     var closeCallbackToMenu: (() -> Void)?
     
@@ -172,12 +172,16 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
     }
     
     func interactionObject(pos: CGPoint) {
+
         guard let objectInTouch = atPoint(pos) as? InteractableObjects else {
+
             let object = atPoint(pos)
             if object is DialogueBox {
+
                 self.dialogBox.removeFromParent()
                 tony.isWalking = false
-            } else if object is SKSpriteNode {
+            } else if object.isKind(of: SKSpriteNode.self) {
+
                 guard let newObject = object as? SKSpriteNode else {return}
                 if newObject.color == UIColor(red: 0, green: 0, blue: 0, alpha: 0) {
                     self.dialogBox.removeFromParent()
@@ -217,13 +221,13 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
         
         if objectInTouch.isCloseInteract {
             // MUDAR PRA TORNAR MAIS AUTOMATICO PRA TODOS OBJETOS
+            tony.isWalking = false
             if dialogBox.parent == nil {
+
                 let actualAnswerID = objectInTouch.actualAnswer
                 self.addChild(dialogBox)
                 guard let answer = objectInTouch.answers else {return}
-                tony.isWalking = true
                 self.dialogBox.nextText(answer: answer[actualAnswerID])
-                tony.isWalking = true
                 lastInteraction = nil
                 lastInteraction = LastInteraction(objectType: objectInTouch,
                                                   currentAnswer: objectInTouch.actualAnswer)
@@ -236,6 +240,7 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
     }
     
     func makeMCWalk(pos: CGPoint) {
+
         let itIsInventory = atPoint(pos)
         if !(itIsInventory is Inventory) && !(itIsInventory is SKShapeNode) && !(itIsInventory is DialogueBox) {
             if !tony.isWalking && pos.x < tony.frame.minX {
@@ -270,6 +275,7 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
     }
     
     private func handleComodaTouch(currentDialog: Int, comoda: InteractableObjects) {
+        self.tony.isWalking = false
         let coordinator = SceneCoordinator.coordinator
         if currentDialog == 1 {
             if coordinator.shouldAddKnife {
@@ -295,6 +301,7 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
     }
 
     private func handleChestTouch(bau: InteractableObjects) {
+        tony.isWalking = false
         if SceneCoordinator.coordinator.entryPuzzleScenes["colors"]! {
             dialogBox.removeFromParent()
             let transition: SKTransition = SKTransition.fade(withDuration: 1)
@@ -313,6 +320,7 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
     }
 
     private func handleExitRoomTouch() {
+        self.tony.isWalking = false
         if SceneCoordinator.coordinator.gameScene!.inventory.items.contains(keys) {
             let transition:SKTransition = SKTransition.fade(withDuration: 1)
             let scene = HallScene(size: UIScreen.main.bounds.size)
@@ -329,14 +337,20 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
         //        let scene:SKScene = HallwayScene(size: UIScreen.main.bounds.size)
         //        scene.anchorPoint = .init(x: 0.5, y: 0.5)
         //        self.view?.presentScene(scene, transition: transition)
-        
-        makeMCWalk(pos: pos)
-        tony.zPosition = -1
-        dialogBox.zPosition = -1
+        let walkBeforeTalk = SKAction.run {
+            self.makeMCWalk(pos: pos)
+            self.tony.zPosition = -1
+            self.dialogBox.zPosition = -1
+        }
 
-        interactionObject(pos: pos)
-        tony.zPosition = +1
-        dialogBox.zPosition = +1
+        let talkAfterWalk = SKAction.run {
+            self.interactionObject(pos: pos)
+            self.tony.zPosition = +1
+            self.dialogBox.zPosition = +1
+        }
+        
+        let sequence = SKAction.sequence([walkBeforeTalk,talkAfterWalk])
+        self.run(sequence)
     }
     
     func touchMoved(toPoint pos : CGPoint) {
@@ -380,6 +394,7 @@ class GameScene: SKScene, DialogueBoxDelegate, ImageRetriever {
         bau.microInteraction(player: tony)
         door.microInteraction(player: tony)
         if !(dialogBox.parent == nil){
+            
             tony.isWalking = true
         }
         // Update entities
