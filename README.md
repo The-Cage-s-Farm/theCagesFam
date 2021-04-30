@@ -15,8 +15,9 @@
 * Github: [@MagnoCarta](https://github.com/MagnoCarta)
 * LinkedIn: [Gilberto Magno](https://www.linkedin.com/in/gilberto-magno-8819741a2)
 
- 👤 **José Mateus Azevedo**
-* Github: [@AlbertQueiroz](https://github.com/JMateusSousa)
+ 👤 **José Mateus Souza**
+* Github: [@JMateusSousa](https://github.com/JMateusSousa)
+* LinkedIn: [José Mateus Souza](https://www.linkedin.com/in/mateus-sousa-42932011a/)
 
  👤 **Tales Conrado**
 * Github: [@talesconrado](https://github.com/talesconrado)
